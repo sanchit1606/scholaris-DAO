@@ -8,6 +8,7 @@
   :root {
     --background: 220 20% 7%;
     --foreground: 200 20% 95%;
+    --bg-dark: #000000;
 
     --card: 220 18% 10%;
     --card-foreground: 200 20% 95%;
@@ -80,7 +81,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+    @apply bg-card/40 backdrop-blur-xl border border-border/50 rounded-xl;
     box-shadow: var(--shadow-card);
   }
 
@@ -117,16 +118,17 @@
 
   .btn-primary-glow {
     background: var(--gradient-primary);
-    @apply text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-300 opacity-90;
     box-shadow: 0 0 20px hsl(174 72% 52% / 0.3);
   }
   .btn-primary-glow:hover {
+    @apply opacity-100;
     box-shadow: 0 0 30px hsl(174 72% 52% / 0.5);
     transform: translateY(-1px);
   }
 
   .btn-secondary-glass {
-    @apply bg-secondary/50 backdrop-blur border border-border/50 text-secondary-foreground font-medium px-6 py-3 rounded-lg transition-all duration-300;
+    @apply bg-secondary/40 backdrop-blur border border-border/50 text-secondary-foreground font-medium px-6 py-3 rounded-lg transition-all duration-300;
   }
   .btn-secondary-glass:hover {
     @apply bg-secondary/80 border-primary/30;

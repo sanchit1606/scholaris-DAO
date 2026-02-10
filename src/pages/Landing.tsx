@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import { useNavigate } from 'react-router-dom';
 import { Wallet, Briefcase, Vote, BookOpen, QrCode, MessageSquare, ArrowRight, Shield, Zap, Users } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
 import { useEffect } from 'react';
+import { WebGLShader } from '@/components/ui/web-gl-shader';
 
 const modules = [
   { icon: Briefcase, title: 'PlacePrep DAO', desc: 'Decentralized placement intelligence with AI-powered insights, JD curation, and mock interviews.' },
@@ -31,13 +31,10 @@ export default function Landing() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/80 to-background" />
-        </div>
+      <section className="relative min-h-[110vh] flex items-center overflow-hidden">
+        <WebGLShader />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,6 +61,13 @@ export default function Landing() {
               <a href="#modules" className="btn-secondary-glass flex items-center gap-2 text-base">
                 Explore Modules <ArrowRight className="w-4 h-4" />
               </a>
+              <button
+                onClick={() => navigate('/documentation')}
+                className="btn-secondary-glass flex items-center gap-2 text-base"
+              >
+                <BookOpen className="w-5 h-5" />
+                View Documentation
+              </button>
             </div>
           </motion.div>
 

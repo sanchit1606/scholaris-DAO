@@ -26,6 +26,8 @@ import FeedbackView from "@/pages/FeedbackView";
 import Profile from "@/pages/Profile";
 import Settings from "@/pages/Settings";
 import NotFound from "@/pages/NotFound";
+import { useLenis } from "@/hooks/use-lenis";
+import Documentation from "@/pages/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -35,40 +37,45 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <WalletConnectModal />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/placeprep/upload" element={<PlacePrepUpload />} />
-            <Route path="/placeprep/companies" element={<Companies />} />
-            <Route path="/placeprep/company/:name" element={<CompanyDetail />} />
-            <Route path="/placeprep/jd/:id" element={<JDDetail />} />
-            <Route path="/placeprep/roadmap" element={<Roadmap />} />
-            <Route path="/placeprep/practice" element={<Practice />} />
-            <Route path="/placeprep/mocks" element={<MockInterviews />} />
-            <Route path="/placeprep/leaderboard" element={<Leaderboard />} />
-            <Route path="/placeprep/governance" element={<Governance />} />
-            <Route path="/voting" element={<VotingList />} />
-            <Route path="/voting/:id" element={<ElectionDetail />} />
-            <Route path="/library" element={<Library />} />
-            <Route path="/attendance/mint" element={<AttendanceMint />} />
-            <Route path="/feedback/submit" element={<FeedbackSubmit />} />
-            <Route path="/feedback/view" element={<FeedbackView />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useLenis();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <WalletConnectModal />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/documentation" element={<Documentation />} />
+            <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/placeprep/upload" element={<PlacePrepUpload />} />
+              <Route path="/placeprep/companies" element={<Companies />} />
+              <Route path="/placeprep/company/:name" element={<CompanyDetail />} />
+              <Route path="/placeprep/jd/:id" element={<JDDetail />} />
+              <Route path="/placeprep/roadmap" element={<Roadmap />} />
+              <Route path="/placeprep/practice" element={<Practice />} />
+              <Route path="/placeprep/mocks" element={<MockInterviews />} />
+              <Route path="/placeprep/leaderboard" element={<Leaderboard />} />
+              <Route path="/placeprep/governance" element={<Governance />} />
+              <Route path="/voting" element={<VotingList />} />
+              <Route path="/voting/:id" element={<ElectionDetail />} />
+              <Route path="/library" element={<Library />} />
+              <Route path="/attendance/mint" element={<AttendanceMint />} />
+              <Route path="/feedback/submit" element={<FeedbackSubmit />} />
+              <Route path="/feedback/view" element={<FeedbackView />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
