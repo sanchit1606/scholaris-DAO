@@ -27,7 +27,6 @@ import Profile from "@/pages/Profile";
 import Settings from "@/pages/Settings";
 import NotFound from "@/pages/NotFound";
 import { useLenis } from "@/hooks/use-lenis";
-import Documentation from "@/pages/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -49,7 +48,6 @@ const App = () => {
           <WalletConnectModal />
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/documentation" element={<Documentation />} />
             <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/placeprep/upload" element={<PlacePrepUpload />} />

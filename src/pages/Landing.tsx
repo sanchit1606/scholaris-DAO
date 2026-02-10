@@ -48,7 +48,7 @@ export default function Landing() {
               Your Campus,{' '}
               <span className="gradient-text">On-Chain.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl">
+            <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl">
               PlacePrep DAO meets campus governance — a unified blockchain platform for placement prep,
               voting, library lending, attendance, and anonymous feedback.
             </p>
