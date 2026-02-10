@@ -97,7 +97,7 @@ export default function Landing() {
             <Dock>
               <DockItem>
                 <DockIcon>
-                  <a href="https://github.com/" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/sanchit1606" target="_blank" rel="noreferrer">
                     <Github className="w-6 h-6 text-neutral-900 dark:text-white" />
                   </a>
                 </DockIcon>
@@ -105,7 +105,7 @@ export default function Landing() {
               </DockItem>
               <DockItem>
                 <DockIcon>
-                  <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+                    <a href="https://www.linkedin.com/in/sanchit1606" target="_blank" rel="noreferrer">
                     <Linkedin className="w-6 h-6 text-neutral-900 dark:text-white" />
                   </a>
                 </DockIcon>
@@ -113,9 +113,9 @@ export default function Landing() {
               </DockItem>
               <DockItem>
                 <DockIcon>
-                  <a href="/" target="_blank" rel="noreferrer">
-                    <Globe className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
+                    <a href="https://portfolio-three-silk-62.vercel.app/" target="_blank" rel="noreferrer">
+                      <Globe className="w-6 h-6 text-neutral-900 dark:text-white" />
+                    </a>
                 </DockIcon>
                 <DockLabel>Portfolio</DockLabel>
               </DockItem>
