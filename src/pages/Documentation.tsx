@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
+import { Github, Linkedin, Globe, Home } from 'lucide-react';
 
 interface ThermodynamicGridProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -217,10 +219,47 @@ const DocumentationPage = () => {
     <div className="min-h-screen relative bg-[#050505] text-white">
       <div className="relative h-screen">
         <ThermodynamicGrid />
-        <div className="absolute inset-0 z-10 flex items-center justify-center p-8">
-          <div className="text-center max-w-2xl">
-            <h1 className="text-3xl font-heading font-bold mb-4">Documentation</h1>
-            <p className="text-muted-foreground mx-auto">Interactive thermodynamic grid demo used for visualizing documentation backgrounds.</p>
+        {/* removed overlay text so the grid receives pointer events */}
+      </div>
+
+      {/* Fixed bottom-center Dock on Documentation page */}
+      <div className="fixed bottom-6 left-1/2 z-50 w-full max-w-screen-2xl -translate-x-1/2 pointer-events-none">
+        <div className="flex justify-center pointer-events-auto">
+          <div className="w-auto">
+            <Dock>
+              <DockItem>
+                <DockIcon>
+                  <a href="/" target="_self" rel="noreferrer">
+                    <Home className="w-6 h-6 text-neutral-900 dark:text-white" />
+                  </a>
+                </DockIcon>
+                <DockLabel>Home</DockLabel>
+              </DockItem>
+              <DockItem>
+                <DockIcon>
+                  <a href="https://github.com/sanchit1606" target="_blank" rel="noreferrer">
+                    <Github className="w-6 h-6 text-neutral-900 dark:text-white" />
+                  </a>
+                </DockIcon>
+                <DockLabel>GitHub</DockLabel>
+              </DockItem>
+              <DockItem>
+                <DockIcon>
+                  <a href="https://www.linkedin.com/in/sanchit1606" target="_blank" rel="noreferrer">
+                    <Linkedin className="w-6 h-6 text-neutral-900 dark:text-white" />
+                  </a>
+                </DockIcon>
+                <DockLabel>LinkedIn</DockLabel>
+              </DockItem>
+              <DockItem>
+                <DockIcon>
+                  <a href="https://portfolio-three-silk-62.vercel.app/" target="_blank" rel="noreferrer">
+                    <Globe className="w-6 h-6 text-neutral-900 dark:text-white" />
+                  </a>
+                </DockIcon>
+                <DockLabel>Portfolio</DockLabel>
+              </DockItem>
+            </Dock>
           </div>
         </div>
       </div>
