@@ -49,8 +49,7 @@ export default function Landing() {
               <span className="gradient-text">On-Chain.</span>
             </h1>
             <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl">
-              PlacePrep DAO meets campus governance — a unified blockchain platform for placement prep,
-              voting, library lending, attendance, and anonymous feedback.
+              This project is built by Sanchit and Shrey, from Team Init2winIt, as a part of 'MLSC Hackspiration' 26' VIT Pune
             </p>
             <div className="flex flex-wrap gap-4">
               <button onClick={() => setShowConnectModal(true)}

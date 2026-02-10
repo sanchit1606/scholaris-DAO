@@ -8,6 +8,7 @@ import WalletConnectModal from "@/components/WalletConnectModal";
 import Layout from "@/components/Layout";
 import Landing from "@/pages/Landing";
 import Dashboard from "@/pages/Dashboard";
+import Documentation from "@/pages/Documentation";
 import PlacePrepUpload from "@/pages/PlacePrepUpload";
 import Companies from "@/pages/Companies";
 import CompanyDetail from "@/pages/CompanyDetail";
@@ -48,6 +49,7 @@ const App = () => {
           <WalletConnectModal />
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/documentation" element={<Documentation />} />
             <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/placeprep/upload" element={<PlacePrepUpload />} />
