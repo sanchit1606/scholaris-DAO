@@ -297,7 +297,6 @@ export default function Technical() {
               </div>
               <span style={{ marginTop: "0.8em" }}>Sanchitsai Nipanikar</span>
               <p className="dev-info">
-                Team Leader<br />
                 Computer Engineering, Final Yr<br />
                 VIT Pune
               </p>
