@@ -33,6 +33,22 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen">
+      {/* Top Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center h-14">
+            <button
+              onClick={() => setShowConnectModal(true)}
+              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white rounded-full transition-all hover:scale-105"
+              style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }}
+            >
+              <Wallet className="w-4 h-4" />
+              Get Started
+            </button>
+          </div>
+        </div>
+      </header>
+
       {/* Hero */}
       <section className="relative min-h-[110vh] flex items-center overflow-hidden">
         <WebGLShader />

@@ -24,6 +24,8 @@ import {
   BarChart3,
   Landmark,
   Upload,
+  FileText,
+  Layers,
 } from "lucide-react";
 
 import ZoomableImage from "./ZoomableImage";
@@ -321,6 +323,29 @@ export default function Technical() {
                 <button>Connect</button>
               </a>
             </div>
+          </div>
+
+          {/* Document Buttons */}
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://drive.google.com/file/d/1LmH8F_GMSRQz24c5TtFtT3aruysIsori/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-full transition-all hover:scale-105"
+              style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }}
+            >
+              <FileText size={18} />
+              View Documentation
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-slate-700 bg-white border border-gray-300 rounded-full transition-all hover:scale-105 hover:bg-gray-50"
+            >
+              <Layers size={18} />
+              View PPT
+            </a>
           </div>
         </div>
 
