@@ -1,17 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
-  BookOpen,
   Cpu,
   Shield,
   Workflow,
-  Link2,
   Github,
   Linkedin,
-  User as UserIcon,
-  Upload,
-  BadgeAlert,
-  Landmark,
-  FlaskConical,
   Activity,
   Vote,
   Gift,
@@ -22,19 +15,18 @@ import {
   Search,
   Database,
   Globe,
-  FileText,
   Award,
   Users,
   Target,
   TrendingUp,
-  Layers,
   Lock,
   Zap,
   BarChart3,
+  Landmark,
+  Upload,
 } from "lucide-react";
 
 import ZoomableImage from "./ZoomableImage";
-import { AnimatedBeam } from "./AnimatedBeam";
 
 function Card({
   title,
@@ -53,99 +45,63 @@ function Card({
   );
 }
 
-function BeamShowcase() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const userRef = useRef<HTMLDivElement | null>(null);
-  const coreRef = useRef<HTMLDivElement | null>(null);
-  const featureRefs = [
-    useRef<HTMLDivElement | null>(null),
-    useRef<HTMLDivElement | null>(null),
-    useRef<HTMLDivElement | null>(null),
-    useRef<HTMLDivElement | null>(null),
-  ];
 
-  const features = [
-    { label: "JD Upload", Icon: Upload },
-    { label: "AI Insights", Icon: Cpu },
-    { label: "ScholTokens", Icon: Coins },
-    { label: "DAO Governance", Icon: Vote },
-  ];
+function DiagramSection() {
+  const [view, setView] = useState<"userflow" | "architecture">("userflow");
 
   return (
-    <div ref={containerRef} className="relative h-72 w-full">
-      {/* Beams */}
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={userRef}
-        toRef={coreRef}
-        curvature={-60}
-        pathColor="#60A5FA"
-        pathWidth={2}
-        gradientStartColor="#60A5FA"
-        gradientStopColor="#22D3EE"
-      />
-      {featureRefs.map((ref, i) => (
-        <AnimatedBeam
-          key={i}
-          containerRef={containerRef}
-          fromRef={coreRef}
-          toRef={ref}
-          curvature={-40 - i * 6}
-          delay={i * 0.2}
-          pathColor="#60A5FA"
-          pathWidth={2}
-          gradientStartColor="#60A5FA"
-          gradientStopColor="#22D3EE"
-        />
-      ))}
+    <div id="userflow" className="mt-6 grid lg:grid-cols-1 gap-6">
+      <Card title="Diagrams">
+        <div className="space-y-4">
+          {/* Toggle */}
+          <div className="flex items-center justify-center">
+            <div className="flex bg-gray-100 rounded-lg p-1">
+              <button
+                onClick={() => setView("userflow")}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                  view === "userflow"
+                    ? "bg-white text-gray-900 shadow-sm"
+                    : "text-gray-500 hover:text-gray-900"
+                }`}
+              >
+                User Flow Diagram
+              </button>
+              <button
+                onClick={() => setView("architecture")}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                  view === "architecture"
+                    ? "bg-white text-gray-900 shadow-sm"
+                    : "text-gray-500 hover:text-gray-900"
+                }`}
+              >
+                System Architecture Diagram
+              </button>
+            </div>
+          </div>
 
-      {/* Nodes */}
-      <div className="absolute inset-0 grid grid-cols-[1fr_auto_1fr] items-center">
-        {/* Left: User */}
-        <div className="flex flex-col items-center">
-          <div
-            ref={userRef}
-            className="ml-2 size-16 rounded-full bg-gray-100 border border-gray-200 shadow grid place-items-center"
-          >
-            <UserIcon className="h-6 w-6 text-brand-blue" />
-          </div>
-          <span className="mt-2 text-sm font-medium">Student</span>
+          {view === "userflow" ? (
+            <div>
+              <h4 className="font-semibold mb-3 text-center">
+                Scholaris DAO – User Flow
+              </h4>
+              <ZoomableImage
+                src="/user-flow.excalidraw.svg"
+                alt="Scholaris DAO User Flow Diagram"
+              />
+            </div>
+          ) : (
+            <div>
+              <h4 className="font-semibold mb-3 text-center">
+                Scholaris DAO – System Architecture
+              </h4>
+              <ZoomableImage
+                src="/system-architecture.svg"
+                alt="Scholaris DAO System Architecture Diagram"
+              />
+            </div>
+          )}
         </div>
-
-        {/* Center: Scholaris DAO */}
-        <div className="flex flex-col items-center">
-          <div
-            ref={coreRef}
-            className="size-20 rounded-full bg-gradient-to-tr from-brand-blue/20 to-brand-teal/30 border border-gray-200 shadow grid place-items-center"
-          >
-            <img
-              src="https://cdn.simpleicons.org/algorand/000000"
-              alt="Algorand"
-              className="h-6 w-6"
-            />
-          </div>
-          <div className="mt-2 inline-flex items-center text-xs text-muted-foreground">
-            <Link2 className="mr-1 h-3 w-3" /> Scholaris DAO
-          </div>
-        </div>
-
-        {/* Right: Features */}
-        <div className="flex justify-end pr-2">
-          <div className="grid gap-3">
-            {features.map(({ label, Icon }, idx) => (
-              <div key={label} className="flex items-center gap-2 justify-end">
-                <div
-                  ref={featureRefs[idx]}
-                  className="size-12 rounded-full bg-white shadow border border-gray-200 grid place-items-center"
-                >
-                  <Icon className="text-brand-blue" size={18} />
-                </div>
-                <span className="text-sm">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      </Card>
     </div>
   );
 }
@@ -161,13 +117,11 @@ function TechStackGrid() {
     { slug: "postgresql", label: "PostgreSQL", color: "4169E1" },
     { slug: "redis", label: "Redis", color: "DC382D" },
     { slug: "ipfs", label: "IPFS", color: "65C2CB" },
-    { slug: "openai", label: "OpenAI GPT-4", color: "412991" },
     { slug: "spacy", label: "spaCy", color: "09A3D5" },
     { slug: "scikitlearn", label: "Scikit-learn", color: "F7931E" },
     { slug: "docker", label: "Docker", color: "2496ED" },
     { slug: "github", label: "GitHub", color: "181717" },
     { slug: "vercel", label: "Vercel", color: "000000" },
-    { slug: "d3dotjs", label: "D3.js", color: "F9A03C" },
   ];
 
   return (
@@ -720,9 +674,6 @@ export default function Technical() {
         <div id="scholaris" className="mt-10 grid lg:grid-cols-1 gap-6">
           <Card title="4. Primary Solution: Scholaris DAO – Placement Help Module">
             <div className="space-y-6">
-              {/* Animated beam */}
-              <BeamShowcase />
-
               {/* 4.1 Core Problem */}
               <div>
                 <h4 className="font-semibold text-lg mb-3">
@@ -1218,73 +1169,8 @@ export default function Technical() {
           </Card>
         </div>
 
-        {/* ── User Flow Diagram ── */}
-        <div id="userflow" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="User Flow Diagram">
-            <div className="space-y-3">
-              <h4 className="font-semibold mb-3 text-center">
-                Scholaris DAO – User Flow
-              </h4>
-              <p className="text-sm text-muted-foreground mb-4 text-center">
-                The user flow diagram illustrates how students, seniors, TPO
-                members, and recruiters interact with Scholaris DAO and the
-                underlying Algorand smart contracts.
-              </p>
-              <div className="space-y-2 text-sm mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                  <span>
-                    <strong>Student Input:</strong> Uploads JDs, interview
-                    experiences, and skill profiles via the web UI
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <span>
-                    <strong>Frontend Processing:</strong> React +
-                    Tailwind‑based dashboard handles uploads, filtering, and
-                    recommendations
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                  <span>
-                    <strong>API Gateway:</strong> FastAPI backend processes
-                    files, calls AI services, and prepares on‑chain
-                    transactions
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
-                  <span>
-                    <strong>AI/ML Processing:</strong> NLP + recommendation
-                    models extract skills, detect patterns, and generate
-                    roadmaps
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-                  <span>
-                    <strong>On‑Chain State:</strong> Algorand smart contracts
-                    store IPFS hashes, contribution metadata, and token
-                    balances
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-teal-500 rounded-full"></span>
-                  <span>
-                    <strong>Output:</strong> Personalized company insights,
-                    filters, and preparation plans surfaced back to students
-                  </span>
-                </div>
-              </div>
-              <ZoomableImage
-                src="/user-flow.excalidraw.svg"
-                alt="Scholaris DAO User Flow Diagram"
-              />
-            </div>
-          </Card>
-        </div>
+        {/* ── Diagrams (Toggle) ── */}
+        <DiagramSection />
 
         {/* ── 6. Tech Stack ── */}
         <div id="techstack" className="mt-10">

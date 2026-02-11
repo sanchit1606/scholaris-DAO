@@ -1,11 +1,53 @@
 import React from "react";
-import { Dock, DockItem, DockIcon, DockLabel } from "@/components/ui/dock";
-import { Github, Linkedin, Globe, Home } from "lucide-react";
+import { Home, Wallet, Sparkles } from "lucide-react";
+import { useWalletStore } from "@/stores/walletStore";
 import DocumentationContent from "@/components/documentation/Technical";
 
 const DocumentationPage = () => {
+  const { setShowConnectModal } = useWalletStore();
+
   return (
     <div className="relative min-h-screen bg-white text-slate-900">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Left: Home */}
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
+            >
+              <Home size={18} />
+              <span className="hidden sm:inline">Home</span>
+            </a>
+
+            {/* Center: Title */}
+            <span className="text-base sm:text-lg font-bold tracking-tight text-slate-900">
+              Scholaris DAO
+            </span>
+
+            {/* Right: Buttons */}
+            <div className="flex items-center gap-3">
+              <a
+                href="/#features"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <Sparkles size={16} />
+                <span className="hidden sm:inline">Explore Features</span>
+              </a>
+              <button
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-white rounded-lg transition-colors"
+                style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }}
+                onClick={() => setShowConnectModal(true)}
+              >
+                <Wallet size={16} />
+                <span className="hidden sm:inline">Connect Wallet</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <main className="pt-24 relative z-10">
         <section className="py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -89,63 +131,9 @@ const DocumentationPage = () => {
           </div>
         </section>
 
-        {/* Full technical-style content reused from previous project */}
+        {/* Full technical-style content */}
         <DocumentationContent />
       </main>
-
-      {/* Fixed bottom-center Dock on Documentation page */}
-      <div className="fixed bottom-6 left-1/2 z-50 w-full max-w-screen-2xl -translate-x-1/2 pointer-events-none">
-        <div className="flex justify-center pointer-events-auto">
-          <div className="w-auto">
-            <Dock>
-              <DockItem>
-                <DockIcon>
-                  <a href="/" target="_self" rel="noreferrer">
-                    <Home className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>Home</DockLabel>
-              </DockItem>
-              <DockItem>
-                <DockIcon>
-                  <a
-                    href="https://github.com/sanchit1606"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Github className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>GitHub</DockLabel>
-              </DockItem>
-              <DockItem>
-                <DockIcon>
-                  <a
-                    href="https://www.linkedin.com/in/sanchit1606"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Linkedin className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>LinkedIn</DockLabel>
-              </DockItem>
-              <DockItem>
-                <DockIcon>
-                  <a
-                    href="https://portfolio-three-silk-62.vercel.app/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Globe className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>Portfolio</DockLabel>
-              </DockItem>
-            </Dock>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

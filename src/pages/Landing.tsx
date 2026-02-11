@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import { useNavigate } from 'react-router-dom';
-import { Wallet, Briefcase, Vote, BookOpen, QrCode, MessageSquare, ArrowRight, Shield, Zap, Users, Github, Linkedin, Globe } from 'lucide-react';
+import { Wallet, Briefcase, Vote, BookOpen, QrCode, MessageSquare, ArrowRight, Shield, Zap, Users, Github, Linkedin, Globe, Home } from 'lucide-react';
 import { useEffect } from 'react';
 import { WebGLShader } from '@/components/ui/web-gl-shader';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
@@ -95,6 +95,14 @@ export default function Landing() {
         <div className="flex justify-center pointer-events-auto">
           <div className="w-auto">
             <Dock>
+              <DockItem>
+                <DockIcon>
+                    <a href="/" target="_self" rel="noreferrer">
+                    <Home className="w-6 h-6 text-neutral-900 dark:text-white" />
+                  </a>
+                </DockIcon>
+                <DockLabel>Home</DockLabel>
+              </DockItem>
               <DockItem>
                 <DockIcon>
                     <a href="https://github.com/sanchit1606" target="_blank" rel="noreferrer">

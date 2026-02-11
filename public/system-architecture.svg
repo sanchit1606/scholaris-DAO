@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="blockchainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="storageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#FAFAFA" rx="16"/>
+
+  <!-- Title -->
+  <text x="600" y="45" text-anchor="middle" font-size="22" font-weight="700" fill="#1E293B">Scholaris DAO  System Architecture</text>
+  <text x="600" y="68" text-anchor="middle" font-size="13" fill="#64748B">Decentralized Placement Intelligence Platform on Algorand</text>
+
+  <!-- PPP Layer 1: Frontend (Top) PPP -->
+  <rect x="60" y="90" width="1080" height="110" rx="12" fill="white" stroke="#3B82F6" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="90" width="1080" height="32" rx="12" fill="url(#headerGrad)"/>
+  <rect x="60" y="106" width="1080" height="16" fill="url(#headerGrad)"/>
+  <text x="600" y="112" text-anchor="middle" font-size="14" font-weight="600" fill="white">USER INTERFACE LAYER  React v18+ / TypeScript / Tailwind CSS / shadcn/ui</text>
+
+  <text x="140" y="148" font-size="12" font-weight="600" fill="#1E293B">Wallet Connect</text>
+  <text x="140" y="164" font-size="10" fill="#64748B">@perawallet/connect</text>
+
+  <text x="340" y="148" font-size="12" font-weight="600" fill="#1E293B">JD Upload UI</text>
+  <text x="340" y="164" font-size="10" fill="#64748B">PDF / Text / Image</text>
+
+  <text x="530" y="148" font-size="12" font-weight="600" fill="#1E293B">Smart Filters</text>
+  <text x="530" y="164" font-size="10" fill="#64748B">Role, Skills, CTC, CGPA</text>
+
+  <text x="720" y="148" font-size="12" font-weight="600" fill="#1E293B">Community Forum</text>
+  <text x="720" y="164" font-size="10" fill="#64748B">Reddit-style Upvotes</text>
+
+  <text x="920" y="148" font-size="12" font-weight="600" fill="#1E293B">Dashboard</text>
+  <text x="920" y="164" font-size="10" fill="#64748B">Recharts / D3.js / Zustand</text>
+
+  <!-- Arrow: Frontend ’ Backend -->
+  <line x1="600" y1="200" x2="600" y2="240" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8"/></marker></defs>
+  <text x="615" y="225" font-size="10" fill="#94A3B8">REST API</text>
+
+  <!-- PPP Layer 2: Backend (Middle) PPP -->
+  <rect x="60" y="240" width="1080" height="120" rx="12" fill="white" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="240" width="1080" height="32" rx="12" fill="#059669"/>
+  <rect x="60" y="256" width="1080" height="16" fill="#059669"/>
+  <text x="600" y="262" text-anchor="middle" font-size="14" font-weight="600" fill="white">APPLICATION BACKEND  Python FastAPI / JWT + Wallet Auth / Redis Rate Limiting</text>
+
+  <text x="140" y="298" font-size="12" font-weight="600" fill="#1E293B">/auth</text>
+  <text x="140" y="314" font-size="10" fill="#64748B">Wallet Signature + JWT</text>
+
+  <text x="310" y="298" font-size="12" font-weight="600" fill="#1E293B">/jds</text>
+  <text x="310" y="314" font-size="10" fill="#64748B">Upload, Verify, Query</text>
+
+  <text x="470" y="298" font-size="12" font-weight="600" fill="#1E293B">/companies</text>
+  <text x="470" y="314" font-size="10" fill="#64748B">Filter &amp; Insights</text>
+
+  <text x="650" y="298" font-size="12" font-weight="600" fill="#1E293B">/user</text>
+  <text x="650" y="314" font-size="10" fill="#64748B">Profile &amp; Tokens</text>
+
+  <text x="820" y="298" font-size="12" font-weight="600" fill="#1E293B">/recommendations</text>
+  <text x="820" y="314" font-size="10" fill="#64748B">AI Roadmaps</text>
+
+  <text x="1010" y="298" font-size="12" font-weight="600" fill="#1E293B">Algorand SDK</text>
+  <text x="1010" y="314" font-size="10" fill="#64748B">py-algorand-sdk</text>
+
+  <!-- Arrows: Backend ’ AI / Blockchain / Storage -->
+  <line x1="350" y1="360" x2="250" y2="420" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="600" y1="360" x2="600" y2="420" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="850" y1="360" x2="950" y2="420" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- PPP Layer 3A: AI/ML Pipeline (Left) PPP -->
+  <rect x="60" y="420" width="340" height="160" rx="12" fill="white" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="420" width="340" height="32" rx="12" fill="url(#aiGrad)"/>
+  <rect x="60" y="436" width="340" height="16" fill="url(#aiGrad)"/>
+  <text x="230" y="442" text-anchor="middle" font-size="13" font-weight="600" fill="white">AI / ML PIPELINE (Off-Chain)</text>
+
+  <text x="90" y="475" font-size="11" font-weight="600" fill="#1E293B">Skill Extraction</text>
+  <text x="90" y="490" font-size="10" fill="#64748B">spaCy / Custom BERT NER</text>
+
+  <text x="90" y="512" font-size="11" font-weight="600" fill="#1E293B">Pattern Recognition</text>
+  <text x="90" y="527" font-size="10" fill="#64748B">Scikit-learn TF-IDF / Clustering</text>
+
+  <text x="90" y="549" font-size="11" font-weight="600" fill="#1E293B">Roadmap Generator</text>
+  <text x="90" y="564" font-size="10" fill="#64748B">OpenAI GPT-4 / Tesseract OCR</text>
+
+  <!-- PPP Layer 3B: Blockchain (Center) PPP -->
+  <rect x="430" y="420" width="340" height="160" rx="12" fill="white" stroke="#8B5CF6" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="430" y="420" width="340" height="32" rx="12" fill="url(#blockchainGrad)"/>
+  <rect x="430" y="436" width="340" height="16" fill="url(#blockchainGrad)"/>
+  <text x="600" y="442" text-anchor="middle" font-size="13" font-weight="600" fill="white">BLOCKCHAIN LAYER  Algorand</text>
+
+  <text x="460" y="475" font-size="11" font-weight="600" fill="#1E293B">PyTEAL Smart Contracts</text>
+  <text x="460" y="490" font-size="10" fill="#64748B">upload_jd() / verify_jd() / vote_quality()</text>
+
+  <text x="460" y="512" font-size="11" font-weight="600" fill="#1E293B">ScholTokens (ASA)</text>
+  <text x="460" y="527" font-size="10" fill="#64748B">Mint, Burn, Atomic Transfers</text>
+
+  <text x="460" y="549" font-size="11" font-weight="600" fill="#1E293B">DAO Governance</text>
+  <text x="460" y="564" font-size="10" fill="#64748B">Weighted Voting / Staking / Archival</text>
+
+  <!-- PPP Layer 3C: Storage (Right) PPP -->
+  <rect x="800" y="420" width="340" height="160" rx="12" fill="white" stroke="#10B981" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="800" y="420" width="340" height="32" rx="12" fill="url(#storageGrad)"/>
+  <rect x="800" y="436" width="340" height="16" fill="url(#storageGrad)"/>
+  <text x="970" y="442" text-anchor="middle" font-size="13" font-weight="600" fill="white">STORAGE LAYER</text>
+
+  <text x="830" y="475" font-size="11" font-weight="600" fill="#1E293B">IPFS</text>
+  <text x="830" y="490" font-size="10" fill="#64748B">JD PDFs, Images, Experiences</text>
+
+  <text x="830" y="512" font-size="11" font-weight="600" fill="#1E293B">PostgreSQL v15+</text>
+  <text x="830" y="527" font-size="10" fill="#64748B">Users, JDs, Verifications, Tokens</text>
+
+  <text x="830" y="549" font-size="11" font-weight="600" fill="#1E293B">Redis Cache</text>
+  <text x="830" y="564" font-size="10" fill="#64748B">Company Insights, AI Roadmaps</text>
+
+  <!-- PPP Layer 4: Infrastructure (Bottom) PPP -->
+  <rect x="60" y="620" width="1080" height="90" rx="12" fill="white" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="620" width="1080" height="32" rx="12" fill="#475569"/>
+  <rect x="60" y="636" width="1080" height="16" fill="#475569"/>
+  <text x="600" y="642" text-anchor="middle" font-size="14" font-weight="600" fill="white">INFRASTRUCTURE &amp; DEVOPS</text>
+
+  <text x="140" y="678" font-size="11" font-weight="600" fill="#1E293B">Frontend</text>
+  <text x="140" y="693" font-size="10" fill="#64748B">Vercel / Netlify CDN</text>
+
+  <text x="330" y="678" font-size="11" font-weight="600" fill="#1E293B">Backend</text>
+  <text x="330" y="693" font-size="10" fill="#64748B">Railway / Render / AWS</text>
+
+  <text x="520" y="678" font-size="11" font-weight="600" fill="#1E293B">CI/CD</text>
+  <text x="520" y="693" font-size="10" fill="#64748B">GitHub Actions</text>
+
+  <text x="690" y="678" font-size="11" font-weight="600" fill="#1E293B">Containers</text>
+  <text x="690" y="693" font-size="10" fill="#64748B">Docker / Docker Compose</text>
+
+  <text x="880" y="678" font-size="11" font-weight="600" fill="#1E293B">Monitoring</text>
+  <text x="880" y="693" font-size="10" fill="#64748B">Sentry / Algorand Indexer</text>
+
+  <text x="1060" y="678" font-size="11" font-weight="600" fill="#1E293B">Pinning</text>
+  <text x="1060" y="693" font-size="10" fill="#64748B">Pinata / Web3.Storage</text>
+
+  <!-- Arrows: Middle layer ’ Infra -->
+  <line x1="230" y1="580" x2="230" y2="620" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="600" y1="580" x2="600" y2="620" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="970" y1="580" x2="970" y2="620" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Network Labels -->
+  <rect x="60" y="740" width="240" height="40" rx="8" fill="#EEF2FF" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="180" y="765" text-anchor="middle" font-size="11" font-weight="600" fill="#6D28D9">LocalNet ’ TestNet ’ MainNet</text>
+
+  <rect x="340" y="740" width="200" height="40" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="440" y="765" text-anchor="middle" font-size="11" font-weight="600" fill="#B45309">Beaker / AlgoKit / Sandbox</text>
+
+  <rect x="580" y="740" width="240" height="40" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+  <text x="700" y="765" text-anchor="middle" font-size="11" font-weight="600" fill="#047857">algosdk (JS) / py-algorand-sdk</text>
+
+  <rect x="860" y="740" width="280" height="40" rx="8" fill="#F0F9FF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="1000" y="765" text-anchor="middle" font-size="11" font-weight="600" fill="#1D4ED8">Stateful Contracts / ASAs / Atomic Txns</text>
+</svg>
