@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import { useNavigate } from 'react-router-dom';
-import { Wallet, Briefcase, Vote, BookOpen, QrCode, MessageSquare, ArrowRight, Shield, Zap, Users, Github, Linkedin, Globe, Home } from 'lucide-react';
+import { Wallet, Briefcase, Vote, BookOpen, QrCode, MessageSquare, ArrowRight, Shield, Zap, Users } from 'lucide-react';
 import { useEffect } from 'react';
 import { WebGLShader } from '@/components/ui/web-gl-shader';
-import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
+
 import { TextHoverEffect, FooterBackgroundGradient } from '@/components/ui/hover-footer';
 import { Github as GithubIcon, Linkedin as LinkedinIcon, Globe as GlobeIcon } from 'lucide-react';
 
@@ -12,7 +12,7 @@ const modules = [
   { icon: Briefcase, title: 'PlacePrep DAO', desc: 'Decentralized placement intelligence with AI-powered insights, JD curation, and mock interviews.' },
   { icon: Vote, title: 'Campus Voting', desc: 'Secure on-chain elections with commit-reveal schemes and sybil prevention.' },
 
-  { icon: QrCode, title: 'Attendance Mining', desc: 'Gamified QR-based attendance with token rewards and NFT unlocks.' },
+  { icon: QrCode, title: 'Engagement Rewards', desc: 'Earn tokens via attendance, quizzes, and events — spend them on registrations, courses, and more.' },
   { icon: MessageSquare, title: 'Anonymous Feedback', desc: 'Commit-reveal anonymous course feedback with AI sentiment analysis.' },
 ];
 
@@ -71,7 +71,7 @@ export default function Landing() {
                 View Documentation
               </button>
             </div>
-            {/* Dock placeholder: rendered fixed bottom-center */}
+
           </motion.div>
 
           {/* Stats */}
@@ -91,48 +91,6 @@ export default function Landing() {
           </motion.div>
         </div>
       </section>
-
-      {/* Fixed bottom-center Dock */}
-      <div className="fixed bottom-6 left-1/2 z-50 w-full max-w-screen-2xl -translate-x-1/2 pointer-events-none">
-        <div className="flex justify-center pointer-events-auto">
-          <div className="w-auto">
-            <Dock>
-              <DockItem>
-                <DockIcon>
-                    <a href="/" target="_self" rel="noreferrer">
-                    <Home className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>Home</DockLabel>
-              </DockItem>
-              <DockItem>
-                <DockIcon>
-                    <a href="https://github.com/sanchit1606" target="_blank" rel="noreferrer">
-                    <Github className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>GitHub</DockLabel>
-              </DockItem>
-              <DockItem>
-                <DockIcon>
-                    <a href="https://www.linkedin.com/in/sanchit1606" target="_blank" rel="noreferrer">
-                    <Linkedin className="w-6 h-6 text-neutral-900 dark:text-white" />
-                  </a>
-                </DockIcon>
-                <DockLabel>LinkedIn</DockLabel>
-              </DockItem>
-              <DockItem>
-                <DockIcon>
-                    <a href="https://portfolio-three-silk-62.vercel.app/" target="_blank" rel="noreferrer">
-                      <Globe className="w-6 h-6 text-neutral-900 dark:text-white" />
-                    </a>
-                </DockIcon>
-                <DockLabel>Portfolio</DockLabel>
-              </DockItem>
-            </Dock>
-          </div>
-        </div>
-      </div>
 
       {/* Modules */}
       <section id="modules" className="page-container py-20 relative z-10">
