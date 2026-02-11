@@ -4,7 +4,7 @@ import StatCard from '@/components/StatCard';
 import ModuleCard from '@/components/ModuleCard';
 import { useJDs } from '@/api/hooks';
 import {
-  Coins, Trophy, Upload, Star, Briefcase, Vote, BookOpen,
+  Coins, Trophy, Upload, Star, Briefcase, Vote,
   QrCode, MessageSquare, Shield, Map, Code, Users, ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ const quickActions = [
   { label: 'Generate Roadmap', path: '/placeprep/roadmap', icon: Map },
   { label: 'Practice Code', path: '/placeprep/practice', icon: Code },
   { label: 'Create Election', path: '/voting', icon: Vote },
-  { label: 'Borrow Book', path: '/library', icon: BookOpen },
+
   { label: 'Mint Attendance', path: '/attendance/mint', icon: QrCode },
   { label: 'Submit Feedback', path: '/feedback/submit', icon: MessageSquare },
 ];
@@ -100,7 +100,7 @@ export default function Dashboard() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <ModuleCard icon={Briefcase} title="PlacePrep DAO" description="Upload JDs, get AI insights, join mock interviews" path="/placeprep/companies" delay={0} />
           <ModuleCard icon={Vote} title="Campus Voting" description="Participate in secure on-chain campus elections" path="/voting" delay={0.05} />
-          <ModuleCard icon={BookOpen} title="Library Lending" description="Borrow books with blockchain collateral" path="/library" delay={0.1} />
+
           <ModuleCard icon={QrCode} title="Attendance Mining" description="Earn tokens for attending classes" path="/attendance/mint" delay={0.15} />
           <ModuleCard icon={MessageSquare} title="Anonymous Feedback" description="Submit anonymous course feedback on-chain" path="/feedback/submit" delay={0.2} />
           <ModuleCard icon={Shield} title="Governance" description="Vote on proposals and curate content quality" path="/placeprep/governance" delay={0.25} />

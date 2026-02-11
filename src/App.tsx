@@ -20,7 +20,7 @@ import Leaderboard from "@/pages/Leaderboard";
 import Governance from "@/pages/Governance";
 import VotingList from "@/pages/VotingList";
 import ElectionDetail from "@/pages/ElectionDetail";
-import Library from "@/pages/Library";
+
 import AttendanceMint from "@/pages/AttendanceMint";
 import FeedbackSubmit from "@/pages/FeedbackSubmit";
 import FeedbackView from "@/pages/FeedbackView";
@@ -63,7 +63,7 @@ const App = () => {
               <Route path="/placeprep/governance" element={<Governance />} />
               <Route path="/voting" element={<VotingList />} />
               <Route path="/voting/:id" element={<ElectionDetail />} />
-              <Route path="/library" element={<Library />} />
+
               <Route path="/attendance/mint" element={<AttendanceMint />} />
               <Route path="/feedback/submit" element={<FeedbackSubmit />} />
               <Route path="/feedback/view" element={<FeedbackView />} />

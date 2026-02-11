@@ -1,33 +1,63 @@
 import React from "react";
 import { Home, Wallet, Sparkles } from "lucide-react";
 import { useWalletStore } from "@/stores/walletStore";
+import { cn } from "@/lib/utils";
 import DocumentationContent from "@/components/documentation/Technical";
+
+const AuroraLayer = () => (
+  <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      className={cn(
+        `[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
+        [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)]
+        [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
+        [background-image:var(--white-gradient),var(--aurora)]
+        dark:[background-image:var(--dark-gradient),var(--aurora)]
+        [background-size:300%,_200%]
+        [background-position:50%_50%,50%_50%]
+        filter blur-[10px] invert dark:invert-0
+        after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)]
+        after:dark:[background-image:var(--dark-gradient),var(--aurora)]
+        after:[background-size:200%,_100%]
+        after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
+        absolute -inset-[10px] opacity-30 will-change-transform
+        [mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+      )}
+    />
+  </div>
+);
 
 const DocumentationPage = () => {
   const { setShowConnectModal } = useWalletStore();
 
   return (
     <div className="relative min-h-screen bg-white text-slate-900">
+      {/* Aurora neon background effect */}
+      <AuroraLayer />
+
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Left: Home */}
-            <a
-              href="/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
-            >
-              <Home size={18} />
-              <span className="hidden sm:inline">Home</span>
-            </a>
+            {/* Left: spacer for balance */}
+            <div className="flex-1" />
 
-            {/* Center: Title */}
-            <span className="text-base sm:text-lg font-bold tracking-tight text-slate-900">
-              Scholaris DAO
-            </span>
+            {/* Center: Title + Home */}
+            <div className="flex items-center gap-3">
+              <span className="text-base sm:text-lg font-bold tracking-tight text-slate-900">
+                Scholaris DAO
+              </span>
+              <a
+                href="/"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
+              >
+                <Home size={18} />
+                <span className="hidden sm:inline">Home</span>
+              </a>
+            </div>
 
             {/* Right: Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-1 justify-end">
               <a
                 href="/#features"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"

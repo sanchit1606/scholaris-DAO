@@ -3,7 +3,7 @@ import { Link, useLocation, Outlet } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import {
-  Briefcase, Vote, BookOpen, QrCode, MessageSquare,
+  Briefcase, Vote, QrCode, MessageSquare,
   Trophy, Settings, Bell, Menu, X, LayoutDashboard,
   Wallet, ChevronDown, Shield, User
 } from 'lucide-react';
@@ -22,7 +22,7 @@ const navModules = [
     ]
   },
   { label: 'Voting', path: '/voting', icon: Vote },
-  { label: 'Library', path: '/library', icon: BookOpen },
+
   { label: 'Attendance', path: '/attendance/mint', icon: QrCode },
   { label: 'Feedback', path: '/feedback/submit', icon: MessageSquare },
 ];

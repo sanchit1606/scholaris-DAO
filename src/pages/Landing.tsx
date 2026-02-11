@@ -5,11 +5,13 @@ import { Wallet, Briefcase, Vote, BookOpen, QrCode, MessageSquare, ArrowRight, S
 import { useEffect } from 'react';
 import { WebGLShader } from '@/components/ui/web-gl-shader';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
+import { TextHoverEffect, FooterBackgroundGradient } from '@/components/ui/hover-footer';
+import { Github as GithubIcon, Linkedin as LinkedinIcon, Globe as GlobeIcon } from 'lucide-react';
 
 const modules = [
   { icon: Briefcase, title: 'PlacePrep DAO', desc: 'Decentralized placement intelligence with AI-powered insights, JD curation, and mock interviews.' },
   { icon: Vote, title: 'Campus Voting', desc: 'Secure on-chain elections with commit-reveal schemes and sybil prevention.' },
-  { icon: BookOpen, title: 'Library Lending', desc: 'Borrow books with ASA collateral — transparent and accountable.' },
+
   { icon: QrCode, title: 'Attendance Mining', desc: 'Gamified QR-based attendance with token rewards and NFT unlocks.' },
   { icon: MessageSquare, title: 'Anonymous Feedback', desc: 'Commit-reveal anonymous course feedback with AI sentiment analysis.' },
 ];
@@ -133,18 +135,13 @@ export default function Landing() {
       </div>
 
       {/* Modules */}
-      <section id="modules" className="page-container py-20">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="section-title text-3xl mb-3">Platform Modules</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">Everything your campus needs, powered by Algorand's fast, secure, and low-cost blockchain.</p>
-        </motion.div>
+      <section id="modules" className="page-container py-20 relative z-10">
+        <div className="text-center mb-12 relative z-10">
+          <h2 className="text-3xl font-bold tracking-tight text-white">Features Offered</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">Everything our campus needs, powered by Algorand's fast, secure, and low-cost blockchain.</p>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {modules.map((mod, i) => (
             <motion.div
               key={mod.title}
@@ -184,11 +181,84 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/50 py-8">
-        <div className="page-container flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <span className="font-heading font-semibold gradient-text">CampusChain</span>
-          <span>Built on Algorand · © 2025</span>
+      <footer className="bg-[#0F0F11]/10 relative h-fit rounded-3xl overflow-hidden m-8">
+        <div className="max-w-7xl mx-auto p-14 z-40 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
+            {/* Brand section */}
+            <div className="flex flex-col space-y-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-[#3ca2fa] text-3xl font-extrabold">⛓</span>
+                <span className="text-white text-3xl font-bold">Scholaris DAO</span>
+              </div>
+              <p className="text-sm leading-relaxed text-gray-400">
+                Decentralized placement intelligence platform built on Algorand.
+                Illuminate campus activities with blockchain.
+              </p>
+            </div>
+
+            {/* Platform Links */}
+            <div>
+              <h4 className="text-white text-lg font-semibold mb-6">Platform</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li><a href="/documentation" className="hover:text-[#3ca2fa] transition-colors">Documentation</a></li>
+                <li><a href="#modules" className="hover:text-[#3ca2fa] transition-colors">Features</a></li>
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h4 className="text-white text-lg font-semibold mb-6">Resources</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li><a href="https://developer.algorand.org" target="_blank" rel="noreferrer" className="hover:text-[#3ca2fa] transition-colors">Algorand Docs</a></li>
+                <li><a href="https://pyteal.readthedocs.io" target="_blank" rel="noreferrer" className="hover:text-[#3ca2fa] transition-colors">PyTEAL Docs</a></li>
+                <li><a href="https://docs.ipfs.tech" target="_blank" rel="noreferrer" className="hover:text-[#3ca2fa] transition-colors">IPFS Docs</a></li>
+              </ul>
+            </div>
+
+            {/* Team */}
+            <div>
+              <h4 className="text-white text-lg font-semibold mb-6">Team Init2WinIt</h4>
+              <ul className="space-y-4 text-gray-400">
+                <li className="flex items-center space-x-3">
+                  <GithubIcon size={18} className="text-[#3ca2fa]" />
+                  <a href="https://github.com/sanchit1606" target="_blank" rel="noreferrer" className="hover:text-[#3ca2fa] transition-colors">Sanchitsai Nipanikar</a>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <GithubIcon size={18} className="text-[#3ca2fa]" />
+                  <a href="https://github.com/Shreychougule" target="_blank" rel="noreferrer" className="hover:text-[#3ca2fa] transition-colors">Shrey Chougule</a>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <LinkedinIcon size={18} className="text-[#3ca2fa]" />
+                  <a href="https://www.linkedin.com/in/sanchit1606" target="_blank" rel="noreferrer" className="hover:text-[#3ca2fa] transition-colors">LinkedIn</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <hr className="border-t border-gray-700 my-8" />
+
+          {/* Footer bottom */}
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 space-y-4 md:space-y-0">
+            {/* Social icons */}
+            <div className="flex space-x-6 text-gray-400">
+              <a href="https://github.com/sanchit1606/scholaris-DAO" target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-[#3ca2fa] transition-colors"><GithubIcon size={20} /></a>
+              <a href="https://www.linkedin.com/in/sanchit1606" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-[#3ca2fa] transition-colors"><LinkedinIcon size={20} /></a>
+              <a href="https://portfolio-three-silk-62.vercel.app/" target="_blank" rel="noreferrer" aria-label="Portfolio" className="hover:text-[#3ca2fa] transition-colors"><GlobeIcon size={20} /></a>
+            </div>
+
+            {/* Copyright */}
+            <p className="text-center md:text-left">
+              &copy; {new Date().getFullYear()} Scholaris DAO · Built on Algorand · MLSC Hackspirathon 2026
+            </p>
+          </div>
         </div>
+
+        {/* Text hover effect */}
+        <div className="lg:flex hidden h-[14rem] -mt-32 -mb-16">
+          <TextHoverEffect text="SCHOLARIS" className="z-50" />
+        </div>
+
+        <FooterBackgroundGradient />
       </footer>
     </div>
   );
