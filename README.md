@@ -75,11 +75,13 @@ The challenge is to build beginner-friendly blockchain application on Algorand t
 - Lack of anonymity in grievance systems
 - No way to verify authenticity of feedback vs. spam
 
-### 2.4 Attendance & Participation
+### 2.4 Low Academic Engagement
 
+- Low attendance in non-mandatory lectures due to lack of motivation
+- No incentive structure to reward consistent academic participation
+- Students skip events, quizzes, and club activities without consequences
 - Manual attendance is time-consuming and prone to proxy marking
-- Low engagement in non-mandatory classes
-- No gamification or incentive structure
+- No gamification to drive engagement across campus activities
 
 ---
 
@@ -222,10 +224,6 @@ Students can filter companies by:
 - **DS&A Pattern:** Arrays/HashMaps, Trees/Graphs, Dynamic Programming etc
 - **CTC Range:** 10-20 LPA, 20-40 LPA, 40+ LPA
 - **CGPA Cutoff:** No cutoff, 7.0+, 8.0+, 9.0+
-
-**Feature 2: Personalized Study Roadmap Generator**
-
-AI analyzes target companies' historical patterns and generates week-by-week preparation plans with specific practice problems and resources.
 
 ---
 

@@ -523,15 +523,29 @@ export default function Technical() {
                   <Activity className="text-brand-blue mt-1 shrink-0" />
                   <div>
                     <div className="font-semibold">
-                      2.4 Attendance &amp; Participation
+                      2.4 Low Academic Engagement
                     </div>
                     <ul className="text-sm text-muted-foreground mt-2 space-y-1">
+                      <li>
+                        • Low attendance in non-mandatory lectures due to lack
+                        of motivation
+                      </li>
+                      <li>
+                        • No incentive structure to reward consistent academic
+                        participation
+                      </li>
+                      <li>
+                        • Students skip events, quizzes, and club activities
+                        without consequences
+                      </li>
                       <li>
                         • Manual attendance is time-consuming and prone to proxy
                         marking
                       </li>
-                      <li>• Low engagement in non-mandatory classes</li>
-                      <li>• No gamification or incentive structure</li>
+                      <li>
+                        • No gamification to drive engagement across campus
+                        activities
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -974,17 +988,6 @@ export default function Technical() {
                           9.0+
                         </li>
                       </ul>
-                    </div>
-                    <div>
-                      <p className="font-medium flex items-center gap-2">
-                        <Map size={14} /> Feature 2: Personalized Study Roadmap
-                        Generator
-                      </p>
-                      <p className="mt-1">
-                        AI analyzes target companies' historical patterns and
-                        generates week-by-week preparation plans with specific
-                        practice problems and resources.
-                      </p>
                     </div>
                   </div>
                 </div>
