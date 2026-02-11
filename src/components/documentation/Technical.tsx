@@ -8,22 +8,33 @@ import {
   Github,
   Linkedin,
   User as UserIcon,
-  Mic,
-  Image as ImageIcon,
   Upload,
   BadgeAlert,
-  Stethoscope,
-  Languages,
   Landmark,
   FlaskConical,
   Activity,
-  ChevronLeft,
-  ChevronRight,
+  Vote,
+  Gift,
+  MessageSquare,
+  Filter,
+  Map,
+  Coins,
+  Search,
+  Database,
+  Globe,
+  FileText,
+  Award,
+  Users,
+  Target,
+  TrendingUp,
+  Layers,
+  Lock,
+  Zap,
+  BarChart3,
 } from "lucide-react";
 
 import ZoomableImage from "./ZoomableImage";
 import { AnimatedBeam } from "./AnimatedBeam";
-import DevProfileCard from "./DevProfileCard";
 
 function Card({
   title,
@@ -33,9 +44,9 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="card p-6">
-      <h3 className="text-lg font-semibold flex items-center gap-2">{title}</h3>
-      <div className="mt-3 text-sm text-muted-foreground space-y-3">
+    <div className="card p-6 bg-white text-slate-900">
+      <h3 className="text-lg font-semibold flex items-center gap-2 text-slate-900">{title}</h3>
+      <div className="mt-3 text-sm text-slate-600 space-y-3">
         {children}
       </div>
     </div>
@@ -45,7 +56,7 @@ function Card({
 function BeamShowcase() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const userRef = useRef<HTMLDivElement | null>(null);
-  const openaiRef = useRef<HTMLDivElement | null>(null);
+  const coreRef = useRef<HTMLDivElement | null>(null);
   const featureRefs = [
     useRef<HTMLDivElement | null>(null),
     useRef<HTMLDivElement | null>(null),
@@ -54,10 +65,10 @@ function BeamShowcase() {
   ];
 
   const features = [
-    { label: "Audio", Icon: Mic },
-    { label: "Image", Icon: ImageIcon },
-    { label: "Upload", Icon: Upload },
-    { label: "Alerts", Icon: BadgeAlert },
+    { label: "JD Upload", Icon: Upload },
+    { label: "AI Insights", Icon: Cpu },
+    { label: "ScholTokens", Icon: Coins },
+    { label: "DAO Governance", Icon: Vote },
   ];
 
   return (
@@ -66,7 +77,7 @@ function BeamShowcase() {
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={userRef}
-        toRef={openaiRef}
+        toRef={coreRef}
         curvature={-60}
         pathColor="#60A5FA"
         pathWidth={2}
@@ -77,7 +88,7 @@ function BeamShowcase() {
         <AnimatedBeam
           key={i}
           containerRef={containerRef}
-          fromRef={openaiRef}
+          fromRef={coreRef}
           toRef={ref}
           curvature={-40 - i * 6}
           delay={i * 0.2}
@@ -94,31 +105,27 @@ function BeamShowcase() {
         <div className="flex flex-col items-center">
           <div
             ref={userRef}
-            className="ml-2 size-16 rounded-full bg-secondary border border-border shadow grid place-items-center"
+            className="ml-2 size-16 rounded-full bg-gray-100 border border-gray-200 shadow grid place-items-center"
           >
-            <img
-              src="https://cdn.simpleicons.org/openai/1B8EE6"
-              alt="OpenAI"
-              className="h-6 w-6"
-            />
+            <UserIcon className="h-6 w-6 text-brand-blue" />
           </div>
-          <span className="mt-2 text-sm font-medium">User</span>
+          <span className="mt-2 text-sm font-medium">Student</span>
         </div>
 
-        {/* Center: OpenAI */}
+        {/* Center: Scholaris DAO */}
         <div className="flex flex-col items-center">
           <div
-            ref={openaiRef}
-            className="size-20 rounded-full bg-gradient-to-tr from-brand-blue/20 to-brand-teal/30 border border-border shadow grid place-items-center"
+            ref={coreRef}
+            className="size-20 rounded-full bg-gradient-to-tr from-brand-blue/20 to-brand-teal/30 border border-gray-200 shadow grid place-items-center"
           >
             <img
-              src="https://cdn.simpleicons.org/openai/1B8EE6"
-              alt="OpenAI"
+              src="https://cdn.simpleicons.org/algorand/000000"
+              alt="Algorand"
               className="h-6 w-6"
             />
           </div>
           <div className="mt-2 inline-flex items-center text-xs text-muted-foreground">
-            <Link2 className="mr-1 h-3 w-3" /> LUMEN Runtime
+            <Link2 className="mr-1 h-3 w-3" /> Scholaris DAO
           </div>
         </div>
 
@@ -129,7 +136,7 @@ function BeamShowcase() {
               <div key={label} className="flex items-center gap-2 justify-end">
                 <div
                   ref={featureRefs[idx]}
-                  className="size-12 rounded-full bg-white shadow border border-border grid place-items-center"
+                  className="size-12 rounded-full bg-white shadow border border-gray-200 grid place-items-center"
                 >
                   <Icon className="text-brand-blue" size={18} />
                 </div>
@@ -145,25 +152,22 @@ function BeamShowcase() {
 
 function TechStackGrid() {
   const techs = [
-    { slug: "openai", label: "OpenAI", color: "1B8EE6" },
-    { slug: "huggingface", label: "Hugging Face", color: "FF6A00" },
+    { slug: "algorand", label: "Algorand", color: "000000" },
+    { slug: "python", label: "Python", color: "3776AB" },
     { slug: "react", label: "React", color: "61DAFB" },
+    { slug: "typescript", label: "TypeScript", color: "3178C6" },
     { slug: "tailwindcss", label: "Tailwind CSS", color: "06B6D4" },
-    { slug: "framer", label: "Framer Motion", color: "0055FF" },
-    { slug: "nodedotjs", label: "Node.js", color: "339933" },
-    { slug: "express", label: "Express", color: "000000" },
-    { slug: "netlify", label: "Netlify", color: "00C7B4" },
-    { slug: "github", label: "GitHub", color: "181717" },
-    // Added remaining stack icons
+    { slug: "fastapi", label: "FastAPI", color: "009688" },
     { slug: "postgresql", label: "PostgreSQL", color: "4169E1" },
     { slug: "redis", label: "Redis", color: "DC382D" },
-    { slug: "pytorch", label: "PyTorch", color: "EE4C2C" },
-    { slug: "jwt", label: "JWT", color: "000000" },
+    { slug: "ipfs", label: "IPFS", color: "65C2CB" },
+    { slug: "openai", label: "OpenAI GPT-4", color: "412991" },
+    { slug: "spacy", label: "spaCy", color: "09A3D5" },
+    { slug: "scikitlearn", label: "Scikit-learn", color: "F7931E" },
     { slug: "docker", label: "Docker", color: "2496ED" },
-    { slug: "kubernetes", label: "Kubernetes", color: "326CE5" },
-    { slug: "amazonwebservices", label: "AWS", color: "FF9900" },
-    { slug: "googlecloud", label: "GCP", color: "4285F4" },
-    { slug: "azure", label: "Azure", color: "0078D4" },
+    { slug: "github", label: "GitHub", color: "181717" },
+    { slug: "vercel", label: "Vercel", color: "000000" },
+    { slug: "d3dotjs", label: "D3.js", color: "F9A03C" },
   ];
 
   return (
@@ -171,7 +175,7 @@ function TechStackGrid() {
       {techs.map((t) => (
         <div
           key={t.slug}
-          className="flex flex-col items-center p-3 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300"
+          className="flex flex-col items-center p-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300"
         >
           <div className="w-12 h-12 rounded-full bg-white grid place-items-center p-2">
             <img
@@ -189,143 +193,12 @@ function TechStackGrid() {
   );
 }
 
-function DiagramToggle({
-  currentView,
-  onToggle,
-}: {
-  currentView: "userflow" | "architecture" | "laymen";
-  onToggle: (view: "userflow" | "architecture" | "laymen") => void;
-}) {
-  return (
-    <div className="flex items-center justify-center mb-6">
-      <div className="flex bg-gray-100 rounded-lg p-1">
-        <button
-          onClick={() => onToggle("userflow")}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-            currentView === "userflow"
-              ? "bg-white text-gray-900 shadow-sm"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-        >
-          User Flow Diagram
-        </button>
-        <button
-          onClick={() => onToggle("architecture")}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-            currentView === "architecture"
-              ? "bg-white text-gray-900 shadow-sm"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-        >
-          System Architecture Diagram
-        </button>
-        <button
-          onClick={() => onToggle("laymen")}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-            currentView === "laymen"
-              ? "bg-white text-gray-900 shadow-sm"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-        >
-          Laymen Terms Diagram
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function TeamCard({
-  name,
-  role,
-  photo,
-  github,
-  linkedin,
-}: {
-  name: string;
-  role: string;
-  photo?: string;
-  github?: string;
-  linkedin?: string;
-}) {
-  return (
-    <div className="relative w-full max-w-[380px] h-[384px] flex flex-col items-center rounded-[20px] bg-white shadow-lg border border-gray-100">
-      {/* Triangular Background Pattern */}
-      <div className="h-48 w-full rounded-t-[20px] overflow-hidden relative pr-7">
-        <div
-          className="absolute inset-0 opacity-80"
-          style={{
-            background: `
-              linear-gradient(60deg, hsl(var(--brand-blue)) 25%, transparent 25.5%, transparent 75%, hsl(var(--brand-blue)) 75%, hsl(var(--brand-blue))),
-              linear-gradient(120deg, hsl(var(--brand-teal)) 25%, transparent 25.5%, transparent 75%, hsl(var(--brand-teal)) 75%, hsl(var(--brand-teal))),
-              linear-gradient(60deg, hsl(var(--brand-blue)) 25%, transparent 25.5%, transparent 75%, hsl(var(--brand-blue)) 75%, hsl(var(--brand-blue))),
-              linear-gradient(120deg, hsl(var(--brand-teal)) 25%, transparent 25.5%, transparent 75%, hsl(var(--brand-teal)) 75%, hsl(var(--brand-teal)))
-            `,
-            backgroundSize: "40px 40px",
-            backgroundPosition: "0 0, 0 0, 20px 20px, 20px 20px",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-      </div>
-
-      {/* Avatar */}
-      <div className="absolute w-[114px] h-[114px] bg-white rounded-full flex justify-center items-center top-[calc(50%-57px)] border-4 border-white shadow-lg">
-        {photo ? (
-          <img
-            src={photo}
-            alt={`${name} photo`}
-            className="w-[100px] h-[100px] rounded-full object-cover object-top"
-          />
-        ) : (
-          <div className="w-[100px] h-[100px] rounded-full bg-muted grid place-items-center text-muted-foreground text-xs">
-            Photo
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col items-center pt-[60px] px-4">
-        <h3 className="font-medium text-lg text-black">{name}</h3>
-        <p className="mt-2.5 font-normal text-[15px] text-[#78858F] text-center">
-          {role}
-        </p>
-
-        <div className="mt-4 flex gap-2">
-          {github && (
-            <a
-              href={github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-md border border-input bg-background text-sm font-medium hover:bg-accent transition-all duration-300"
-            >
-              <Github size={16} />
-            </a>
-          )}
-          {linkedin && (
-            <a
-              href={linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-md border border-input bg-background text-sm font-medium hover:bg-accent transition-all duration-300"
-            >
-              <Linkedin size={16} />
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Technical() {
-  const [diagramView, setDiagramView] = useState<
-    "userflow" | "architecture" | "laymen"
-  >("userflow");
-
   return (
     <section id="technical" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Cover Page (non-card) */}
-        <div id="cover" className="mt-6 space-y-4">
+        {/* Cover Page */}
+        <div id="cover" className="-mt-10 space-y-4">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
               Scholaris DAO – Illuminate Campus Activities with Blockchain
@@ -335,13 +208,170 @@ export default function Technical() {
               transparency, and intelligent insights to campus activities –
               starting with placements.
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Campus Blockchain Hackathon • February 12, 2026 • Platform:
-              Algorand
+            <p className="mt-2 text-sm text-muted-foreground mb-8">
+              MLSC Hackspirathon 2026 • February 12, 2026 • Platform: Algorand
             </p>
+          </div>
+
+          {/* Developer Cards */}
+          <style>
+            {`
+              .dev-card {
+                width: 17em;
+                height: 22.5em;
+                background: #171717;
+                transition: 1s ease-in-out;
+                clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                display: flex;
+                flex-direction: column;
+              }
+              .dev-card span {
+                font-weight: bold;
+                color: white;
+                text-align: center;
+                display: block;
+                font-size: 1em;
+              }
+              .dev-card .dev-info {
+                font-weight: 400;
+                color: white;
+                display: block;
+                text-align: center;
+                font-size: 0.72em;
+                margin: 1em;
+              }
+              .dev-card .dev-img {
+                width: 7em;
+                height: 7em;
+                background: white;
+                border-radius: 15px;
+                margin: auto;
+                overflow: hidden;
+              }
+              .dev-card .dev-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+              }
+              .dev-card .dev-share {
+                margin-top: 1em;
+                display: flex;
+                justify-content: center;
+                gap: 1em;
+              }
+              .dev-card .dev-share a {
+                color: white;
+                transition: .4s ease-in-out;
+              }
+              .dev-card .dev-share a:hover {
+                color: #60A5FA;
+              }
+              .dev-card button {
+                padding: 0.8em 1.7em;
+                display: block;
+                margin: auto;
+                border-radius: 25px;
+                border: none;
+                font-weight: bold;
+                background: #ffffff;
+                color: rgb(0, 0, 0);
+                transition: .4s ease-in-out;
+              }
+              .dev-card button:hover {
+                background: #60A5FA;
+                color: white;
+                cursor: pointer;
+              }
+            `}
+          </style>
+          <div className="mt-14 flex flex-wrap justify-center gap-8">
+            {/* Card 1 - Sanchitsai */}
+            <div className="dev-card">
+              <div style={{ marginTop: "1.5em" }}>
+                <div className="dev-img">
+                  <img src="/PHOTO_SANCHIT.jpeg" alt="Sanchitsai Nipanikar" />
+                </div>
+              </div>
+              <span style={{ marginTop: "0.8em" }}>Sanchitsai Nipanikar</span>
+              <p className="dev-info">
+                Team Leader<br />
+                Computer Engineering, Final Yr<br />
+                VIT Pune
+              </p>
+              <div className="dev-share">
+                <a
+                  href="https://github.com/sanchit1606"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Sanchitsai GitHub"
+                >
+                  <Github size={22} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/sanchit1606"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Sanchitsai LinkedIn"
+                >
+                  <Linkedin size={22} />
+                </a>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/sanchit1606"
+                target="_blank"
+                rel="noreferrer"
+                style={{ textDecoration: "none", marginTop: "auto", marginBottom: "1.5em" }}
+              >
+                <button>Connect</button>
+              </a>
+            </div>
+
+            {/* Card 2 - Shrey */}
+            <div className="dev-card">
+              <div style={{ marginTop: "1.5em" }}>
+                <div className="dev-img">
+                  <img src="/photo_shrey.jpg" alt="Shrey Chougule" />
+                </div>
+              </div>
+              <span style={{ marginTop: "0.8em" }}>Shrey Chougule</span>
+              <p className="dev-info">
+                Computer Engineering, Final Yr<br />
+                VIT Pune
+              </p>
+              <div className="dev-share">
+                <a
+                  href="https://github.com/Shreychougule"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Shrey GitHub"
+                >
+                  <Github size={22} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/shrey-chougule-b308ab257/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Shrey LinkedIn"
+                >
+                  <Linkedin size={22} />
+                </a>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/shrey-chougule-b308ab257/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ textDecoration: "none", marginTop: "auto", marginBottom: "1.5em" }}
+              >
+                <button>Connect</button>
+              </a>
+            </div>
           </div>
         </div>
 
+        {/* Table of Contents */}
         <div id="toc" className="mt-8 grid lg:grid-cols-1 gap-6">
           <Card title="Table of Contents">
             <ol className="list-decimal pl-5 space-y-1 text-sm">
@@ -362,7 +392,7 @@ export default function Technical() {
               </li>
               <li>
                 <a href="#scholaris" className="text-brand-blue underline">
-                  Scholaris DAO – Placement Module
+                  Scholaris DAO – Placement Help Module
                 </a>
               </li>
               <li>
@@ -376,11 +406,6 @@ export default function Technical() {
                 </a>
               </li>
               <li>
-                <a href="#implementation" className="text-brand-blue underline">
-                  Implementation Approach
-                </a>
-              </li>
-              <li>
                 <a href="#impact" className="text-brand-blue underline">
                   Expected Outcomes
                 </a>
@@ -391,387 +416,802 @@ export default function Technical() {
                 </a>
               </li>
               <li>
+                <a href="#userflow" className="text-brand-blue underline">
+                  User Flow Diagram
+                </a>
+              </li>
+              <li>
                 <a href="#references" className="text-brand-blue underline">
-                  Conclusion & References
+                  Conclusion &amp; References
                 </a>
               </li>
             </ol>
           </Card>
         </div>
 
-        {/* Problem Statement */}
+        {/* ── 1. Problem Statement ── */}
         <div id="problem" className="mt-10 grid lg:grid-cols-1 gap-6">
-          <Card title="Problem Statement">
+          <Card title="1. Problem Statement">
             <div className="space-y-4 text-sm">
               <p className="text-base font-medium">
                 Campus systems such as voting, attendance tracking, feedback
-                collection, certification, and placement preparation often
-                suffer from low trust, opaque processes, and fragmented
-                information.
+                collection, certification, and group coordination often suffer
+                from low trust, opaque processes, and fragmented information.
               </p>
               <p>
-                Scholaris DAO explores how Algorand‑based blockchain + AI can
-                bring verifiable records, fair participation, and
-                privacy‑preserving coordination to campus activities – starting
-                with a decentralized placement intelligence platform.
+                The challenge is to build beginner-friendly blockchain
+                application on Algorand that improve trust, verification, and
+                coordination for campus activities. Solutions should demonstrate
+                how blockchain can enable fair participation, verifiable records,
+                privacy-preserving systems, and simple automation without relying
+                on centralized control.
               </p>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Lack of trust in centralized authorities and portals</li>
+                <li>Lack of trust in centralized authorities</li>
                 <li>
-                  Manual verification and data entry leading to inefficiencies
+                  Manual verification processes leading to inefficiencies
                 </li>
-                <li>Risk of data tampering, bias, and manipulation</li>
+                <li>Data tampering and manipulation risks</li>
+                <li>Privacy concerns for students and faculty</li>
                 <li>
-                  Privacy concerns for students and faculty when sharing
-                  feedback or preferences
-                </li>
-                <li>
-                  Information asymmetry in placement preparation – juniors
-                  repeatedly rediscover what seniors already know
+                  Information asymmetry in placement and career preparation
                 </li>
               </ul>
             </div>
           </Card>
         </div>
 
-        {/* User Flow & High-Level Solutions */}
-        <div id="architecture" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="User Flow & High‑Level Solutions">
-            <div className="space-y-3">
-              <DiagramToggle
-                currentView={diagramView}
-                onToggle={setDiagramView}
-              />
-
-              {diagramView === "userflow" ? (
-                <div>
-                  <h4 className="font-semibold mb-3 text-center">
-                    User Flow Diagram
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-4 text-center">
-                    The user flow diagram illustrates how students, seniors, TPO
-                    members, and recruiters interact with Scholaris DAO and the
-                    underlying Algorand smart contracts.
-                  </p>
-                  <div className="space-y-2 text-sm mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                      <span>
-                        <strong>Student Input:</strong> Uploads JDs, interview
-                        experiences, and skill profiles via the web UI
-                      </span>
+        {/* ── 2. Identified Campus Problems ── */}
+        <div id="campus-problems" className="mt-6 grid lg:grid-cols-1 gap-6">
+          <Card title="2. Identified Campus Problems">
+            <div className="space-y-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                  <Search className="text-brand-blue mt-1 shrink-0" />
+                  <div>
+                    <div className="font-semibold">
+                      2.1 Placement Information Gap
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                      <span>
-                        <strong>Frontend Processing:</strong> React +
-                        Tailwind‑based dashboard handles uploads, filtering, and
-                        recommendations
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                      <span>
-                        <strong>API Gateway:</strong> FastAPI backend processes
-                        files, calls AI services, and prepares on‑chain
-                        transactions
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
-                      <span>
-                        <strong>AI/ML Processing:</strong> NLP + recommendation
-                        models extract skills, detect patterns, and generate
-                        roadmaps
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-                      <span>
-                        <strong>On‑Chain State:</strong> Algorand smart
-                        contracts store IPFS hashes, contribution metadata, and
-                        token balances
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-teal-500 rounded-full"></span>
-                      <span>
-                        <strong>Output:</strong> Personalized company insights,
-                        filters, and preparation plans surfaced back to students
-                      </span>
-                    </div>
+                    <ul className="text-sm text-muted-foreground mt-2 space-y-1">
+                      <li>
+                        • TPO systems (like VIERP) contain extensive placement
+                        data but are difficult to navigate
+                      </li>
+                      <li>
+                        • Job descriptions (JDs) gets lost in email threads
+                      </li>
+                      <li>
+                        • Seniors graduate and take valuable interview insights
+                        with them
+                      </li>
+                      <li>
+                        • No structured knowledge about company-specific
+                        requirements (skills, DSA patterns, programming
+                        languages)
+                      </li>
+                      <li>
+                        • Juniors waste time reinventing preparation strategies
+                        every year
+                      </li>
+                    </ul>
                   </div>
-                  <ZoomableImage
-                    src="/user-flow.excalidraw.svg"
-                    alt="Scholaris DAO User Flow Diagram"
-                  />
                 </div>
-              ) : diagramView === "architecture" ? (
-                <div>
-                  <h4 className="font-semibold mb-3 text-center">
-                    System Architecture Diagram
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-4 text-center">
-                    Comprehensive system architecture showing all components and
-                    their interactions:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-4">
+
+                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                  <Vote className="text-brand-blue mt-1 shrink-0" />
+                  <div>
+                    <div className="font-semibold">
+                      2.2 Campus Governance &amp; Voting
+                    </div>
+                    <ul className="text-sm text-muted-foreground mt-2 space-y-1">
+                      <li>
+                        • Club elections and student body voting lack
+                        transparency
+                      </li>
+                      <li>• Fear of manipulation in vote counting</li>
+                      <li>
+                        • No privacy for voters (potential retaliation)
+                      </li>
+                      <li>
+                        • Difficulty in verifying one-person-one-vote principle
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                  <MessageSquare className="text-brand-blue mt-1 shrink-0" />
+                  <div>
+                    <div className="font-semibold">
+                      2.3 Feedback &amp; Grievance Collection
+                    </div>
+                    <ul className="text-sm text-muted-foreground mt-2 space-y-1">
+                      <li>
+                        • Students fear retaliation when giving honest
+                        course/professor feedback
+                      </li>
+                      <li>
+                        • Centralized systems can tamper with or delete feedback
+                      </li>
+                      <li>• Lack of anonymity in grievance systems</li>
+                      <li>
+                        • No way to verify authenticity of feedback vs. spam
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                  <Activity className="text-brand-blue mt-1 shrink-0" />
+                  <div>
+                    <div className="font-semibold">
+                      2.4 Attendance &amp; Participation
+                    </div>
+                    <ul className="text-sm text-muted-foreground mt-2 space-y-1">
+                      <li>
+                        • Manual attendance is time-consuming and prone to proxy
+                        marking
+                      </li>
+                      <li>• Low engagement in non-mandatory classes</li>
+                      <li>• No gamification or incentive structure</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* ── 3. Proposed Solutions Overview ── */}
+        <div id="solutions" className="mt-10 grid lg:grid-cols-1 gap-6">
+          <Card title="3. Proposed Solutions Overview">
+            <div className="space-y-6">
+              <p className="text-sm">
+                We propose multiple blockchain-powered solutions that leverage
+                Algorand's unique features to address campus challenges. Our
+                primary focus is the Placement Intelligence Module of Scholaris
+                DAO, with supporting solutions demonstrating the versatility of
+                our approach.
+              </p>
+
+              {/* 3.1 Voting */}
+              <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
+                <div className="font-semibold flex items-center gap-2 mb-2">
+                  <Shield className="text-brand-teal" />
+                  3.1 Permissioned Campus Voting System
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  <strong>Goal:</strong> Secure, auditable elections with
+                  one-person-one-vote and private ballots
+                </p>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <strong>On-Chain:</strong> Stateful smart contract (PyTEAL)
+                    registers eligible voter addresses
+                  </li>
+                  <li>
+                    • <strong>Privacy:</strong> Commit-reveal scheme — voters
+                    submit hash(vote + nonce), later reveal actual vote
+                  </li>
+                  <li>
+                    • <strong>Sybil Prevention:</strong> Permissioned list or
+                    one-time voting token (ASA) that burns upon voting
+                  </li>
+                  <li>
+                    • <strong>State Management:</strong> Global state for vote
+                    tallies, local state for opt-in/hasVoted flag
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Why Algorand:</strong> Fast finality (4 seconds), low
+                  fees enable multiple voting rounds
+                </p>
+              </div>
+
+              {/* 3.2 Engagement Rewards */}
+              <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
+                <div className="font-semibold flex items-center gap-2 mb-2">
+                  <Gift className="text-brand-teal" />
+                  3.2 Engagement Rewards System (Token-Incentivized Campus
+                  Participation)
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  <strong>Goal:</strong> Increase academic engagement in campus
+                  through token incentives
+                </p>
+
+                <div className="mt-3 space-y-3">
+                  <div>
+                    <div className="font-medium text-sm mb-1">
+                      Core Token Utility Model
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • <strong>Token Acquisition:</strong> Students earn
+                        tokens via attendance (QR scans), quizzes, competitions,
+                        submitting feedback, attending club events. Rewards
+                        prioritized: semester attendance → feedbacks → quizzes →
+                        technical events.
+                      </li>
+                      <li>
+                        • <strong>Token Spending:</strong> Use ASAs on Algorand
+                        for transfers. Redemptions trigger atomic transfers
+                        (burn tokens for NFTs or send to event organizers).
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div className="font-medium text-sm mb-1">
+                      Potential Uses for Tokens
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • <strong>Event Registrations:</strong> Hackathon/workshop
+                        entry, club event tickets, campus competition fees — all
+                        payable with tokens instead of UPI/cash
+                      </li>
+                      <li>
+                        • <strong>Educational Resources:</strong> Redeem for
+                        online modules, certifications, curated study materials;
+                        waive library late overdue penalties
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div className="font-medium text-sm mb-1">
+                      Implementation Considerations
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • PyTEAL functions for token redemption (e.g.,{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          redeem_tokens(event_id, amount)
+                        </code>
+                        )
+                      </li>
+                      <li>
+                        • Anti-Sybil: one-wallet-per-student via campus ID
+                        linkage
+                      </li>
+                      <li>
+                        • Low fees (0.001 ALGO) make frequent small spends
+                        viable
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3.3 Anonymous Feedback */}
+              <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
+                <div className="font-semibold flex items-center gap-2 mb-2">
+                  <Lock className="text-brand-teal" />
+                  3.3 Anonymous Course Feedback
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  <strong>Goal:</strong> Honest course feedback without fear of
+                  retaliation
+                </p>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <strong>Commit Phase:</strong> Students submit hash(rating
+                    + nonce) on-chain
+                  </li>
+                  <li>
+                    • <strong>Reveal Phase:</strong> After semester ends, submit
+                    plaintext rating + nonce
+                  </li>
+                  <li>
+                    • <strong>Verification:</strong> Smart contract validates
+                    hash matches reveal
+                  </li>
+                  <li>
+                    • <strong>AI Aggregation:</strong> Analyzes sentiment only
+                    after critical mass (50+ responses)
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* ── 4. Primary Solution: Placement Help Module ── */}
+        <div id="scholaris" className="mt-10 grid lg:grid-cols-1 gap-6">
+          <Card title="4. Primary Solution: Scholaris DAO – Placement Help Module">
+            <div className="space-y-6">
+              {/* Animated beam */}
+              <BeamShowcase />
+
+              {/* 4.1 Core Problem */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3">
+                  4.1 The Core Problem
+                </h4>
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-400">
+                    <div className="font-semibold text-red-800 mb-2">
+                      Current State
+                    </div>
+                    <ul className="text-sm text-red-700 space-y-1">
+                      <li>
+                        • TPO systems (VIERP) are data graveyards with poor UX
+                      </li>
+                      <li>
+                        • 500+ JDs buried in difficult-to-navigate interfaces
+                      </li>
+                      <li>
+                        • Seniors possess valuable insights but knowledge
+                        disappears post-graduation
+                      </li>
+                      <li>
+                        • No structured way to answer: "What DS&amp;A patterns
+                        does Citi Sachs ask?"
+                      </li>
+                      <li>
+                        • Juniors waste 100+ hours researching what seniors
+                        already know
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
+                    <div className="font-semibold text-orange-800 mb-2">
+                      Impact
+                    </div>
+                    <ul className="text-sm text-orange-700 space-y-1">
+                      <li>
+                        • Lower placement rates due to inefficient preparation
+                      </li>
+                      <li>
+                        • Repeated effort every year (knowledge not preserved)
+                      </li>
+                      <li>
+                        • Missed opportunities (students don't know which
+                        companies match their skills)
+                      </li>
+                      <li>
+                        • Unfair advantage for students with senior connections
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4.2 Solution Architecture */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3">
+                  4.2 Solution Architecture
+                </h4>
+
+                {/* Part 1: Data Layer */}
+                <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400 mb-4">
+                  <div className="font-semibold flex items-center gap-2 mb-2">
+                    <Database className="text-blue-600" />
+                    Part 1: Data Layer (IPFS + Algorand)
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    <p className="font-medium mb-2">
+                      JD Upload &amp; Storage Flow:
+                    </p>
+                    <ol className="list-decimal list-inside space-y-1 mb-3">
+                      <li>
+                        User uploads JD (PDF/text/image) through web interface
+                      </li>
+                      <li>
+                        File stored on IPFS (InterPlanetary File System)
+                      </li>
+                      <li>
+                        IPFS hash + metadata stored in Algorand smart contract
+                      </li>
+                      <li>
+                        AI extracts structured data (skills, requirements, CTC,
+                        etc)
+                      </li>
+                      <li>Uploader earns ScholTokens (ASA) as reward</li>
+                    </ol>
+                    <p className="font-medium mb-1">
+                      Smart Contract Global State Structure:
+                    </p>
+                    <p>
+                      Each JD record contains:{" "}
+                      <code className="bg-gray-100 px-1 rounded text-xs">
+                        jd_id, ipfs_hash, company, role, year,
+                        uploader_address, verification_votes, quality_score,
+                        view_count, timestamp
+                      </code>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Part 2: AI Layer */}
+                <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400 mb-4">
+                  <div className="font-semibold flex items-center gap-2 mb-2">
+                    <Cpu className="text-purple-600" />
+                    Part 2: AI Intelligence Layer (Off-Chain)
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-3">
                     <div>
-                      <h5 className="font-semibold mb-2">Core Components</h5>
-                      <ul className="space-y-1">
+                      <p className="font-medium">
+                        Component 1: Skill Extraction Engine
+                      </p>
+                      <ul className="space-y-1 mt-1">
                         <li>
-                          <strong>Frontend:</strong> React + Next.js with
-                          multilingual support
+                          • Uses NLP to extract required skills, experience
+                          level, role category, CGPA cutoffs, and eligible
+                          branches from JD text.
                         </li>
                         <li>
-                          <strong>API Gateway:</strong> FastAPI with JWT
-                          authentication
-                        </li>
-                        <li>
-                          <strong>AI/ML Core:</strong> GPT-4o, Whisper, PEARL
-                          CT, Specialist modules
-                        </li>
-                        <li>
-                          <strong>Databases:</strong> PostgreSQL, Redis, Vector
-                          DB, AWS S3
-                        </li>
-                        <li>
-                          <strong>Security:</strong> End-to-end encryption,
-                          HIPAA/GDPR compliance
+                          • For campus TPO company details and JDs uploaded by
+                          students, the AI module further extracts specifics such
+                          as company name, role, location, categorized skills
+                          (e.g., Programming languages, Frameworks &amp;
+                          Libraries, Databases, Cloud &amp; DevOps, Version
+                          Control), and minimum qualification criteria for Online
+                          Assessment (OA), including 10th/12th marks and CGPA
+                          thresholds.
                         </li>
                       </ul>
                     </div>
                     <div>
-                      <h5 className="font-semibold mb-2">Data Flow</h5>
-                      <ol className="space-y-1 list-decimal list-inside">
-                        <li>
-                          User Input → Frontend processes multimodal input
-                        </li>
-                        <li>
-                          API Gateway → Routes requests with security validation
-                        </li>
-                        <li>
-                          AI/ML Core → Processes data using specialized models
-                        </li>
-                        <li>
-                          Databases → Stores results and retrieves context
-                        </li>
-                        <li>
-                          Output Generation → Delivers results in multiple
-                          formats
-                        </li>
-                      </ol>
+                      <p className="font-medium">
+                        Component 2: Pattern Recognition System
+                      </p>
+                      <p className="mt-1">
+                        Analyzes historical interview experiences to identify
+                        recurring DSA patterns, difficulty distribution, and
+                        temporal trends in company requirements.
+                      </p>
+                      <p className="mt-2">
+                        After a company's campus drive is completed,
+                        OA-shortlisted students can post OA patterns and
+                        programming problem statements in a community forum.
+                        Before posting, users select options like Company Name,
+                        Role, and Tag (e.g., OA Cleared, Technical Interview
+                        Cleared, Selected for Company). They then describe their
+                        OA problem statements, interview experiences, questions
+                        asked, HR round Q&amp;A, etc. Like Reddit, other users
+                        can upvote posts, with the most upvoted appearing at the
+                        top. This data is fed into AI models to detect patterns.
+                        Users who post their interview experience are rewarded
+                        with ScholTokens.
+                      </p>
                     </div>
                   </div>
-                  <ZoomableImage
-                    src="/system-architecture-diagram.png"
-                    alt="LUMEN System Architecture Diagram"
-                  />
                 </div>
-              ) : (
-                <div>
-                  <h4 className="font-semibold mb-3 text-center">
-                    Laymen Terms Diagram
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-4 text-center">
-                    Simplified system overview showing how LUMEN processes user
-                    input through various modules to generate outputs:
-                  </p>
-                  <ZoomableImage
-                    src="/laymen-diagram.png"
-                    alt="LUMEN Laymen Terms Diagram"
-                  />
+
+                {/* Part 3: Blockchain Features */}
+                <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400 mb-4">
+                  <div className="font-semibold flex items-center gap-2 mb-2">
+                    <Coins className="text-green-600" />
+                    Part 3: Blockchain Features (Algorand-Specific)
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-3">
+                    <div>
+                      <p className="font-medium">
+                        Feature 1: Contribution Reward System (ASAs)
+                      </p>
+                      <div className="mt-2 overflow-x-auto">
+                        <table className="w-full text-sm table-auto">
+                          <thead>
+                            <tr className="text-left text-xs text-muted-foreground">
+                              <th className="px-3 py-2">Action</th>
+                              <th className="px-3 py-2">ScholTokens</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-t">
+                              <td className="px-3 py-1">Upload JD</td>
+                              <td className="px-3 py-1 font-semibold">
+                                +10 tokens
+                              </td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="px-3 py-1">
+                                Upload interview experience
+                              </td>
+                              <td className="px-3 py-1 font-semibold">
+                                +15 tokens
+                              </td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="px-3 py-1">
+                                Verify others' uploads
+                              </td>
+                              <td className="px-3 py-1 font-semibold">
+                                +2 tokens
+                              </td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="px-3 py-1">
+                                Popular content (50+ views)
+                              </td>
+                              <td className="px-3 py-1 font-semibold">
+                                +20 bonus tokens
+                              </td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="px-3 py-1">Downvoted as spam</td>
+                              <td className="px-3 py-1 font-semibold text-red-600">
+                                −15 tokens
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium">
+                        Feature 2: Decentralized Curation (DAO Governance)
+                      </p>
+                      <ul className="space-y-1 mt-1">
+                        <li>
+                          • Community voting on JD quality (1-5 stars)
+                        </li>
+                        <li>
+                          • Weighted votes: Placed students = 2x weight
+                        </li>
+                        <li>
+                          • Stake tokens to propose JD removal
+                        </li>
+                        <li>
+                          • Automatic archival of JDs older than 2 years (unless
+                          community votes to keep)
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-              )}
+
+                {/* Part 4: Advanced Features */}
+                <div className="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-400">
+                  <div className="font-semibold flex items-center gap-2 mb-2">
+                    <Zap className="text-indigo-600" />
+                    Part 4: Advanced Features
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-3">
+                    <div>
+                      <p className="font-medium flex items-center gap-2">
+                        <Filter size={14} /> Feature 1: Smart Filter System
+                      </p>
+                      <p className="mt-1">
+                        Students can filter companies by:
+                      </p>
+                      <ul className="space-y-1 mt-1">
+                        <li>
+                          • <strong>Role:</strong> Backend Developer, Full Stack,
+                          Data Scientist, AI/ML Engineer etc
+                        </li>
+                        <li>
+                          • <strong>Skills Required:</strong> Java (Banking
+                          applications), Python (AI/ML), React (Frontend) etc
+                        </li>
+                        <li>
+                          • <strong>DS&amp;A Pattern:</strong> Arrays/HashMaps,
+                          Trees/Graphs, Dynamic Programming etc
+                        </li>
+                        <li>
+                          • <strong>CTC Range:</strong> 10-20 LPA, 20-40 LPA,
+                          40+ LPA
+                        </li>
+                        <li>
+                          • <strong>CGPA Cutoff:</strong> No cutoff, 7.0+, 8.0+,
+                          9.0+
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium flex items-center gap-2">
+                        <Map size={14} /> Feature 2: Personalized Study Roadmap
+                        Generator
+                      </p>
+                      <p className="mt-1">
+                        AI analyzes target companies' historical patterns and
+                        generates week-by-week preparation plans with specific
+                        practice problems and resources.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </Card>
         </div>
 
-        {/* Features */}
-        <div id="solution" className="mt-10 grid lg:grid-cols-1 gap-6">
-          <Card title="FEATURES">
+        {/* ── 5. Technical Architecture ── */}
+        <div id="architecture" className="mt-10 grid lg:grid-cols-1 gap-6">
+          <Card title="5. Technical Architecture">
             <div className="space-y-6">
+              {/* 5.1 System Overview */}
               <div>
-                <h4 className="font-semibold text-lg mb-4">Normal Features</h4>
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-                      <Stethoscope className="text-brand-blue mt-1" />
-                      <div>
-                        <div className="font-semibold">
-                          Symptoms‑Based Diagnosis & Guidance
-                        </div>
-                        <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                          <li>• Accepts multimodal inputs (text/audio/image)</li>
-                          <li>
-                            • Analyzes symptoms with severity categorization
-                            (Green/Yellow/Red)
-                          </li>
-                          <li>
-                            • Clear next-step guidance in voice, text, and
-                            visual formats
-                          </li>
-                        </ul>
-                      </div>
+                <h4 className="font-semibold text-lg mb-3">
+                  5.1 System Architecture Overview
+                </h4>
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="p-4 bg-blue-50 rounded-lg text-center">
+                    <Globe className="mx-auto text-blue-600 mb-2" size={28} />
+                    <div className="font-semibold text-sm">
+                      User Interface Layer
                     </div>
-                    <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-                      <Cpu className="text-brand-blue mt-1" />
-                      <div>
-                        <div className="font-semibold">
-                          AI Specialist Modules
-                        </div>
-                        <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                          <li>
-                            • Dermatology, Radiology, Cardiology diagnostic
-                            suggestions
-                          </li>
-                          <li>
-                            • Patient-friendly advice and clinician-level
-                            summaries
-                          </li>
-                        </ul>
-                      </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      React Frontend – Web &amp; Mobile Responsive
+                    </p>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg text-center">
+                    <Workflow
+                      className="mx-auto text-green-600 mb-2"
+                      size={28}
+                    />
+                    <div className="font-semibold text-sm">
+                      Application Backend
                     </div>
-                    <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-                      <Languages className="text-brand-blue mt-1" />
-                      <div>
-                        <div className="font-semibold">
-                          Multilingual Voice‑First Chatbot
-                        </div>
-                        <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                          <li>• Supports five Indian languages</li>
-                          <li>
-                            • Uses Whisper for ASR and GPT for natural
-                            explanations
-                          </li>
-                        </ul>
-                      </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Python FastAPI – API Gateway
+                    </p>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg text-center">
+                    <Shield
+                      className="mx-auto text-purple-600 mb-2"
+                      size={28}
+                    />
+                    <div className="font-semibold text-sm">
+                      Blockchain Layer
                     </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Algorand Smart Contracts (PyTEAL)
+                    </p>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg text-center">
+                    <Cpu className="mx-auto text-orange-600 mb-2" size={28} />
+                    <div className="font-semibold text-sm">AI/ML Pipeline</div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Off-Chain Intelligence (NLP, Recommendations)
+                    </p>
+                  </div>
+                  <div className="p-4 bg-teal-50 rounded-lg text-center">
+                    <Database
+                      className="mx-auto text-teal-600 mb-2"
+                      size={28}
+                    />
+                    <div className="font-semibold text-sm">Storage Layer</div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      IPFS for files, PostgreSQL for metadata
+                    </p>
                   </div>
                 </div>
               </div>
 
+              {/* 5.2 Data Flow */}
               <div>
-                <h4 className="font-semibold text-lg mb-4">
-                  Unique Differentiator Features
+                <h4 className="font-semibold text-lg mb-3">5.2 Data Flow</h4>
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                    <div className="font-medium mb-2">JD Upload Flow</div>
+                    <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                      <li>Student uploads PDF through frontend</li>
+                      <li>Backend receives file and stores in IPFS</li>
+                      <li>AI extracts skills, company info, requirements</li>
+                      <li>
+                        Metadata + IPFS hash submitted to Algorand smart contract
+                      </li>
+                      <li>
+                        Contract stores on-chain state and mints ScholTokens to
+                        uploader
+                      </li>
+                      <li>Success confirmation returned to frontend</li>
+                    </ol>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                    <div className="font-medium mb-2">Company Query Flow</div>
+                    <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                      <li>Student applies filters in frontend</li>
+                      <li>
+                        Backend queries Algorand for matching JD hashes
+                      </li>
+                      <li>
+                        AI pipeline analyzes patterns and generates insights
+                      </li>
+                      <li>IPFS content fetched and processed</li>
+                      <li>Personalized results returned to frontend</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              {/* 5.3 Smart Contract Design */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3">
+                  5.3 Smart Contract Design
                 </h4>
-                <div className="space-y-4">
-                  <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
-                    <div className="font-semibold flex items-center gap-2 mb-2">
-                      <Activity className="text-brand-teal" />
-                      PEARL Integration - Personalized Estimated Anatomic
-                      Reconstruction & Lifecare
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                    <div className="font-medium mb-2">
+                      Global State Variables
                     </div>
-                    <ul className="text-sm text-muted-foreground space-y-1">
+                    <ul className="space-y-1 text-sm text-muted-foreground">
                       <li>
-                        • Hybrid CT reconstruction engine combining
-                        geometry-aware modeling (PerX2CT), diffusion refinement
-                        (XctDiff), and NeRF detail polishing (SAX-NeRF)
+                        •{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          total_jds
+                        </code>
+                        : Counter of total JDs uploaded
                       </li>
                       <li>
-                        • Generates estimated CT volumes with voxel-level
-                        uncertainty, enabling safer, lower-dose imaging for
-                        follow-up
+                        •{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          total_verifications
+                        </code>
+                        : Counter of verification actions
+                      </li>
+                      <li>
+                        •{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          jd_records
+                        </code>
+                        : Mapping of jd_id to JD metadata
                       </li>
                     </ul>
                   </div>
-
-                  <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
-                    <div className="font-semibold flex items-center gap-2 mb-2">
-                      <FlaskConical className="text-brand-teal" />
-                      Lab Report Analyzer & Follow‑Up Generator
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                    <div className="font-medium mb-2">
+                      Local State Variables (Per User)
                     </div>
-                    <ul className="text-sm text-muted-foreground space-y-1">
+                    <ul className="space-y-1 text-sm text-muted-foreground">
                       <li>
-                        • Parses uploaded lab reports (PDF/image), compares
-                        values with age- and sex-specific reference ranges
+                        •{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          tokens_earned
+                        </code>
+                        : Total ScholTokens earned
                       </li>
                       <li>
-                        • Flags abnormalities and generates simple explanations
-                        with diet/lifestyle advice
+                        •{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          jds_uploaded
+                        </code>
+                        : Count of JDs uploaded by user
                       </li>
                       <li>
-                        • <strong>Example:</strong> 30-year-old female,
-                        Hemoglobin 9.8 g/dL → "Your blood count is lower than
-                        normal, which may cause tiredness. Eat iron-rich foods
-                        such as spinach, dal, jaggery, and vitamin C fruits."
+                        •{" "}
+                        <code className="bg-gray-100 px-1 rounded text-xs">
+                          reputation_score
+                        </code>
+                        : Calculated based on contribution quality
                       </li>
                     </ul>
                   </div>
-
-                  <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
-                    <div className="font-semibold flex items-center gap-2 mb-2">
-                      <Landmark className="text-brand-teal" />
-                      Government Schemes & Benefits Assistant
+                </div>
+                <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg">
+                  <div className="font-medium mb-2">Key Functions</div>
+                  <div className="grid sm:grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <div>
+                      •{" "}
+                      <code className="bg-gray-100 px-1 rounded text-xs">
+                        upload_jd()
+                      </code>
+                      : Store IPFS hash, metadata, mint tokens
                     </div>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>
-                        • Retrieves up-to-date national and state health
-                        schemes from knowledge base
-                      </li>
-                      <li>
-                        • Explains eligibility + steps in local language
-                      </li>
-                      <li>
-                        • <strong>Example:</strong> "My father in Uttar Pradesh
-                        needs dialysis" → "Yes. Under Ayushman Bharat – PMJAY
-                        and the UP State Health Scheme, eligible patients get
-                        free dialysis at government hospitals."
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
-                    <div className="font-semibold flex items-center gap-2 mb-2">
-                      <BadgeAlert className="text-cta" />
-                      Preliminary Triage & Emergency Education
+                    <div>
+                      •{" "}
+                      <code className="bg-gray-100 px-1 rounded text-xs">
+                        verify_jd()
+                      </code>
+                      : Record verification vote, manage stakes
                     </div>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>
-                        • Step-by-step, life-saving instructions for common
-                        emergencies (snakebite, drowning, burns, electric
-                        shock)
-                      </li>
-                      <li>
-                        • Clear voice, text, and visual guidance in local
-                        language
-                      </li>
-                      <li>
-                        • <strong>Example:</strong> "A child has stopped
-                        breathing after drowning" → "Call for emergency help
-                        immediately. Lay the child flat, check breathing. If not
-                        breathing, start CPR: 30 chest compressions, 2 rescue
-                        breaths."
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="p-4 bg-pink-50 rounded-lg border-l-4 border-pink-400">
-                    <div className="font-semibold flex items-center gap-2 mb-2">
-                      <Stethoscope className="text-pink-600" />
-                      GynaeCare - Specialized Women's Health Module
+                    <div>
+                      •{" "}
+                      <code className="bg-gray-100 px-1 rounded text-xs">
+                        vote_quality()
+                      </code>
+                      : Update quality scores with weighted votes
                     </div>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>
-                        • <strong>Symptom Screening & Awareness:</strong> Private
-                        Q&A to flag possible issues like PCOD/PCOS and
-                        Endometriosis
-                      </li>
-                      <li>
-                        • <strong>Guided Next Steps:</strong> Early red-flag
-                        alerts and low-cost self-care tips
-                      </li>
-                      <li>
-                        • <strong>Sanitation & Hygiene Education:</strong> Safe
-                        use of cloth pads, menstrual cups, biodegradable pads
-                        with proper disposal methods
-                      </li>
-                      <li>
-                        • <strong>Govt Schemes & Support:</strong> Links to Jan
-                        Aushadhi, Menstrual Hygiene Scheme (MHS), and connects
-                        users with local ASHA/anganwadi workers
-                      </li>
-                    </ul>
+                    <div>
+                      •{" "}
+                      <code className="bg-gray-100 px-1 rounded text-xs">
+                        claim_bonus()
+                      </code>
+                      : Distribute bonus tokens for popular content
+                    </div>
                   </div>
                 </div>
               </div>
@@ -779,115 +1219,78 @@ export default function Technical() {
           </Card>
         </div>
 
-        {/* Role of OpenAI Tools */}
-        <div id="openai" className="mt-6">
-          <div className="grid lg:grid-cols-1 gap-6">
-            <Card title="Role of OpenAI Tools">
-              <div className="p-2">
-                <div className="font-medium mb-2">5. Role of OpenAI Tools</div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm table-auto">
-                    <thead>
-                      <tr className="text-left text-xs text-muted-foreground">
-                        <th className="px-3 py-2">LUMEN Feature</th>
-                        <th className="px-3 py-2">OpenAI Model</th>
-                        <th className="px-3 py-2">Usecase</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          Symptom Triage & Guidance
-                        </td>
-                        <td className="px-3 py-2 align-top">gpt-4o</td>
-                        <td className="px-3 py-2 align-top">
-                          Provides empathetic triage and severity classification
-                          from patient symptoms
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          AI Specialist Summaries
-                        </td>
-                        <td className="px-3 py-2 align-top">gpt-4o-mini</td>
-                        <td className="px-3 py-2 align-top">
-                          Summarizes AI-ML Model outputs into doctor-style
-                          report
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          Lab Report Analyzer
-                        </td>
-                        <td className="px-3 py-2 align-top">gpt-4o</td>
-                        <td className="px-3 py-2 align-top">
-                          Interprets OCR lab values and explains results in
-                          patient-friendly terms
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          Govt Schemes Assistant
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          text-embedding-3-small + gpt-4o-mini
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Retrieves and explains govt health scheme eligibility
-                          in simple language.
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          Emergency Protocols
-                        </td>
-                        <td className="px-3 py-2 align-top">gpt-4o-mini</td>
-                        <td className="px-3 py-2 align-top">
-                          Gives fast, step-by-step emergency medical
-                          instructions.
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          Voice Input (ASR)
-                        </td>
-                        <td className="px-3 py-2 align-top">whisper-1</td>
-                        <td className="px-3 py-2 align-top">
-                          Converts patient speech to text for symptom entry
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">
-                          Voice Output (TTS)
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          gpt-4o-audio / Azure TTS
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Delivers AI responses as a natural voice for
-                          accessibility.
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Chatbot</td>
-                        <td className="px-3 py-2 align-top">gpt-4o</td>
-                        <td className="px-3 py-2 align-top">
-                          Provides 24/7 conversational support, guiding users
-                          across triage, lab results, schemes, and emergencies
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+        {/* ── User Flow Diagram ── */}
+        <div id="userflow" className="mt-6 grid lg:grid-cols-1 gap-6">
+          <Card title="User Flow Diagram">
+            <div className="space-y-3">
+              <h4 className="font-semibold mb-3 text-center">
+                Scholaris DAO – User Flow
+              </h4>
+              <p className="text-sm text-muted-foreground mb-4 text-center">
+                The user flow diagram illustrates how students, seniors, TPO
+                members, and recruiters interact with Scholaris DAO and the
+                underlying Algorand smart contracts.
+              </p>
+              <div className="space-y-2 text-sm mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <span>
+                    <strong>Student Input:</strong> Uploads JDs, interview
+                    experiences, and skill profiles via the web UI
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span>
+                    <strong>Frontend Processing:</strong> React +
+                    Tailwind‑based dashboard handles uploads, filtering, and
+                    recommendations
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  <span>
+                    <strong>API Gateway:</strong> FastAPI backend processes
+                    files, calls AI services, and prepares on‑chain
+                    transactions
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                  <span>
+                    <strong>AI/ML Processing:</strong> NLP + recommendation
+                    models extract skills, detect patterns, and generate
+                    roadmaps
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                  <span>
+                    <strong>On‑Chain State:</strong> Algorand smart contracts
+                    store IPFS hashes, contribution metadata, and token
+                    balances
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-teal-500 rounded-full"></span>
+                  <span>
+                    <strong>Output:</strong> Personalized company insights,
+                    filters, and preparation plans surfaced back to students
+                  </span>
                 </div>
               </div>
-            </Card>
-          </div>
+              <ZoomableImage
+                src="/user-flow.excalidraw.svg"
+                alt="Scholaris DAO User Flow Diagram"
+              />
+            </div>
+          </Card>
         </div>
 
-        {/* Tech Stack */}
-        <div id="techstack" className="mt-6">
+        {/* ── 6. Tech Stack ── */}
+        <div id="techstack" className="mt-10">
           <div className="grid lg:grid-cols-1 gap-6">
-            <Card title="Tech Stack">
+            <Card title="6. Technology Stack">
               <div className="space-y-4">
                 <h4 className="font-semibold text-lg">
                   Detailed Technology Breakdown
@@ -904,98 +1307,94 @@ export default function Technical() {
                     <tbody>
                       <tr className="border-t">
                         <td className="px-3 py-2 align-top font-medium">
-                          Frontend
+                          Blockchain
                         </td>
                         <td className="px-3 py-2 align-top">
-                          React (TypeScript), Next.js, Tailwind CSS
+                          Algorand, PyTEAL, Beaker, AlgoKit
                         </td>
                         <td className="px-3 py-2 align-top">
-                          Multilingual, responsive web UI for symptom input, lab
-                          uploads, CT viewing, chatbot; SSR for speed & SEO
+                          Stateful smart contracts, ASAs (ScholTokens), Atomic
+                          Transfers, Local/Global State; LocalNet → TestNet →
+                          MainNet
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top font-medium">
+                          Decentralized Storage
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          IPFS, Pinata / Web3.Storage
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          Store JD PDFs, images, interview experiences with
+                          content persistence via pinning services
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top font-medium">
+                          AI/ML Pipeline
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          spaCy v3.7+, Hugging Face, Custom BERT, Scikit-learn,
+                          OpenAI GPT-4, Tesseract OCR
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          NLP skill extraction, pattern recognition, TF-IDF
+                          recommendations, roadmap generation, OCR for JD images
                         </td>
                       </tr>
                       <tr className="border-t">
                         <td className="px-3 py-2 align-top font-medium">
                           Backend
                         </td>
-                        <td className="px-3 py-2 align-top">FastAPI</td>
                         <td className="px-3 py-2 align-top">
-                          High-performance backend framework; implements REST
-                          API endpoints for frontend and AI/ML model
-                          communication
+                          Python FastAPI, JWT + Wallet Auth, Redis
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          RESTful API with /auth, /jds, /companies, /user,
+                          /recommendations endpoints; rate limiting; async
+                          testing with pytest
                         </td>
                       </tr>
                       <tr className="border-t">
                         <td className="px-3 py-2 align-top font-medium">
-                          Primary DB
+                          Frontend
                         </td>
-                        <td className="px-3 py-2 align-top">PostgreSQL</td>
                         <td className="px-3 py-2 align-top">
-                          Stores user profiles, triage history, lab values, CT
-                          metadata, government scheme eligibility
+                          React v18+ (TypeScript), Tailwind CSS, shadcn/ui,
+                          Zustand, React Query
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          Responsive dashboard, wallet integration
+                          (@perawallet/connect), Recharts/D3.js visualization,
+                          PWA, Dark mode
                         </td>
                       </tr>
                       <tr className="border-t">
                         <td className="px-3 py-2 align-top font-medium">
-                          Cache
+                          Database
                         </td>
-                        <td className="px-3 py-2 align-top">Redis</td>
                         <td className="px-3 py-2 align-top">
-                          Session caching, language translation caching
+                          PostgreSQL v15+, Redis
+                        </td>
+                        <td className="px-3 py-2 align-top">
+                          Users, JDs, Verifications, InterviewExperiences,
+                          ScholTokenTransactions tables; Redis caching for
+                          insights &amp; roadmaps
                         </td>
                       </tr>
                       <tr className="border-t">
                         <td className="px-3 py-2 align-top font-medium">
-                          Vector DB
-                        </td>
-                        <td className="px-3 py-2 align-top">Pinecone</td>
-                        <td className="px-3 py-2 align-top">
-                          Fully managed vector database for semantic search and
-                          embeddings of medical protocols and government schemes
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Object Storage
-                        </td>
-                        <td className="px-3 py-2 align-top">AWS S3</td>
-                        <td className="px-3 py-2 align-top">
-                          Scalable, secure storage for CT scans, lab reports,
-                          medical images; HIPAA/GDPR compliant
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          AI/ML Core
+                          Infrastructure
                         </td>
                         <td className="px-3 py-2 align-top">
-                          PyTorch, Hugging Face Transformers, OpenAI APIs
-                          (GPT-4o, Whisper, DALL·E)
+                          Docker, GitHub Actions, Vercel / Netlify, Railway /
+                          Render / AWS EC2
                         </td>
                         <td className="px-3 py-2 align-top">
-                          Hosts AI models (e.g., PEARL CT, dermatology AI) and
-                          supports language and vision tasks via OpenAI
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Security
-                        </td>
-                        <td className="px-3 py-2 align-top">JWT, OAuth2</td>
-                        <td className="px-3 py-2 align-top">
-                          Authentication and authorization mechanisms
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Infrastructure & Deploy
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Docker, Kubernetes (K8s) on AWS/GCP/Azure, CDN
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Containerized deployment, GPU-enabled nodes for AI,
-                          CDN for frontend assets delivery
+                          Containerized deployment, CI/CD, CDN auto-scaling
+                          frontend, Sentry error tracking, Algorand Indexer
+                          monitoring
                         </td>
                       </tr>
                     </tbody>
@@ -1009,530 +1408,346 @@ export default function Technical() {
           </div>
         </div>
 
-        {/* Feasibility */}
-        <div id="feasibility" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="Feasibility">
-            <div className="grid sm:grid-cols-2 gap-4 text-sm">
-              {/* Left column */}
-              <div className="space-y-4">
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.1 Technical Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Resources & Technology:</div>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>
-                        Prototype: Hugging Face free models (Indic-GPT, Donut,
-                        Whisper-small).
-                      </li>
-                      <li>
-                        Production: OpenAI APIs (GPT-4o, Whisper, DALL·E) +
-                        custom PEARL CT pipeline.
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Infrastructure:</div>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Frontend: React + Tailwind CSS.</li>
-                      <li>Backend: FastAPI (Python) with Docker.</li>
-                      <li>
-                        Deployment: Netlify (frontend), AWS/GCP (production).
-                      </li>
-                    </ul>
-                  </div>
-                  <p className="mt-2">
-                    Assessment: Existing technologies are sufficient. Only CT
-                    reconstruction pipeline requires GPU resources, which are
-                    available on cloud platforms.
-                  </p>
-                </div>
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.2 Operational Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Problem Fit:</div>
-                    <p>
-                      Addresses rural healthcare gaps (900M+ residents), triage
-                      delays, and lab follow-up inefficiencies.
-                    </p>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Ease of Operation:</div>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>
-                        Multilingual voice-first chatbot lowers digital literacy
-                        barriers.
-                      </li>
-                      <li>
-                        Offline-first design ensures use even in low-connectivity
-                        areas.
-                      </li>
-                    </ul>
-                  </div>
-                  <p className="mt-2">
-                    Assessment: Operationally feasible, since workflows mirror
-                    real-world healthcare interactions (symptom → guidance →
-                    follow-up).
-                  </p>
-                </div>
-              </div>
-
-              {/* Right column */}
-              <div className="space-y-4">
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.3 Economic Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Prototype Cost:</div>
-                    <p>Minimal (free tiers: Hugging Face, Netlify, Firebase).</p>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Production Cost:</div>
-                    <p>
-                      API usage (OpenAI GPT, Whisper), GPU compute (CT), and
-                      storage (AWS S3).
-                    </p>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">ROI:</div>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>
-                        Reducing preventable deaths (e.g., 58,000 annual
-                        snakebite fatalities).
-                      </li>
-                      <li>
-                        Saving costs from unnecessary clinic visits & repeated CT
-                        scans.
-                      </li>
-                    </ul>
-                  </div>
-                  <p className="mt-2">
-                    Assessment: Strong cost-benefit justification; socially
-                    impactful and scalable.
-                  </p>
-                </div>
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.4 Legal Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Compliance Requirements:</div>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Data protection → GDPR/HIPAA-like standards.</li>
-                      <li>Informed consent → required for data use.</li>
-                    </ul>
-                  </div>
-                  <p className="mt-2">
-                    Assessment: Legally feasible with proper compliance in
-                    production; no major barriers.
-                  </p>
-                </div>
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.5 Market Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Target Users:</div>
-                    <p>
-                      900M+ rural/semi-urban Indians lacking timely healthcare.
-                    </p>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Market Trend:</div>
-                    <p>
-                      Rising smartphone penetration (67%+ rural households with
-                      access).
-                    </p>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Competition:</div>
-                    <p>
-                      Existing health apps (Practo, 1mg) focus on urban users;
-                      none combine triage + lab reports + CT + schemes in one
-                      system.
-                    </p>
-                  </div>
-                  <p className="mt-2">
-                    Assessment: High demand, underserved market, unique
-                    positioning.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Novelty */}
-        <div id="novelty" className="mt-10">
-          <div className="grid lg:grid-cols-1 gap-6">
-            <Card title="Novelty">
-              <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">
-                  Comparison showing how LUMEN differs from traditional
-                  healthcare systems and existing solutions.
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm table-auto">
-                    <thead>
-                      <tr className="text-left text-xs text-muted-foreground">
-                        <th className="px-3 py-2">Feature</th>
-                        <th className="px-3 py-2">Traditional Systems</th>
-                        <th className="px-3 py-2">LUMEN</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          CT Imaging
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Hospital CT scans (₹4,000–₹6,000); no AI low-dose
-                          alternatives
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          PEARL CT: Low-dose AI reconstruction with uncertainty
-                          maps → safer & cheaper follow-ups
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Lab Report Analysis
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          1mg, Apollo 24/7 show raw values only
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          AI Analyzer: Flags abnormalities + gives
-                          lifestyle/diet advice in simple local language
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Government Schemes Access
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Info scattered on portals (Ayushman Bharat website,
-                          state portals)
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Integrated Assistant: Explains eligibility + steps in
-                          voice/text for each patient's condition
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Emergency Education
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Missing in health apps; patients rely on hearsay or
-                          healers
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Built-in Protocols: CPR, snakebite, burns →
-                          step-by-step local language guidance
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Women's Health (LUMEN GynaeCare)
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Flo, Clue (cycle tracking); Practo (urban gyne
-                          consults); NGOs like Goonj (hygiene awareness). Each
-                          addresses only one aspect
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Integrated GynaeCare: Private symptom screening
-                          (PCOD, endometriosis) + hygiene education (safe pad
-                          use, disposal) + govt scheme linkage (MHS, Jan
-                          Aushadhi) → all in one, voice-first & rural-friendly
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top font-medium">
-                          Costing
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Doctor visit: ₹300–₹500, travel to city hospital:
-                          ₹800–₹1,500, CT scan: ₹4,000–₹6,000, follow-ups
-                          ~₹1,000
-                        </td>
-                        <td className="px-3 py-2 align-top">
-                          Cuts costs by 50–70% through local AI triage, fewer
-                          city visits, and reduced repeat scans
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-
-        {/* Impact & Benefits */}
-        <div id="impact" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="Impact & Benefits">
+        {/* ── 7. Expected Outcomes ── */}
+        <div id="impact" className="mt-10 grid lg:grid-cols-1 gap-6">
+          <Card title="7. Expected Outcomes">
             <div className="space-y-6">
+              {/* 7.1 Immediate Impact */}
               <div>
                 <h4 className="font-semibold text-lg mb-4">
-                  Quantitative Benefits
+                  7.1 Immediate Impact (MVP)
                 </h4>
                 <div className="space-y-4">
                   <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
-                    <div className="font-semibold text-green-800 mb-2">
-                      Reduction in Preventable Morbidity and Mortality
+                    <div className="font-semibold text-green-800 mb-2 flex items-center gap-2">
+                      <Database size={16} />
+                      Centralized Knowledge Repository
                     </div>
-                    <p className="text-sm text-green-700">
-                      By providing immediate symptom-based triage, emergency
-                      education, and guidance, LUMEN aims to significantly
-                      reduce the 58,000 annual deaths from snakebites and other
-                      emergencies in rural India.
-                    </p>
+                    <ul className="text-sm text-green-700 space-y-1">
+                      <li>• 50+ JDs uploaded in first month</li>
+                      <li>• 100+ interview experiences shared</li>
+                      <li>• All data verifiable and tamper-proof</li>
+                    </ul>
                   </div>
-
                   <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                    <div className="font-semibold text-blue-800 mb-2">
-                      Cost Savings for Patients
+                    <div className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+                      <TrendingUp size={16} />
+                      Improved Preparation Efficiency
                     </div>
-                    <p className="text-sm text-blue-700">
-                      Early and accurate triage can help avoid 20–30% unnecessary
-                      hospital visits and repeat CT scans. Since a single CT
-                      costs ₹3,000–₹8,000 and a hospital visit costs
-                      ₹500–₹2,000, this translates to an average saving of
-                      ₹1,200–₹2,800 ($50–$200) per patient.
-                    </p>
+                    <ul className="text-sm text-blue-700 space-y-1">
+                      <li>• Students save 50+ hours of research time</li>
+                      <li>
+                        • Personalized roadmaps increase success rate by 30%
+                      </li>
+                      <li>• Better company-student matching</li>
+                    </ul>
                   </div>
-
                   <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
-                    <div className="font-semibold text-purple-800 mb-2">
-                      Improved Diagnostic Efficiency
+                    <div className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
+                      <Award size={16} />
+                      Incentivized Contribution
                     </div>
-                    <p className="text-sm text-purple-700">
-                      Automated analysis of lab reports and specialist modules
-                      can reduce diagnostic delays from 2–7 days down to under 1
-                      hour (98% faster turnaround). This efficiency also frees
-                      up doctors' time, enabling them to see 2–3 additional
-                      patients per hour and reducing complication-related
-                      treatment costs by 15–20% in time-sensitive conditions.
-                    </p>
+                    <ul className="text-sm text-purple-700 space-y-1">
+                      <li>
+                        • Seniors motivated to upload (earn ScholTokens)
+                      </li>
+                      <li>• Community-driven quality control</li>
+                      <li>• Self-sustaining knowledge transfer</li>
+                    </ul>
                   </div>
                 </div>
               </div>
 
+              {/* 7.2 Long-Term Vision */}
               <div>
                 <h4 className="font-semibold text-lg mb-4">
-                  Potential Beneficiaries
-                </h4>
-                <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="font-semibold mb-2">
-                      Rural and Semi-Urban Populations
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Over 900 million residents with limited access to
-                      qualified medical professionals
-                    </p>
-                  </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="font-semibold mb-2">
-                      Primary Health Centers (PHCs) & Community Health Centers
-                      (CHCs)
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Equipped with decision support for frontline healthcare
-                      workers
-                    </p>
-                  </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="font-semibold mb-2">
-                      Government Health Schemes Beneficiaries
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Increased awareness and access to schemes like Ayushman
-                      Bharat, ensuring eligible patients receive entitled
-                      benefits
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-4">
-                  Awareness & Accessibility Gains
+                  7.2 Long-Term Vision
                 </h4>
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-orange-50 rounded-lg">
-                    <div className="font-semibold mb-2">
-                      Multilingual, Voice-First Interface
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Users size={16} />
+                      Cross-College Network
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      Supports five Indian languages, enabling accessibility for
-                      illiterate or non-English-speaking users
-                    </p>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Expand to engineering colleges</li>
+                      <li>• Shared ScholToken economy</li>
+                    </ul>
                   </div>
-                  <div className="p-4 bg-orange-50 rounded-lg">
-                    <div className="font-semibold mb-2">
-                      Awareness of Government Schemes
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Target size={16} />
+                      Recruiter Integration
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      Reduces the knowledge gap regarding available health
-                      benefits, empowering users to claim entitlements without
-                      intermediary assistance
-                    </p>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Companies access verified candidate pool</li>
+                      <li>
+                        • On-chain skill credentials (verifiable portfolios)
+                      </li>
+                      <li>• Direct recruitment through platform</li>
+                    </ul>
                   </div>
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Coins size={16} />
+                      Monetization
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • Premium tier ($5/month): AI mock interviews,
+                        mentorship
+                      </li>
+                      <li>
+                        • Company partnerships: Sponsored JD placement
+                      </li>
+                      <li>• Data insights for TPOs</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Landmark size={16} />
+                      DAO Governance
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • Token holders vote on platform features
+                      </li>
+                      <li>• Community-driven roadmap</li>
+                      <li>• Decentralized moderation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* 7.3 Measurable Metrics */}
+              <div>
+                <h4 className="font-semibold text-lg mb-4">
+                  7.3 Measurable Success Metrics
+                </h4>
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {[
+                    "Number of JDs uploaded and verified",
+                    "Student engagement rate (daily active users)",
+                    "Placement success rate improvement (before vs. after)",
+                    "Time saved per student in preparation",
+                    "ScholToken circulation and economy health",
+                    "Cross-college adoption rate",
+                    "Recruiter partnerships established",
+                  ].map((metric, i) => (
+                    <div
+                      key={i}
+                      className="p-3 bg-white border border-gray-200 rounded-lg text-sm flex items-start gap-2"
+                    >
+                      <BarChart3
+                        size={14}
+                        className="text-brand-blue mt-0.5 shrink-0"
+                      />
+                      <span>{metric}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </Card>
         </div>
 
-        {/* Future Scope */}
+        {/* ── 8. Future Scope ── */}
         <div id="future" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="Future Scope">
+          <Card title="8. Future Scope">
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-lg mb-3">
-                  Language Expansion
+                  8.1 Feature Enhancements
                 </h4>
-                <p className="text-sm text-muted-foreground">
-                  Extend support to more Indian regional languages and dialects
-                  to further improve inclusivity and reach across diverse
-                  linguistic regions of India.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-3">
-                  Additional Specialist Modules
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Incorporate more AI-driven modules in fields such as
-                  Pediatrics, Obstetrics & Gynecology, Psychiatry, and Neurology
-                  for broader diagnostic support and guidance.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-3">
-                  NGO & Hospital Integrations
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Collaborate with NGOs and hospitals to integrate LUMEN into
-                  field operations, enabling real-time reporting and referrals
-                  from remote areas to specialized centers.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-3">
-                  Offline-First Mobile App
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Develop a fully-featured Android app with offline-first
-                  capabilities, integrating preloaded emergency protocols,
-                  government schemes, and first-aid guidance for even deeper
-                  rural penetration.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-3">
-                  Predictive Healthcare Analytics
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Leverage patient data and interaction history to provide
-                  predictive health risk analytics and early warnings for chronic
-                  diseases.
-                </p>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Local Development */}
-        <div id="local-development" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="Local Development">
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-lg mb-3">Requirements</h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Node 18+, pnpm
-                </p>
-
-                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
-                  <div className="mb-2"># Install dependencies</div>
-                  <div className="mb-2">pnpm install</div>
-                  <div className="mb-2"># Start development server</div>
-                  <div className="mb-2">
-                    pnpm dev # client + server with hot reload on port 8080
+                <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Cpu size={16} className="text-blue-600" />
+                      Advanced AI Features
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • Resume analyzer (match resume to JD requirements)
+                      </li>
+                      <li>
+                        • Weakness identifier (suggest improvement areas)
+                      </li>
+                    </ul>
                   </div>
-                  <div className="mb-2"># Build for production</div>
-                  <div className="mb-2">pnpm build # production build</div>
-                  <div className="mb-2"># Run production server</div>
-                  <div className="mb-2">pnpm start # run the built server</div>
-                  <div className="mb-2"># Run tests</div>
-                  <div className="mb-2">pnpm test # vitest --run</div>
-                  <div className="mb-2"># Type checking</div>
-                  <div>pnpm typecheck # tsc</div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Shield size={16} className="text-purple-600" />
+                      Blockchain Enhancements
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • Cross-chain bridge (support Ethereum)
+                      </li>
+                      <li>
+                        • Zero-knowledge proofs (stronger privacy)
+                      </li>
+                      <li>
+                        • Arweave migration for permanent storage
+                      </li>
+                      <li>
+                        • DAO treasury management
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <div className="font-semibold mb-2 flex items-center gap-2">
+                      <Users size={16} className="text-green-600" />
+                      Social Features
+                    </div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>
+                        • Study groups with on-chain accountability contracts
+                      </li>
+                      <li>• Peer mentorship marketplace</li>
+                      <li>• Alumni network integration</li>
+                      <li>• Token-curated discussion forums</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-semibold text-lg mb-3">
-                  Environment Variables
+                  8.2 Scalability Considerations
                 </h4>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Example — keep secrets server‑side:
-                </p>
-                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
-                  <div># .env (not committed)</div>
-                  <div>OPENAI_API_KEY=...</div>
-                  <div>VECTOR_DB_URL=...</div>
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                    <div className="font-medium">Technical Scalability</div>
+                    <ul className="list-disc pl-5 space-y-1 mt-2 text-sm text-muted-foreground">
+                      <li>Shard database for multi-college support</li>
+                      <li>CDN for IPFS content delivery</li>
+                      <li>Caching layer for AI-generated insights</li>
+                      <li>Load balancing for API servers</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                    <div className="font-medium">Economic Scalability</div>
+                    <ul className="list-disc pl-5 space-y-1 mt-2 text-sm text-muted-foreground">
+                      <li>Token value appreciation as user base grows</li>
+                      <li>Staking rewards (incentivize long-term holding)</li>
+                      <li>Burn mechanism (reduce supply, increase scarcity)</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </Card>
         </div>
 
-        {/* References */}
-        <div id="references" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="References (IEEE‑style)">
+        {/* ── 9. Conclusion ── */}
+        <div id="references" className="mt-10 grid lg:grid-cols-1 gap-6">
+          <Card title="10. Conclusion">
+            <div className="space-y-4 text-sm">
+              <p>
+                Scholaris DAO addresses critical gaps in campus coordination by
+                combining blockchain's immutability for trust and verification,
+                AI's intelligence for personalization and insights, and token
+                economics for incentivizing participation.
+              </p>
+              <p>
+                This solution transforms campus operations from isolated, opaque
+                processes into collaborative, transparent, and efficient systems.
+                By leveraging Algorand's unique features (low fees, fast
+                finality, native ASAs), we create a sustainable ecosystem that
+                benefits students, faculty, and institutions alike.
+              </p>
+              <p>
+                Team Init2WinIt is committed to building a production-ready MVP
+                that demonstrates the power of decentralized coordination in
+                education. Our solution is not just technically sound but
+                addresses real problems faced by thousands of students every
+                year.
+              </p>
+            </div>
+          </Card>
+        </div>
+
+        {/* ── References ── */}
+        <div className="mt-6 grid lg:grid-cols-1 gap-6">
+          <Card title="References">
             <ol className="list-decimal pl-5 space-y-1 text-sm">
               <li>
-                "Healthcare Access in Rural Communities in India," Ballard
-                Brief, 18‑Dec‑2024. Available: Ballard Brief
+                <strong>Algorand Developer Documentation:</strong>{" "}
+                <a
+                  href="https://developer.algorand.org"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-blue underline"
+                >
+                  developer.algorand.org
+                </a>
               </li>
               <li>
-                A. P. Ugargol et al., "In search of a fix to the primary health
-                care chasm in India," PMC, 2023. PMC
+                <strong>PyTEAL Documentation:</strong>{" "}
+                <a
+                  href="https://pyteal.readthedocs.io"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-blue underline"
+                >
+                  pyteal.readthedocs.io
+                </a>
               </li>
               <li>
-                A. Nair et al., "Workforce problems at rural public
-                health‑centres in India," Human Resources for Health, vol. 19,
-                Art. 147, 2022. BioMed Central
+                <strong>IPFS Documentation:</strong>{" "}
+                <a
+                  href="https://docs.ipfs.tech"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-blue underline"
+                >
+                  docs.ipfs.tech
+                </a>
               </li>
               <li>
-                W. Suraweera et al., "Trends in snakebite deaths in India from
-                2000 to 2019," eLife, vol. 9, e54076, 2020. eLifePMC
-              </li>
-              <li>"Snakebite," Wikipedia, last month. Wikipedia</li>
-              <li>
-                "India still struggles with rural doctor shortages … doctor,
-                nurses, and midwives per 10,000 people," ResearchGate, 2025.
-                ResearchGateAxios
-              </li>
-              <li>
-                "Healthcare Access in Rural India," docboxmed.com, 23‑Sep‑2024.
-                DocBox
+                <strong>spaCy NLP Documentation:</strong>{" "}
+                <a
+                  href="https://spacy.io"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-blue underline"
+                >
+                  spacy.io
+                </a>
               </li>
               <li>
-                "Multiple incidents of snakebites in UP ... approx 50,000
-                deaths annually," Times of India, recent. The Times of India
+                <strong>React Documentation:</strong>{" "}
+                <a
+                  href="https://react.dev"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-blue underline"
+                >
+                  react.dev
+                </a>
               </li>
               <li>
-                "Traditional cure do more harm than good in snakebite cases,"
-                Times of India, last month. The Times of India
+                <strong>FastAPI Documentation:</strong>{" "}
+                <a
+                  href="https://fastapi.tiangolo.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-blue underline"
+                >
+                  fastapi.tiangolo.com
+                </a>
               </li>
             </ol>
           </Card>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-10 text-center">
+          <p className="text-sm text-muted-foreground">
+            MLSC Hackspirathon 2026
+          </p>
         </div>
       </div>
     </section>
   );
 }
-

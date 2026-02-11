@@ -1,5 +1,5 @@
 # Scholaris DAO
-## Illuminate Campus Activities with Blockchain
+## *Illuminate Campus Activities with Blockchain*
 
 **Technical Documentation**
 
@@ -8,11 +8,13 @@
 **Team Init2WinIt**
 
 **Team Members:**
-- Sanchitsai Nipanikar (Team Leader)
-- Shrey Chougule
+- **Sanchitsai Nipanikar** (Team Leader)  
+  Department of Computer Engineering, Final Yr  
+  VIT Pune
 
-**Department of Computer Engineering**  
-**VIT Pune**
+- **Shrey Chougule**  
+  Department of Computer Engineering, Final Yr  
+  VIT Pune
 
 **Campus Blockchain Hackathon**  
 **February 12, 2026**  
@@ -22,15 +24,16 @@
 
 ## Table of Contents
 
-1. Problem Statement
-2. Identified Campus Problems
-3. Proposed Solutions Overview
-4. Primary Solution: Scholaris DAO - Placement Module
-5. Technical Architecture
-6. Technology Stack
-7. Implementation Approach
-8. Expected Outcomes
-9. Future Scope
+1. [Problem Statement](#1-problem-statement)
+2. [Identified Campus Problems](#2-identified-campus-problems)
+3. [Proposed Solutions Overview](#3-proposed-solutions-overview)
+4. [Primary Solution: Scholaris DAO - Placement Module](#4-primary-solution-scholaris-dao---placement-help-module)
+5. [Technical Architecture](#5-technical-architecture)
+6. [Technology Stack](#6-technology-stack)
+7. [Expected Outcomes](#7-expected-outcomes)
+8. [Future Scope](#8-future-scope)
+9. [User Flow Diagram](#9-user-flow-diagram)
+10. [Conclusion](#10-conclusion)
 
 ---
 
@@ -44,7 +47,7 @@ Campus systems such as voting, attendance tracking, feedback collection, certifi
 - Privacy concerns for students and faculty
 - Information asymmetry in placement and career preparation
 
-The challenge is to build beginner-friendly blockchain applications on Algorand that improve trust, verification, and coordination for campus activities. Solutions should demonstrate how blockchain can enable fair participation, verifiable records, privacy-preserving systems, and simple automation without relying on centralized control.
+The challenge is to build beginner-friendly blockchain application on Algorand that improve trust, verification, and coordination for campus activities. Solutions should demonstrate how blockchain can enable fair participation, verifiable records, privacy-preserving systems, and simple automation without relying on centralized control.
 
 ---
 
@@ -53,9 +56,9 @@ The challenge is to build beginner-friendly blockchain applications on Algorand 
 ### 2.1 Placement Information Gap
 
 - TPO systems (like VIERP) contain extensive placement data but are difficult to navigate
-- Job descriptions (JDs) get lost in email threads
+- Job descriptions (JDs) gets lost in email threads
 - Seniors graduate and take valuable interview insights with them
-- No structured knowledge about company-specific requirements (skills, DS&A patterns, programming languages)
+- No structured knowledge about company-specific requirements (skills, DSA patterns, programming languages)
 - Juniors waste time reinventing preparation strategies every year
 
 ### 2.2 Campus Governance & Voting
@@ -78,12 +81,6 @@ The challenge is to build beginner-friendly blockchain applications on Algorand 
 - Low engagement in non-mandatory classes
 - No gamification or incentive structure
 
-### 2.5 Academic Integrity
-
-- Plagiarism detection relies on centralized databases
-- No timestamped proof of original work
-- Cannot verify "who created it first" in disputes
-
 ---
 
 ## 3. Proposed Solutions Overview
@@ -96,23 +93,46 @@ We propose multiple blockchain-powered solutions that leverage Algorand's unique
 
 **Technical Approach:**
 - **On-Chain:** Stateful smart contract (PyTEAL) registers eligible voter addresses
-- **Privacy:** Commit-reveal scheme—voters submit hash(vote + nonce), later reveal actual vote
+- **Privacy:** Commit-reveal scheme — voters submit hash(vote + nonce), later reveal actual vote
 - **Sybil Prevention:** Permissioned list or one-time voting token (ASA) that burns upon voting
 - **State Management:** Global state for vote tallies, local state for opt-in/hasVoted flag
 
 **Why Algorand:** Fast finality (4 seconds), low fees enable multiple voting rounds
 
-### 3.2 Attendance Mining (Gamified Learning)
+### 3.2 Engagement Rewards System (Token-Incentivized Campus Participation)
 
-**Goal:** Increase class attendance through token incentives
+**Goal:** Increase academic engagement in campus through token incentives
 
-**Technical Approach:**
-- Student scans QR code → mints AttendanceToken (0.001 ALGO fee)
-- Collect 80% of semester tokens → unlock exam preparation NFT
-- Top 10% attendance → priority course registration next semester
-- Analytics Dashboard: Professors see real-time engagement metrics
+#### Core Token Utility Model
 
-**Why Algorand:** Low fees (0.001 ALGO) make minting 150+ tokens/semester economically feasible
+- **Token Acquisition:**  
+  Students earn tokens via attendance (QR scans), quizzes, competitions, or other engagement activities (e.g., submitting feedback, attending different club events etc).
+
+  The token rewards are prioritized in order:  
+  Firstly, most points allocated to semester attendance (lectures), then giving feedbacks (e.g., course or event reviews), then participating & winning quizzes, attending technical events on college campus, and similar engagements.  
+  This creates a "mining" loop where consistent involvement builds token balances.
+
+- **Token Spending Mechanics:**  
+  Use ASAs on Algorand for transfers. Students opt-in to the token, and redemptions could trigger atomic transfers (e.g., burn tokens for NFTs or send to event organizers).  
+  *(Will add a dashboard in the React frontend for tracking balances and spending history)*
+
+#### Potential Uses for Tokens
+
+1. **Event and Activity Registrations** (replaces real-money registration fees):
+   - Hackathon or workshop entry: Spend tokens instead of paying via UPI/cash.
+   - Club events: Use tokens for tickets to tech talks, seminars, hackathons, cultural fests, etc. Clubs could set dynamic pricing via DAO votes.
+   - Campus competitions: Entry fees for quizzes, debates, or innovation challenges.
+
+2. **Educational Resources and Upskilling:**
+   - Buying courses / content: Redeem tokens for access to online modules, certifications, or curated study materials.
+   - Tokens can be used to waive off library late overdue penalties on books.
+
+#### Implementation Considerations
+
+- **Smart Contract Integration:** Add functions in PyTEAL for token redemption (e.g., `redeem_tokens(event_id, amount)` that burns/spends tokens and updates local state for perks).
+- **Why Algorand Fits:** Low fees (0.001 ALGO) make frequent small spends viable; ASAs enable easy minting/burning without high gas costs.
+- **Risks and Mitigations:** Prevent abuse (e.g., token farming) with anti-Sybil measures like one-wallet-per-student via campus ID linkage. Track metrics like token velocity (circulation rate) in your analytics dashboard.
+- **Expansion Potential:** In future scope, partner with off-campus entities (e.g., local startups accepting tokens for internships) to increase real-world value.
 
 ### 3.3 Anonymous Course Feedback
 
@@ -126,7 +146,7 @@ We propose multiple blockchain-powered solutions that leverage Algorand's unique
 
 ---
 
-## 4. Primary Solution: Scholaris DAO - Placement Module
+## 4. Primary Solution: Scholaris DAO - Placement Help Module
 
 ### Decentralized Placement Intelligence Platform
 
@@ -136,7 +156,7 @@ We propose multiple blockchain-powered solutions that leverage Algorand's unique
 - TPO systems (VIERP) are data graveyards with poor UX
 - 500+ JDs buried in difficult-to-navigate interfaces
 - Seniors possess valuable insights but knowledge disappears post-graduation
-- No structured way to answer: "What DS&A patterns does Goldman Sachs ask?"
+- No structured way to answer: "What DS&A patterns does Citi Sachs ask?"
 - Juniors waste 100+ hours researching what seniors already know
 
 **Impact:**
@@ -151,10 +171,10 @@ We propose multiple blockchain-powered solutions that leverage Algorand's unique
 
 **JD Upload & Storage Flow:**
 
-1. Senior uploads JD (PDF/text/image) through web interface
+1. User uploads JD (PDF/text/image) through web interface
 2. File stored on IPFS (InterPlanetary File System)
 3. IPFS hash + metadata stored in Algorand smart contract
-4. AI extracts structured data (skills, requirements, CTC)
+4. AI extracts structured data (skills, requirements, CTC, etc)
 5. Uploader earns ScholTokens (ASA) as reward
 
 **Smart Contract Global State Structure:**
@@ -165,24 +185,14 @@ Each JD record contains: `jd_id`, `ipfs_hash`, `company`, `role`, `year`, `uploa
 
 **Component 1: Skill Extraction Engine**
 
-Uses NLP (Natural Language Processing) to extract required skills, experience level, role category, CGPA cutoffs, and eligible branches from JD text.
+- Uses NLP to extract required skills, experience level, role category, CGPA cutoffs, and eligible branches from JD text.
+- For campus TPO company details and JDs uploaded by students, the AI module further extracts specifics such as company name, role, location, categorized skills (e.g., Programming languages, Frameworks & Libraries, Databases, Cloud & DevOps, Version Control), and minimum qualification criteria for Online Assessment (OA), including 10th/12th marks and CGPA thresholds.
 
 **Component 2: Pattern Recognition System**
 
-Analyzes historical interview experiences to identify recurring DS&A patterns, difficulty distribution, and temporal trends in company requirements.
+Analyzes historical interview experiences to identify recurring DSA patterns, difficulty distribution, and temporal trends in company requirements.
 
-**Example Analysis:**
-
-**Company: Goldman Sachs**
-- 85% problems involve Arrays/HashMaps
-- 70% ask SQL queries
-- Preferred Language: Java (95%)
-- Average Difficulty: Medium
-- Interview Rounds: 3 (Coding → Technical → HR)
-
-**Component 3: Smart Recommendation Engine**
-
-Matches student skills against JD requirements, calculates compatibility scores, identifies skill gaps, and generates personalized preparation roadmaps.
+After a company's campus drive is completed, OA-shortlisted students can post OA patterns and programming problem statements in a community forum. Before posting, users select options like Company Name, Role, and Tag (e.g., OA Cleared, Technical Interview Cleared, Selected for Company). They then describe their OA problem statements, interview experiences, questions asked, HR round Q&A, etc. Like Reddit, other users can upvote posts, with the most upvoted appearing at the top in descending order. This data is fed into AI models to detect patterns, such as company-specific focuses (e.g., Y company emphasizing Sliding Window approach, string manipulation etc). Users who post their interview experience are rewarded with ScholTokens to incentivize contributions.
 
 #### Part 3: Blockchain Features (Algorand-Specific)
 
@@ -195,11 +205,7 @@ Matches student skills against JD requirements, calculates compatibility scores,
 - Popular content (50+ views): **20 bonus tokens**
 - Downvoted as spam: **-15 tokens** (quality control)
 
-**Feature 2: Immutable Interview Timeline**
-
-Every JD upload is timestamped on-chain, creating a queryable historical record of how company requirements evolve over time.
-
-**Feature 3: Decentralized Curation (DAO Governance)**
+**Feature 2: Decentralized Curation (DAO Governance)**
 
 - Community voting on JD quality (1-5 stars)
 - Weighted votes: Placed students = 2x weight
@@ -211,23 +217,15 @@ Every JD upload is timestamped on-chain, creating a queryable historical record 
 **Feature 1: Smart Filter System**
 
 Students can filter companies by:
-- **Role:** Backend Developer, Full Stack, Data Scientist, AI/ML Engineer
-- **Skills Required:** Java (Banking sector), Python (AI/ML), React (Frontend)
-- **DS&A Pattern:** Arrays/HashMaps, Trees/Graphs, Dynamic Programming
+- **Role:** Backend Developer, Full Stack, Data Scientist, AI/ML Engineer etc
+- **Skills Required:** Java (Banking applications), Python (AI/ML), React (Frontend) etc
+- **DS&A Pattern:** Arrays/HashMaps, Trees/Graphs, Dynamic Programming etc
 - **CTC Range:** 10-20 LPA, 20-40 LPA, 40+ LPA
 - **CGPA Cutoff:** No cutoff, 7.0+, 8.0+, 9.0+
 
 **Feature 2: Personalized Study Roadmap Generator**
 
 AI analyzes target companies' historical patterns and generates week-by-week preparation plans with specific practice problems and resources.
-
-**Feature 3: Real-Time Difficulty Predictor**
-
-Students submit practice solutions and receive instant AI feedback on time/space complexity, code quality, and comparison against company expectations.
-
-**Feature 4: Mock Interview Matching System**
-
-Peer-to-peer mock interviews with stake mechanism (ensures both participants show up), AI-powered matching by skill level, and reputation-building through successful completions.
 
 ---
 
@@ -313,7 +311,7 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 | Skill Extraction | Custom BERT fine-tuned model |
 | Recommendation Engine | Scikit-learn (TF-IDF, Cosine Similarity) |
 | LLM Integration | OpenAI GPT-4 API (roadmap generation, Q&A) |
-| OCR | Tesseract OCR or Google Cloud Vision API |
+| OCR | Tesseract OCR |
 
 ### 6.4 Backend
 
@@ -352,68 +350,12 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 - **CI/CD:** GitHub Actions (automated testing, deployment)
 - **Monitoring:** Sentry (error tracking), Algorand Indexer (blockchain monitoring)
 - **Containerization:** Docker, Docker Compose
-- **Email/SMS:** SendGrid (email), Twilio (SMS)
-- **Video Calls:** Daily.co API or Agora.io (mock interviews)
 
 ---
 
-## 7. Implementation Approach
+## 7. Expected Outcomes
 
-### 3-Day Hackathon Development Plan
-
-#### Day 1: Foundation (Core Infrastructure)
-
-**Focus:** Core infrastructure and blockchain integration
-
-**Tasks:**
-- **Smart Contract Development (PyTEAL):** Define state variables, implement JD upload/verification functions, deploy to Algorand TestNet
-- **IPFS Integration:** Set up IPFS node or Pinata, implement upload function, test content persistence
-- **Backend Skeleton:** Initialize FastAPI project, set up PostgreSQL database, create basic API endpoints, integrate Algorand SDK
-- **Frontend Skeleton:** Initialize React project, set up routing, create wallet connection UI, basic dashboard layout
-
-**Deliverable:** Working JD upload flow (Frontend → Backend → IPFS → Algorand)
-
-#### Day 2: AI Integration (Intelligent Features)
-
-**Focus:** Intelligent features and data processing
-
-**Tasks:**
-- **Skill Extraction Pipeline:** Implement PDF text extraction, set up spaCy NLP pipeline, train/fine-tune skill extraction model
-- **Pattern Recognition System:** Create historical data aggregation logic, implement clustering algorithms, build company pattern analysis
-- **Recommendation Engine:** Implement student-company matching algorithm, build compatibility scoring system, integrate GPT-4 for roadmap generation
-- **Frontend - Company Pages:** Design company detail pages, implement filter interface, visualize AI insights (charts, graphs)
-
-**Deliverable:** AI-powered recommendations and insights working end-to-end
-
-#### Day 3: Polish & Demo Preparation
-
-**Focus:** User experience and presentation
-
-**Tasks:**
-- **Verification System:** Implement stake-based verification UI, smart contract verification logic, quality score calculation
-- **Token Economy:** Leaderboard implementation, token earning/spending UI, transaction history
-- **Testing & Bug Fixes:** End-to-end testing, fix critical bugs, performance optimization
-- **Demo Preparation:** Seed database with 20-30 real JDs from campus, prepare demo script, create pitch deck
-
-**Deliverable:** Production-ready MVP for live demo
-
-### 7.2 Demo Strategy
-
-**10-Minute Live Demo Flow:**
-
-1. **Problem Introduction (1 min):** Show VIERP screenshot, explain pain point
-2. **Solution Overview (2 min):** Open Scholaris DAO dashboard, show personalized recommendations
-3. **Core Feature Demo (5 min):** Upload JD, show AI extraction, verify JD, view company insights, apply filters, generate roadmap
-4. **Blockchain Value Prop (1.5 min):** Show on-chain verification proof, demonstrate immutability, explain token incentives
-5. **Impact & Future (0.5 min):** Highlight scalability and expansion potential
-
-**Backup Plan:** Pre-recorded video and static screenshots if live demo fails
-
----
-
-## 8. Expected Outcomes
-
-### 8.1 Immediate Impact (MVP)
+### 7.1 Immediate Impact (MVP)
 
 **Centralized Knowledge Repository:**
 - 50+ JDs uploaded in first month
@@ -430,17 +372,11 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 - Community-driven quality control
 - Self-sustaining knowledge transfer
 
-**Transparency & Trust:**
-- On-chain verification eliminates fake JDs
-- Immutable timeline tracks company evolution
-- Decentralized governance prevents censorship
-
-### 8.2 Long-Term Vision
+### 7.2 Long-Term Vision
 
 **Cross-College Network:**
-- Expand to 10+ engineering colleges
+- Expand to engineering colleges
 - Shared ScholToken economy
-- Inter-college mock interview matching
 
 **Recruiter Integration:**
 - Companies access verified candidate pool
@@ -457,7 +393,7 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 - Community-driven roadmap
 - Decentralized moderation
 
-### 8.3 Measurable Success Metrics
+### 7.3 Measurable Success Metrics
 
 - Number of JDs uploaded and verified
 - Student engagement rate (daily active users)
@@ -469,15 +405,13 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 
 ---
 
-## 9. Future Scope
+## 8. Future Scope
 
-### 9.1 Feature Enhancements
+### 8.1 Feature Enhancements
 
 **Advanced AI Features:**
 - Resume analyzer (match resume to JD requirements)
-- Interview question predictor (based on company patterns)
 - Weakness identifier (suggest improvement areas)
-- Salary negotiation assistant (ML-based CTC predictor)
 
 **Blockchain Enhancements:**
 - Cross-chain bridge (support Ethereum for wider adoption)
@@ -491,14 +425,7 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 - Alumni network integration
 - Token-curated discussion forums
 
-### 9.2 Integration Possibilities
-
-- TPO system API integration (auto-import JDs)
-- LinkedIn integration (verify on-chain credentials)
-- GitHub integration (verify coding projects)
-- LeetCode/HackerRank API (sync practice stats)
-
-### 9.3 Scalability Considerations
+### 8.2 Scalability Considerations
 
 **Technical Scalability:**
 - Shard database for multi-college support
@@ -513,6 +440,12 @@ Peer-to-peer mock interviews with stake mechanism (ensures both participants sho
 
 ---
 
+## 9. User Flow Diagram
+
+![Scholaris DAO - User Flow Diagram](./user-flow.excalidraw.svg)
+
+---
+
 ## 10. Conclusion
 
 Scholaris DAO addresses critical gaps in campus coordination by combining blockchain's immutability for trust and verification, AI's intelligence for personalization and insights, and token economics for incentivizing participation.
@@ -520,14 +453,6 @@ Scholaris DAO addresses critical gaps in campus coordination by combining blockc
 This solution transforms campus operations from isolated, opaque processes into collaborative, transparent, and efficient systems. By leveraging Algorand's unique features (low fees, fast finality, native ASAs), we create a sustainable ecosystem that benefits students, faculty, and institutions alike.
 
 Team Init2WinIt is committed to building a production-ready MVP that demonstrates the power of decentralized coordination in education. Our solution is not just technically sound but addresses real problems faced by thousands of students every year.
-
-**Key Strengths:**
-- **Real Problem:** Campus systems lack trust, knowledge is lost when seniors graduate
-- **Blockchain Value:** Immutable records, transparent verification, decentralized governance
-- **AI Enhancement:** Personalized insights, pattern recognition, automated recommendations
-- **Token Economics:** Incentivizes contribution, ensures quality, builds reputation
-- **Feasible Implementation:** 3-day MVP plan with clear deliverables
-- **Scalable Vision:** Multi-module platform, cross-college expansion, sustainable growth
 
 ---
 
@@ -546,21 +471,19 @@ Team Init2WinIt is committed to building a production-ready MVP that demonstrate
 
 **Sanchitsai Nipanikar (Team Leader)**  
 Department of Computer Engineering, VIT Pune  
-Email: [Your Email]  
-GitHub: [Your GitHub]  
-LinkedIn: [Your LinkedIn]
+Email: sanchitsai.nipanikar22@vit.edu  
+GitHub: https://github.com/sanchit1606  
+LinkedIn: https://www.linkedin.com/in/sanchit1606
 
 **Shrey Chougule**  
 Department of Computer Engineering, VIT Pune  
 Email: [Shrey's Email]  
-GitHub: [Shrey's GitHub]  
+GitHub: https://github.com/Shreychougule  
 LinkedIn: [Shrey's LinkedIn]
 
 ---
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**"Illuminating Trust in Education"**
-
 **Team Init2WinIt**  
-**Campus Blockchain Hackathon 2026**
+**MLSC Hackspirathon 2026**
