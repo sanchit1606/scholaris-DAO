@@ -13,7 +13,7 @@ import { WavyBackground } from '@/components/ui/wavy-background';
 const quickActions = [
   { label: 'Upload JD', path: '/placeprep/upload', icon: Upload },
   { label: 'Browse Companies', path: '/placeprep/companies', icon: Briefcase },
-  { label: 'Create Election', path: '/voting', icon: Vote },
+  { label: 'Voting', path: '/voting', icon: Vote },
   { label: 'Mint Attendance', path: '/attendance/mint', icon: QrCode },
   { label: 'Submit Feedback', path: '/feedback/submit', icon: MessageSquare },
 ];
@@ -60,9 +60,15 @@ export default function Dashboard() {
       {/* Platform Modules */}
       <div>
         <h2 className="font-heading font-semibold text-lg mb-4">Platform Modules</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <ModuleCard icon={Briefcase} title="PlacePrep DAO" description="Upload JDs, get AI insights, join mock interviews" path="/placeprep/companies" delay={0} />
-          <ModuleCard icon={Vote} title="Campus Voting" description="Participate in secure on-chain campus elections" path="/voting" delay={0.05} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+          <ModuleCard
+            icon={Briefcase}
+            title="PlacePrep DAO"
+            description="Placement community — share drive experiences, explore company JDs, required skills, and eligibility criteria."
+            path="/placeprep/companies"
+            delay={0}
+          />
+          <ModuleCard icon={Vote} title="Campus Voting" description="Participate in secure on-chain campus elections and decision making" path="/voting" delay={0.05} />
 
           <ModuleCard icon={QrCode} title="Attendance Mining" description="Earn tokens for attending classes" path="/attendance/mint" delay={0.15} />
           <ModuleCard icon={MessageSquare} title="Anonymous Feedback" description="Submit anonymous course feedback on-chain" path="/feedback/submit" delay={0.2} />
