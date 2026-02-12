@@ -3,7 +3,7 @@
 ## *Illuminate Campus Activities with Blockchain*
 
 <p align="center">
-  <img src="./effecrt.gif" alt="decorative effect" width="600" />
+  <img src="./effecrt.gif" alt="decorative effect" width="420" />
 </p>
 
 **Technical Documentation**
