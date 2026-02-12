@@ -49,59 +49,15 @@ function Card({
 
 
 function DiagramSection() {
-  const [view, setView] = useState<"userflow" | "architecture">("userflow");
-
+  // Always show the user flow diagram (architecture diagram removed per request)
   return (
     <div id="userflow" className="mt-6 grid lg:grid-cols-1 gap-6">
-      <Card title="Diagrams">
+      <Card title="User Flow">
         <div className="space-y-4">
-          {/* Toggle */}
-          <div className="flex items-center justify-center">
-            <div className="flex bg-gray-100 rounded-lg p-1">
-              <button
-                onClick={() => setView("userflow")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                  view === "userflow"
-                    ? "bg-white text-gray-900 shadow-sm"
-                    : "text-gray-500 hover:text-gray-900"
-                }`}
-              >
-                User Flow Diagram
-              </button>
-              <button
-                onClick={() => setView("architecture")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                  view === "architecture"
-                    ? "bg-white text-gray-900 shadow-sm"
-                    : "text-gray-500 hover:text-gray-900"
-                }`}
-              >
-                System Architecture Diagram
-              </button>
-            </div>
+          <div>
+            <h4 className="font-semibold mb-3 text-center">Scholaris DAO – User Flow</h4>
+            <ZoomableImage src="/user-flow.excalidraw.svg" alt="Scholaris DAO User Flow Diagram" />
           </div>
-
-          {view === "userflow" ? (
-            <div>
-              <h4 className="font-semibold mb-3 text-center">
-                Scholaris DAO – User Flow
-              </h4>
-              <ZoomableImage
-                src="/user-flow.excalidraw.svg"
-                alt="Scholaris DAO User Flow Diagram"
-              />
-            </div>
-          ) : (
-            <div>
-              <h4 className="font-semibold mb-3 text-center">
-                Scholaris DAO – System Architecture
-              </h4>
-              <ZoomableImage
-                src="/system-architecture.svg"
-                alt="Scholaris DAO System Architecture Diagram"
-              />
-            </div>
-          )}
         </div>
       </Card>
     </div>
