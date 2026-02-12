@@ -466,8 +466,6 @@ Students can filter companies by:
 
 ## Appendix
 
-## Appendix
-
 ### A. References
 
 1. **Algorand Developer Documentation:** https://developer.algorand.org
