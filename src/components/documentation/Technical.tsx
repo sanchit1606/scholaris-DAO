@@ -294,7 +294,7 @@ export default function Technical() {
               View Documentation
             </a>
             <a
-              href="#"
+              href="https://drive.google.com/file/d/1AQ90kYYgw_gvAQaJr23_xFUyOt8JYnEq/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-slate-700 bg-white border border-gray-300 rounded-full transition-all hover:scale-105 hover:bg-gray-50"
