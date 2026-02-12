@@ -460,7 +460,7 @@ Students can filter companies by:
 
 ## 9. User Flow Diagram
 
-![Scholaris DAO - User Flow Diagram](./user-flow.excalidraw.svg)
+![Scholaris DAO - User Flow Diagram](./public/assets/user-flow.excalidraw.svg)
 
 ---
 

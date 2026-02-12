@@ -75,7 +75,7 @@ function NotificationItem({ notification }: { notification: Notification }) {
     <div className="w-full py-4 first:pt-0 last:pb-0">
       <div className="flex gap-3">
         <Avatar className="size-11">
-          <AvatarImage src={notification.user.avatar || "/placeholder.svg"} alt={`${notification.user.name}'s profile`} className="object-cover ring-1 ring-border" />
+          <AvatarImage src={notification.user.avatar || "/assets/placeholder.svg"} alt={`${notification.user.name}'s profile`} className="object-cover ring-1 ring-border" />
           <AvatarFallback>{notification.user.fallback}</AvatarFallback>
         </Avatar>
 

@@ -54,9 +54,9 @@ function DiagramSection() {
     <div id="userflow" className="mt-6 grid lg:grid-cols-1 gap-6">
       <Card title="User Flow">
         <div className="space-y-4">
-          <div>
+            <div>
             <h4 className="font-semibold mb-3 text-center">Scholaris DAO – User Flow</h4>
-            <ZoomableImage src="/user-flow.excalidraw.svg" alt="Scholaris DAO User Flow Diagram" />
+            <ZoomableImage src="/assets/user-flow.excalidraw.svg" alt="Scholaris DAO User Flow Diagram" />
           </div>
         </div>
       </Card>
