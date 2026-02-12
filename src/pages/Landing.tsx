@@ -27,9 +27,7 @@ export default function Landing() {
   const { setShowConnectModal, isConnected } = useWalletStore();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isConnected) navigate('/dashboard');
-  }, [isConnected, navigate]);
+  // Note: removed automatic redirect on connect so users must explicitly navigate.
 
   return (
     <div className="min-h-screen">

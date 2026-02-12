@@ -50,8 +50,8 @@ export default function WalletConnectModal() {
         throw new Error('Pera SDK: exported module is not a constructor');
       }
 
-      // instantiate (optionally pass options later)
-      const peraWallet = new PeraCls();
+      // instantiate with dApp metadata so wallet shows correct app name
+      const peraWallet = new PeraCls({ dAppName: 'Scholaris DAO', name: 'Scholaris DAO' });
       // persist instance globally so disconnect can be called from elsewhere
       if (typeof window !== 'undefined') {
         (window as any)._peraWallet = peraWallet;
@@ -166,7 +166,7 @@ export default function WalletConnectModal() {
                   <CheckCircle className="w-8 h-8 text-primary" />
                 </motion.div>
                 <p className="font-heading font-bold text-lg">Connected!</p>
-                <p className="text-sm text-muted-foreground">Redirecting to dashboard...</p>
+                <p className="text-sm text-muted-foreground">You are connected. Close this dialog to continue.</p>
               </motion.div>
             )}
           </AnimatePresence>

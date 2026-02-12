@@ -68,6 +68,13 @@ export const useWalletStore = create<WalletState>()(
                 window.sessionStorage.removeItem(k);
               }
             });
+            // Also remove Zustand persist key so wallet state is not retained
+            try {
+              window.localStorage.removeItem('persist:campus-chain-wallet');
+              window.sessionStorage.removeItem('persist:campus-chain-wallet');
+            } catch (e) {
+              // ignore
+            }
           }
         } catch (e) {
           // ignore
