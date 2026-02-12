@@ -699,10 +699,6 @@ export default function Technical() {
                     • <strong>Verification:</strong> Smart contract validates
                     hash matches reveal
                   </li>
-                  <li>
-                    • <strong>AI Aggregation:</strong> Analyzes sentiment only
-                    after critical mass (50+ responses)
-                  </li>
                 </ul>
               </div>
             </div>
