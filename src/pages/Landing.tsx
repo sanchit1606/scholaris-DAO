@@ -146,7 +146,7 @@ export default function Landing() {
           <div className="absolute inset-0 opacity-20" style={{ background: 'var(--gradient-glow)' }} />
           <div className="relative">
             <h2 className="font-heading text-3xl font-bold mb-4">Ready to join?</h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">Connect your Algorand wallet and start earning PrepTokens, voting in elections, and more.</p>
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">Connect your Algorand wallet and start earning Tokens, voting in elections, and more.</p>
             <button onClick={() => setShowConnectModal(true)} className="btn-primary-glow text-base flex items-center gap-2 mx-auto">
               <Wallet className="w-5 h-5" /> Get Started
             </button>

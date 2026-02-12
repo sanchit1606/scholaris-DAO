@@ -43,8 +43,8 @@ export default function Profile() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <StatCard icon={Coins} label="PrepTokens" value={prepTokens} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <StatCard icon={Coins} label="Tokens" value={prepTokens} />
           <StatCard icon={QrCode} label="Attendance" value={attendanceTokens} />
           <StatCard icon={Star} label="Reputation" value={reputation} />
           <StatCard icon={Upload} label="JDs Uploaded" value={8} />

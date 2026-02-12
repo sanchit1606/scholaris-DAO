@@ -28,7 +28,7 @@ export default function PlacePrepUpload() {
     <div className="page-container max-w-2xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="section-title text-3xl mb-2">Upload JD</h1>
-        <p className="text-muted-foreground mb-8">Contribute a job description to earn PrepTokens</p>
+        <p className="text-muted-foreground mb-8">Contribute a job description to earn Tokens</p>
       </motion.div>
 
       <AnimatePresence mode="wait">
@@ -48,7 +48,7 @@ export default function PlacePrepUpload() {
               <Sparkles className="w-10 h-10 text-primary" />
             </motion.div>
             <h2 className="font-heading text-2xl font-bold mb-2">JD Uploaded! 🎉</h2>
-            <p className="text-muted-foreground mb-2">You earned <span className="text-primary font-bold">+25 PrepTokens</span></p>
+            <p className="text-muted-foreground mb-2">You earned <span className="text-primary font-bold">+25 Tokens</span></p>
             <p className="text-sm text-muted-foreground">Your submission is now pending community verification.</p>
             <button onClick={() => { setSuccess(false); setFile(null); setMeta({ company: '', role: '', year: '2025' }); }}
               className="btn-secondary-glass mt-6">Upload Another</button>

@@ -34,7 +34,7 @@ export default function Dashboard() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard icon={Coins} label="PrepTokens" value={prepTokens} change="+12%" positive />
+        <StatCard icon={Coins} label="Tokens" value={prepTokens} change="+12%" positive />
         <StatCard icon={QrCode} label="Attendance Tokens" value={attendanceTokens} change="+3" positive />
         <StatCard icon={Star} label="Reputation" value={`${reputation}/100`} />
         <StatCard icon={Trophy} label="Leaderboard Rank" value="#14" change="↑2" positive />
