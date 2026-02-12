@@ -23,6 +23,8 @@ import ElectionDetail from "@/pages/ElectionDetail";
 
 import AttendanceMint from "@/pages/AttendanceMint";
 import FeedbackSubmit from "@/pages/FeedbackSubmit";
+import FeedbackCourse from "@/pages/FeedbackCourse";
+import FeedbackInstitute from "@/pages/FeedbackInstitute";
 import FeedbackView from "@/pages/FeedbackView";
 import Profile from "@/pages/Profile";
 import Settings from "@/pages/Settings";
@@ -66,6 +68,8 @@ const App = () => {
 
               <Route path="/attendance/mint" element={<AttendanceMint />} />
               <Route path="/feedback/submit" element={<FeedbackSubmit />} />
+              <Route path="/feedback/course" element={<FeedbackCourse />} />
+              <Route path="/feedback/institute" element={<FeedbackInstitute />} />
               <Route path="/feedback/view" element={<FeedbackView />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/settings" element={<Settings />} />
