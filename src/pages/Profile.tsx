@@ -16,8 +16,13 @@ const transactions = [
 ];
 
 export default function Profile() {
-  const { address, prepTokens, attendanceTokens, reputation, algoBalance } = useWalletStore();
+  const { address, prepTokens, attendanceTokens, reputation, algoBalance, addNotification } = useWalletStore();
   const [copied, setCopied] = useState(false);
+  const [convertAmount, setConvertAmount] = useState<number | ''>('');
+  const [converting, setConverting] = useState(false);
+
+  const availableVElixir = prepTokens + attendanceTokens; // rough available balance
+  const CONVERSION_RATE = 0.001; // 1 vElixir = 0.001 ALGO (mock rate)
 
   const copyAddr = () => {
     if (address) navigator.clipboard.writeText(address);
@@ -55,6 +60,58 @@ export default function Profile() {
                   {copied ? <CheckCircle className="w-3 h-3 text-success" /> : <Copy className="w-3 h-3" />}
                 </button>
                 <div className="text-xs text-muted-foreground mt-1">{`${(algoBalance || 0).toFixed(4)} ALGO`}</div>
+
+                {/* vElixir -> ALGO conversion */}
+                <div className="mt-3 p-3 bg-secondary/5 rounded-md border border-border/30">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-sm font-medium">Convert vElixir to ALGO</div>
+                    <div className="text-xs text-muted-foreground">Available: {availableVElixir} vElixir</div>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <input
+                      type="number"
+                      min={0}
+                      step="1"
+                      value={convertAmount === '' ? '' : convertAmount}
+                      onChange={(e) => setConvertAmount(e.target.value === '' ? '' : Number(e.target.value))}
+                      placeholder="Amount in vElixir"
+                      className="w-40 bg-secondary/50 border border-border/50 rounded-lg px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <div className="text-sm text-muted-foreground">≈ {(convertAmount === '' ? 0 : (convertAmount as number) * CONVERSION_RATE).toFixed(6)} ALGO</div>
+                    <button
+                      onClick={async () => {
+                        const amt = Number(convertAmount || 0);
+                        if (!amt || amt <= 0) return;
+                        if (amt > availableVElixir) {
+                          addNotification?.({ title: 'Error', message: 'Insufficient vElixir balance', type: 'error' });
+                          return;
+                        }
+                        setConverting(true);
+                        // simulate on-chain conversion / atomic transfer
+                        await new Promise((r) => setTimeout(r, 1200));
+                        const algoReceived = amt * CONVERSION_RATE;
+                        // update global store balances (using Zustand setState)
+                        try {
+                          (useWalletStore as any).setState({
+                            prepTokens: Math.max(0, prepTokens - amt),
+                            algoBalance: Number(((algoBalance || 0) + algoReceived).toFixed(6)),
+                          });
+                          addNotification?.({ title: 'Success', message: `Converted ${amt} vElixir → ${algoReceived.toFixed(6)} ALGO`, type: 'success' });
+                          setConvertAmount('');
+                        } catch (e) {
+                          addNotification?.({ title: 'Error', message: 'Conversion failed', type: 'error' });
+                        } finally {
+                          setConverting(false);
+                        }
+                      }}
+                      disabled={converting || convertAmount === '' || Number(convertAmount) <= 0}
+                      className="btn-primary-glow text-sm px-3 py-2 disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      {converting ? 'Converting...' : 'Convert'}
+                    </button>
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-2">Rate: 1 vElixir = {CONVERSION_RATE} ALGO (mock rate)</div>
+                </div>
               </div>
             </div>
           </div>
