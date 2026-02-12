@@ -27,7 +27,7 @@ const navModules = [
 
 export default function Layout() {
   const { pathname } = useLocation();
-  const { isConnected, address, prepTokens, setShowConnectModal } = useWalletStore();
+  const { isConnected, address, prepTokens, algoBalance, setShowConnectModal } = useWalletStore();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -92,8 +92,11 @@ export default function Layout() {
             <div className="flex items-center gap-3">
               {isConnected ? (
                 <>
-                  <div className="stat-badge hidden sm:flex">
-                    <span className="text-primary">◆</span> {prepTokens} Tokens
+                  <div className="stat-badge hidden sm:flex items-center gap-3">
+                    <span className="text-primary">◆</span>
+                    <span>{prepTokens} Tokens</span>
+                    <span className="text-muted-foreground">|</span>
+                    <span>{`${(algoBalance || 0).toFixed(3)} ALGO`}</span>
                   </div>
                   {/* Notifications */}
                   <div className="relative">

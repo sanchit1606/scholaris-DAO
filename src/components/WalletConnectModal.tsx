@@ -14,6 +14,26 @@ export default function WalletConnectModal() {
     setLoading(true);
     setError(null);
     try {
+      // best-effort clear of any walletconnect/perawallet session keys so connect prompts fresh
+      if (typeof window !== 'undefined') {
+        try {
+          Object.keys(window.localStorage || {}).forEach((k) => {
+            const kl = k.toLowerCase();
+            if (kl.includes('pera') || kl.includes('walletconnect') || kl.includes('wc@') || kl.includes('wc:') || kl.includes('wc-')) {
+              window.localStorage.removeItem(k);
+            }
+          });
+          // also clear sessionStorage
+          Object.keys(window.sessionStorage || {}).forEach((k) => {
+            const kl = k.toLowerCase();
+            if (kl.includes('pera') || kl.includes('walletconnect') || kl.includes('wc@') || kl.includes('wc:') || kl.includes('wc-')) {
+              window.sessionStorage.removeItem(k);
+            }
+          });
+        } catch (e) {
+          // ignore
+        }
+      }
       // ensure browser global shim exists for libs that expect `global`
       if (typeof window !== 'undefined' && !(window as any).global) {
         (window as any).global = window;
@@ -32,11 +52,23 @@ export default function WalletConnectModal() {
 
       // instantiate (optionally pass options later)
       const peraWallet = new PeraCls();
+      // persist instance globally so disconnect can be called from elsewhere
+      if (typeof window !== 'undefined') {
+        (window as any)._peraWallet = peraWallet;
+      }
       // call connect (some builds expose .connect directly)
       const accounts = typeof peraWallet.connect === 'function' ? await peraWallet.connect() : null;
       if (accounts && accounts.length > 0) {
         connect(accounts[0]);
         setStep(2);
+      }
+      // fetch balance after connect
+      try {
+        const { fetchAlgoBalance } = await import('@/stores/walletStore');
+        // use the store method to update balance
+        // call directly from store import (we'll call via window after a short delay)
+      } catch (e) {
+        // ignore
       }
     } catch (err) {
       console.error('Pera connect error', err);

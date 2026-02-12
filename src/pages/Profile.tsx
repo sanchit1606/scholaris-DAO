@@ -16,7 +16,7 @@ const transactions = [
 ];
 
 export default function Profile() {
-  const { address, prepTokens, attendanceTokens, reputation } = useWalletStore();
+  const { address, prepTokens, attendanceTokens, reputation, algoBalance } = useWalletStore();
   const [copied, setCopied] = useState(false);
 
   const copyAddr = () => {
@@ -49,10 +49,13 @@ export default function Profile() {
             </div>
             <div>
               <h1 className="font-heading text-2xl font-bold">Sanchit</h1>
-              <button onClick={copyAddr} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-mono">
-                {address || 'Not connected'}
-                {copied ? <CheckCircle className="w-3 h-3 text-success" /> : <Copy className="w-3 h-3" />}
-              </button>
+              <div>
+                <button onClick={copyAddr} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-mono">
+                  {address || 'Not connected'}
+                  {copied ? <CheckCircle className="w-3 h-3 text-success" /> : <Copy className="w-3 h-3" />}
+                </button>
+                <div className="text-xs text-muted-foreground mt-1">{`${(algoBalance || 0).toFixed(4)} ALGO`}</div>
+              </div>
             </div>
           </div>
         </div>
