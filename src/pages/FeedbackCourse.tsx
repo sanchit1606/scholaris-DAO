@@ -8,6 +8,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { Link } from "react-router-dom";
 
 const departments = [
   "Computer Engineering",
@@ -62,6 +63,9 @@ export default function FeedbackCourse() {
 
   return (
     <div className="page-container max-w-3xl mx-auto">
+      <div className="mb-4">
+        <Link to="/feedback/submit" className="text-sm text-primary hover:underline">← Back to Feedback Menu</Link>
+      </div>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="section-title text-3xl mb-2">Course Feedback</h1>
         <p className="text-muted-foreground mb-8">
