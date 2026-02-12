@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import { Wallet, CheckCircle, Loader2, X, Shield } from 'lucide-react';
@@ -9,6 +10,7 @@ export default function WalletConnectModal() {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleConnect = async () => {
     setLoading(true);
@@ -61,6 +63,12 @@ export default function WalletConnectModal() {
       if (accounts && accounts.length > 0) {
         connect(accounts[0]);
         setStep(2);
+        // navigate to dashboard after successful connection
+        try {
+          navigate('/dashboard');
+        } catch (e) {
+          // ignore navigation errors
+        }
       }
       // fetch balance after connect
       try {
