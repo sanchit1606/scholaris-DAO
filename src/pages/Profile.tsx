@@ -4,13 +4,15 @@ import StatCard from '@/components/StatCard';
 import { Coins, Upload, Star, QrCode, Vote, BookOpen, MessageSquare, Copy, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 
+// Example transaction history (updated)
 const transactions = [
   { id: 1, type: 'JD Upload', tokens: '+25', date: '2025-02-08', module: 'PlacePrep' },
   { id: 2, type: 'Verification Vote', tokens: '+5', date: '2025-02-07', module: 'PlacePrep' },
-  { id: 3, type: 'Attendance Mint', tokens: '+1', date: '2025-02-06', module: 'Attendance' },
-  { id: 4, type: 'Mock Interview', tokens: '-10', date: '2025-02-05', module: 'PlacePrep' },
-  { id: 5, type: 'Book Borrow', tokens: '-1 collateral', date: '2025-02-04', module: 'Library' },
-  { id: 6, type: 'Election Vote', tokens: '0', date: '2025-02-03', module: 'Voting' },
+  // Attendance aggregated: 18 lectures × 5 tokens = +90
+  { id: 3, type: 'Lecture Attendance (18/20)', tokens: '+90', date: '2025-02-06', module: 'Attendance' },
+  // Tech events: 3 events × 20 tokens = +60
+  { id: 4, type: 'Tech Events (3)', tokens: '+60', date: '2025-02-05', module: 'Events' },
+  { id: 5, type: 'Election Vote', tokens: '0', date: '2025-02-03', module: 'Voting' },
 ];
 
 export default function Profile() {
@@ -23,17 +25,30 @@ export default function Profile() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Derived stats from transactions
+  const lecturesAttended = 18;
+  const lecturesTotal = 20;
+  const attendanceTokenPerLecture = 5;
+  const attendanceTokenTotal = lecturesAttended * attendanceTokenPerLecture;
+  const eventsAttended = 3;
+
+  const parseTokenNumber = (s: string) => {
+    const m = s.match(/-?\d+/);
+    return m ? parseInt(m[0], 10) : 0;
+  };
+  const totalTokens = transactions.reduce((acc, t) => acc + parseTokenNumber(t.tokens), 0);
+
   return (
     <div className="page-container max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         {/* Header */}
         <div className="glass-card p-8 mb-8">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
-              {address?.[4] || '?'}
+            <div className="w-16 h-16 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center">
+              <img src="/PHOTO_SANCHIT.jpeg" alt="Sanchit" className="w-full h-full object-cover" />
             </div>
             <div>
-              <h1 className="font-heading text-2xl font-bold">My Profile</h1>
+              <h1 className="font-heading text-2xl font-bold">Sanchit</h1>
               <button onClick={copyAddr} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-mono">
                 {address || 'Not connected'}
                 {copied ? <CheckCircle className="w-3 h-3 text-success" /> : <Copy className="w-3 h-3" />}
@@ -43,10 +58,19 @@ export default function Profile() {
         </div>
 
         {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <StatCard icon={Coins} label="Tokens" value={prepTokens} />
-          <StatCard icon={QrCode} label="Attendance" value={attendanceTokens} />
-          <StatCard icon={Star} label="Reputation" value={reputation} />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <StatCard icon={Coins} label="Tokens" value={totalTokens} />
+          <StatCard
+            icon={QrCode}
+            label="Attendance"
+            value={
+              <div className="flex flex-col items-start">
+                <span>18/20</span>
+                <span className="text-xs text-muted-foreground mt-1">{attendanceTokenTotal} Tokens</span>
+              </div>
+            }
+          />
+          <StatCard icon={Star} label="Events Attended" value={eventsAttended} />
           <StatCard icon={Upload} label="JDs Uploaded" value={8} />
         </div>
 

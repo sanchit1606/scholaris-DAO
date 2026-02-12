@@ -20,21 +20,6 @@ export default function Settings() {
       </motion.div>
 
       <div className="space-y-4">
-        {/* Dark Mode */}
-        <div className="glass-card p-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {darkMode ? <Moon className="w-5 h-5 text-primary" /> : <Sun className="w-5 h-5 text-warning" />}
-            <div>
-              <p className="font-medium text-sm">Dark Mode</p>
-              <p className="text-xs text-muted-foreground">Toggle dark/light theme</p>
-            </div>
-          </div>
-          <button onClick={toggleDarkMode}
-            className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${darkMode ? 'bg-primary' : 'bg-secondary'}`}>
-            <div className={`w-5 h-5 rounded-full bg-foreground transition-transform ${darkMode ? 'translate-x-6' : 'translate-x-0'}`} />
-          </button>
-        </div>
-
         {/* Notifications */}
         <div className="glass-card p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -47,18 +32,6 @@ export default function Settings() {
           <button className="w-12 h-6 rounded-full bg-primary flex items-center px-0.5">
             <div className="w-5 h-5 rounded-full bg-foreground translate-x-6" />
           </button>
-        </div>
-
-        {/* PWA */}
-        <div className="glass-card p-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Smartphone className="w-5 h-5 text-primary" />
-            <div>
-              <p className="font-medium text-sm">Install App</p>
-              <p className="text-xs text-muted-foreground">Add Scholaris DAO to home screen</p>
-            </div>
-          </div>
-          <button className="btn-secondary-glass text-xs py-1.5 px-3">Install</button>
         </div>
 
         {/* Wallet */}

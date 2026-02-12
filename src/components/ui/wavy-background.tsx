@@ -57,24 +57,14 @@
      if (!canvas) return;
      ctx = canvas.getContext("2d");
      if (!ctx) return;
-    // size canvas to cover the whole document so waves can scroll with the page
-    const docHeight = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      window.innerHeight
-    );
+    // size canvas to viewport so waveform stays centered in the visible screen
     w = (ctx.canvas.width = window.innerWidth);
-    h = (ctx.canvas.height = docHeight);
+    h = (ctx.canvas.height = window.innerHeight);
      ctx.filter = `blur(${blur}px)`;
      nt = 0;
      window.onresize = function () {
-      const docH = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        window.innerHeight
-      );
       w = (ctx.canvas.width = window.innerWidth);
-      h = (ctx.canvas.height = docH);
+      h = (ctx.canvas.height = window.innerHeight);
        ctx.filter = `blur(${blur}px)`;
      };
     // listen to scroll for parallax effect
@@ -95,14 +85,16 @@
    ];
    const drawWave = (n: number) => {
      nt += getSpeed();
-    const offset = moveWithScroll ? (scrollOffsetRef.current ?? 0) * parallax : 0;
-    for (i = 0; i < n; i++) {
+     const offset = moveWithScroll ? (scrollOffsetRef.current ?? 0) * parallax : 0;
+     // keep waveform visually centered in the viewport by default
+     const baselineY = (window.innerHeight || (h * 0.5)) * 0.5 * 2 ? window.innerHeight * 0.5 + offset : h * 0.5 + offset;
+     for (i = 0; i < n; i++) {
        ctx.beginPath();
        ctx.lineWidth = waveWidth || 50;
        ctx.strokeStyle = waveColors[i % waveColors.length];
        for (x = 0; x < w; x += 5) {
          var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5 + offset);
+         ctx.lineTo(x, y + (window.innerHeight ? window.innerHeight * 0.5 : h * 0.5) + offset);
        }
        ctx.stroke();
        ctx.closePath();
@@ -111,7 +103,7 @@
 
    let animationId: number;
    const render = () => {
-     ctx.fillStyle = backgroundFill || "black";
+    ctx.fillStyle = backgroundFill || "black";
      ctx.globalAlpha = waveOpacity || 0.5;
      ctx.fillRect(0, 0, w, h);
      drawWave(5);
@@ -146,8 +138,8 @@
          containerClassName
        )}
      >
-       <canvas
-         className="absolute inset-0 z-0"
+    <canvas
+        className="fixed inset-0 z-0 pointer-events-none"
          ref={canvasRef}
          id="canvas"
          style={{

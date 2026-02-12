@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 
+import React from 'react';
+
 interface StatCardProps {
   icon: LucideIcon;
   label: string;
-  value: string | number;
+  value: React.ReactNode;
   change?: string;
   positive?: boolean;
 }
@@ -27,7 +29,7 @@ export default function StatCard({ icon: Icon, label, value, change, positive }:
         )}
       </div>
       <div className="mt-4">
-        <p className="text-2xl font-heading font-bold">{value}</p>
+        <div className="text-2xl font-heading font-bold">{value}</div>
         <p className="text-sm text-muted-foreground mt-0.5">{label}</p>
       </div>
     </motion.div>
