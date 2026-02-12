@@ -35,7 +35,7 @@
 7. [Expected Outcomes](#7-expected-outcomes)
 8. [Future Scope](#8-future-scope)
 9. [User Flow Diagram](#9-user-flow-diagram)
-10. [Conclusion](#10-conclusion)
+10. [Appendix](#appendix)
 
 ---
 
@@ -464,15 +464,7 @@ Students can filter companies by:
 
 ---
 
-## 10. Conclusion
-
-Scholaris DAO addresses critical gaps in campus coordination by combining blockchain's immutability for trust and verification, AI's intelligence for personalization and insights, and token economics for incentivizing participation.
-
-This solution transforms campus operations from isolated, opaque processes into collaborative, transparent, and efficient systems. By leveraging Algorand's unique features (low fees, fast finality, native ASAs), we create a sustainable ecosystem that benefits students, faculty, and institutions alike.
-
-Team Init2WinIt is committed to building a production-ready MVP that demonstrates the power of decentralized coordination in education. Our solution is not just technically sound but addresses real problems faced by thousands of students every year.
-
----
+## Appendix
 
 ## Appendix
 
