@@ -4,14 +4,18 @@ const API_BASE = '/api';
 
 // Mock data generators for demo
 const mockCompanies = [
-  { id: '1', name: 'Google', roles: ['SDE-2', 'ML Engineer'], avgCtc: '45 LPA', jdCount: 12, difficulty: 'Hard', logo: '🔍' },
-  { id: '2', name: 'Microsoft', roles: ['SDE', 'PM'], avgCtc: '38 LPA', jdCount: 18, difficulty: 'Medium', logo: '🪟' },
-  { id: '3', name: 'Amazon', roles: ['SDE-1', 'Data Engineer'], avgCtc: '32 LPA', jdCount: 24, difficulty: 'Hard', logo: '📦' },
-  { id: '4', name: 'Goldman Sachs', roles: ['Analyst', 'Quant'], avgCtc: '28 LPA', jdCount: 8, difficulty: 'Hard', logo: '🏦' },
-  { id: '5', name: 'Adobe', roles: ['MTS', 'Frontend'], avgCtc: '25 LPA', jdCount: 15, difficulty: 'Medium', logo: '🎨' },
-  { id: '6', name: 'Flipkart', roles: ['SDE-1', 'Backend'], avgCtc: '22 LPA', jdCount: 20, difficulty: 'Medium', logo: '🛒' },
-  { id: '7', name: 'Uber', roles: ['SDE-2', 'iOS Dev'], avgCtc: '35 LPA', jdCount: 10, difficulty: 'Hard', logo: '🚗' },
-  { id: '8', name: 'Atlassian', roles: ['SDE', 'Fullstack'], avgCtc: '40 LPA', jdCount: 7, difficulty: 'Medium', logo: '🔧' },
+  { id: '1', name: 'NVIDIA', roles: ['ML Engineer','GPU SW Engineer'], avgCtc: '60 LPA', jdCount: 10, difficulty: 'Hard', logo: '🖥️' },
+  { id: '2', name: 'MSCI', roles: ['Quant','Data Engineer'], avgCtc: '28 LPA', jdCount: 6, difficulty: 'Medium', logo: '📊' },
+  { id: '3', name: 'Barclays', roles: ['SWE','Analyst'], avgCtc: '24 LPA', jdCount: 8, difficulty: 'Medium', logo: '🏦' },
+  { id: '4', name: 'Morgan Stanley', roles: ['Quant','SWE'], avgCtc: '30 LPA', jdCount: 9, difficulty: 'Hard', logo: '💼' },
+  { id: '5', name: 'JP Morgan', roles: ['Analyst','SWE'], avgCtc: '32 LPA', jdCount: 11, difficulty: 'Hard', logo: '🏛️' },
+  { id: '6', name: 'Citi', roles: ['SWE','Analyst'], avgCtc: '26 LPA', jdCount: 7, difficulty: 'Medium', logo: '🏦' },
+  { id: '7', name: 'Infosys', roles: ['SDE','Backend'], avgCtc: '12 LPA', jdCount: 20, difficulty: 'Medium', logo: '💻' },
+  { id: '8', name: 'PhonePe', roles: ['SDE','Product'], avgCtc: '18 LPA', jdCount: 14, difficulty: 'Medium', logo: '📱' },
+  { id: '9', name: 'BlackRock', roles: ['Quant','Data Scientist'], avgCtc: '38 LPA', jdCount: 5, difficulty: 'Hard', logo: '🏢' },
+  { id: '10', name: 'Red Hat', roles: ['SRE','Backend'], avgCtc: '22 LPA', jdCount: 6, difficulty: 'Medium', logo: '🎩' },
+  { id: '11', name: 'Deloitte', roles: ['Consultant','Analyst'], avgCtc: '16 LPA', jdCount: 12, difficulty: 'Medium', logo: '📋' },
+  { id: '12', name: 'Siemens', roles: ['Embedded','Systems'], avgCtc: '20 LPA', jdCount: 8, difficulty: 'Medium', logo: '⚙️' },
 ];
 
 const mockJDs = [
