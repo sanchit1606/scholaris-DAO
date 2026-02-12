@@ -1,9 +1,8 @@
-# Scholaris DAO
-
-## *Illuminate Campus Activities with Blockchain*
+<h1 align="center">Scholaris DAO</h1>
+<p align="center"><em>Illuminate Campus Activities with Blockchain</em></p>
 
 <p align="center">
-  <img src="./effecrt.gif" alt="decorative effect" width="420" />
+  <img src="./effecrt.gif" alt="decorative effect" width="250" />
 </p>
 
 **Technical Documentation**
@@ -14,7 +13,7 @@
 
 **Team Members:**
 
-- **Sanchitsai Nipanikar** (Team Leader)Department of Computer Engineering, Final YrVIT Pune
+- **Sanchitsai Nipanikar** (Team Leader)Department of Computer Engineering, Final Yr VIT Pune
 - **Shrey Chougule**
   Department of Computer Engineering, Final Yr
   VIT Pune
