@@ -43,7 +43,16 @@ export default function CompanyDetail() {
               <Pie data={dsaData} cx="50%" cy="50%" outerRadius={80} dataKey="value" label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
                 {dsaData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
               </Pie>
-              <Tooltip contentStyle={{ background: 'hsl(220,18%,10%)', border: '1px solid hsl(220,14%,18%)', borderRadius: '8px' }} />
+              <Tooltip
+                contentStyle={{
+                  background: '#ffffff',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  borderRadius: 8,
+                  boxShadow: '0 6px 18px rgba(15,23,42,0.06)',
+                }}
+                labelStyle={{ color: '#374151' }}
+                itemStyle={{ color: '#111827' }}
+              />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -53,7 +62,16 @@ export default function CompanyDetail() {
             <BarChart data={diffData}>
               <XAxis dataKey="name" tick={{ fill: 'hsl(215,15%,55%)', fontSize: 12 }} axisLine={false} />
               <YAxis tick={{ fill: 'hsl(215,15%,55%)', fontSize: 12 }} axisLine={false} />
-              <Tooltip contentStyle={{ background: 'hsl(220,18%,10%)', border: '1px solid hsl(220,14%,18%)', borderRadius: '8px' }} />
+              <Tooltip
+                contentStyle={{
+                  background: '#ffffff',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  borderRadius: 8,
+                  boxShadow: '0 6px 18px rgba(15,23,42,0.06)',
+                }}
+                labelStyle={{ color: '#374151' }}
+                itemStyle={{ color: '#111827' }}
+              />
               <Bar dataKey="count" fill="hsl(174,72%,52%)" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

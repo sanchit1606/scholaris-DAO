@@ -17,7 +17,7 @@ export default function Leaderboard() {
     <div className="page-container max-w-3xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="section-title text-3xl mb-2">Leaderboard</h1>
-        <p className="text-muted-foreground mb-6">Top contributors on CampusChain</p>
+        <p className="text-muted-foreground mb-6">Top contributors on Scholaris DAO</p>
       </motion.div>
 
       <div className="flex gap-2 mb-6">
@@ -46,7 +46,7 @@ export default function Leaderboard() {
             </div>
             <div className="text-right">
               <p className="font-heading font-bold text-primary">
-                {tab === 'tokens' ? `${user.tokens} PREP` : tab === 'uploads' ? `${user.uploads} JDs` : `${user.reputation}/100`}
+                {tab === 'tokens' ? `${user.tokens} Tokens` : tab === 'uploads' ? `${user.uploads} JDs` : `${user.reputation}/100`}
               </p>
             </div>
           </motion.div>

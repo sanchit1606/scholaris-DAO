@@ -55,7 +55,7 @@ export default function WalletConnectModal() {
 
           <div className="text-center mb-8">
             <div className="module-icon w-14 h-14 mx-auto mb-4 text-xl">⛓</div>
-            <h2 className="font-heading text-xl font-bold">Connect to CampusChain</h2>
+            <h2 className="font-heading text-xl font-bold">Connect to Scholaris DAO</h2>
             <p className="text-sm text-muted-foreground mt-1">Sign in with your Algorand wallet</p>
           </div>
 

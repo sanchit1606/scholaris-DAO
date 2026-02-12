@@ -32,7 +32,7 @@ export default function Governance() {
           <div className="flex gap-3 items-center mb-4">
             <span className="text-sm text-muted-foreground">Stake:</span>
             <input type="number" defaultValue={25} className="w-24 bg-secondary/50 border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
-            <span className="text-sm text-muted-foreground">PREP</span>
+            <span className="text-sm text-muted-foreground">Tokens</span>
           </div>
           <button className="btn-primary-glow text-sm flex items-center gap-2">
             <Shield className="w-4 h-4" /> Submit Proposal
@@ -47,7 +47,7 @@ export default function Governance() {
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="font-heading font-semibold">{p.title}</h3>
-                <p className="text-xs text-muted-foreground mt-1">by {p.proposer} · Staked: {p.staked} PREP</p>
+                <p className="text-xs text-muted-foreground mt-1">by {p.proposer} · Staked: {p.staked} Tokens</p>
               </div>
               <span className={`stat-badge ${p.status === 'passed' ? 'bg-success/10 text-success border-success/20' : ''}`}>
                 {p.status === 'active' ? <><Clock className="w-3 h-3" /> {p.daysLeft}d left</> : '✓ Passed'}

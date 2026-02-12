@@ -60,13 +60,13 @@ export default function MockInterviews() {
                   {[5, 10, 20].map((a) => (
                     <button key={a} onClick={() => setStakeAmount(a)}
                       className={`px-4 py-2 rounded-lg text-sm border transition-colors ${stakeAmount === a ? 'bg-primary/10 border-primary text-primary' : 'border-border/50 text-muted-foreground'}`}>
-                      {a} PREP
+                      {a} Tokens
                     </button>
                   ))}
                 </div>
               </div>
               <button onClick={startSearch} className="btn-primary-glow flex items-center gap-2 mx-auto">
-                <Coins className="w-4 h-4" /> Join Queue ({stakeAmount} PREP)
+                <Coins className="w-4 h-4" /> Join Queue ({stakeAmount} Tokens)
               </button>
             </>
           )}

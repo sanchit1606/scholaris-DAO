@@ -8,14 +8,12 @@ import {
   QrCode, MessageSquare, Shield, Map, Code, Users, ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { WavyBackground } from '@/components/ui/wavy-background';
 
 const quickActions = [
   { label: 'Upload JD', path: '/placeprep/upload', icon: Upload },
   { label: 'Browse Companies', path: '/placeprep/companies', icon: Briefcase },
-  { label: 'Generate Roadmap', path: '/placeprep/roadmap', icon: Map },
-  { label: 'Practice Code', path: '/placeprep/practice', icon: Code },
   { label: 'Create Election', path: '/voting', icon: Vote },
-
   { label: 'Mint Attendance', path: '/attendance/mint', icon: QrCode },
   { label: 'Submit Feedback', path: '/feedback/submit', icon: MessageSquare },
 ];
@@ -25,11 +23,12 @@ export default function Dashboard() {
   const { data: jds } = useJDs();
 
   return (
-    <div className="page-container space-y-8">
+    <WavyBackground containerClassName="h-auto" className="w-full" moveWithScroll parallax={0.6}>
+      <div className="page-container space-y-8">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="section-title text-3xl mb-1">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back to CampusChain</p>
+        <p className="text-muted-foreground">Welcome back to Scholaris DAO</p>
       </motion.div>
 
       {/* Stats */}
@@ -56,43 +55,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Recent JDs */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-heading font-semibold text-lg">Recent JDs</h2>
-          <Link to="/placeprep/companies" className="text-sm text-primary flex items-center gap-1 hover:underline">
-            View all <ArrowRight className="w-3 h-3" />
-          </Link>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {jds?.slice(0, 4).map((jd, i) => (
-            <motion.div
-              key={jd.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
-            >
-              <Link to={`/placeprep/jd/${jd.id}`} className="glass-card-hover p-5 block">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-heading font-semibold">{jd.company}</span>
-                  {jd.verified && <Shield className="w-4 h-4 text-success" />}
-                </div>
-                <p className="text-sm text-muted-foreground mb-2">{jd.role} · {jd.year}</p>
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {jd.skills.slice(0, 3).map((s) => (
-                    <span key={s} className="text-xs bg-secondary px-2 py-0.5 rounded-md text-secondary-foreground">{s}</span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                  <span>{jd.views} views</span>
-                  <span>{jd.votes} votes</span>
-                  <span className="text-primary font-medium">{jd.ctc}</span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      {/* Recent JDs section removed */}
 
       {/* Platform Modules */}
       <div>
@@ -103,9 +66,9 @@ export default function Dashboard() {
 
           <ModuleCard icon={QrCode} title="Attendance Mining" description="Earn tokens for attending classes" path="/attendance/mint" delay={0.15} />
           <ModuleCard icon={MessageSquare} title="Anonymous Feedback" description="Submit anonymous course feedback on-chain" path="/feedback/submit" delay={0.2} />
-          <ModuleCard icon={Shield} title="Governance" description="Vote on proposals and curate content quality" path="/placeprep/governance" delay={0.25} />
         </div>
       </div>
-    </div>
+      </div>
+    </WavyBackground>
   );
 }

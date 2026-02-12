@@ -63,3 +63,87 @@ export const useBooks = () =>
   useQuery({ queryKey: ['books'], queryFn: async () => mockBooks, staleTime: 30000 });
 
 export { mockCompanies, mockJDs, mockLeaderboard, mockElections, mockBooks };
+
+/* Community posts (in-memory mock) */
+export type CommunityPost = {
+  id: string;
+  company: string;
+  role: string;
+  round: string;
+  content: string;
+  author?: string;
+  upvotes: number;
+  createdAt: string;
+};
+
+let mockCommunity: CommunityPost[] = [
+  {
+    id: 'c1',
+    company: 'IBM',
+    role: 'SDE Intern',
+    round: 'Online Assessment',
+    content: 'OA had matrix multiplication optimization Q, 2 MCQs and 1 coding.',
+    author: 'Sanchit',
+    year: 'Final Year',
+    upvotes: 5,
+    createdAt: new Date(Date.now() - 1000 * 60 * 5).toISOString(), // 5 minutes ago
+  },
+  {
+    id: 'c2',
+    company: 'MSCI',
+    role: 'MTS / Quant-like',
+    round: 'Technical & Interviews',
+    content:
+      `2 coding questions
+1st: LeetCode - medium
+2nd: medium/hard (Striver pattern)
+3rd: SQL (HackerRank)
+
+1st INTERVIEW
+- DSA: hashmap, trees, linked list (middle element)
+- Pointers
+- OOPs (good)
+- Projects discussion
+
+2nd INTERVIEW
+- Deep dive into projects: explain architecture and tradeoffs
+- OOPs concepts used in projects
+
+HR ROUND
+- Family background
+- Plans about masters
+- Group work vs individual contributions
+
+(Shared by friend who cleared MSCI)`,
+    author: 'Amit',
+    year: 'Final Year',
+    upvotes: 2,
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 26).toISOString(), // ~26 hours ago
+  },
+];
+
+export const useCommunity = () =>
+  useQuery({ queryKey: ['community'], queryFn: async () => mockCommunity.slice().sort((a,b)=>b.upvotes - a.upvotes), staleTime: 10000 });
+
+export const addCommunityPost = async (post: Omit<CommunityPost, 'id' | 'upvotes' | 'createdAt'>) => {
+  const newPost: CommunityPost = {
+    id: `c${Math.floor(Math.random()*1000000)}`,
+    upvotes: 0,
+    createdAt: new Date().toISOString(),
+    ...post,
+  };
+  mockCommunity.push(newPost);
+  return newPost;
+};
+
+export const upvoteCommunityPost = async (id: string) => {
+  const p = mockCommunity.find((m) => m.id === id);
+  if (p) p.upvotes += 1;
+  return p;
+};
+
+export const downvoteCommunityPost = async (id: string) => {
+  const p = mockCommunity.find((m) => m.id === id);
+  if (p && p.upvotes > 0) p.upvotes -= 1;
+  return p;
+};

@@ -20,6 +20,7 @@ import Leaderboard from "@/pages/Leaderboard";
 import Governance from "@/pages/Governance";
 import VotingList from "@/pages/VotingList";
 import ElectionDetail from "@/pages/ElectionDetail";
+import Community from "@/pages/Community";
 
 import AttendanceMint from "@/pages/AttendanceMint";
 import FeedbackSubmit from "@/pages/FeedbackSubmit";
@@ -58,11 +59,8 @@ const App = () => {
               <Route path="/placeprep/companies" element={<Companies />} />
               <Route path="/placeprep/company/:name" element={<CompanyDetail />} />
               <Route path="/placeprep/jd/:id" element={<JDDetail />} />
-              <Route path="/placeprep/roadmap" element={<Roadmap />} />
-              <Route path="/placeprep/practice" element={<Practice />} />
-              <Route path="/placeprep/mocks" element={<MockInterviews />} />
-              <Route path="/placeprep/leaderboard" element={<Leaderboard />} />
-              <Route path="/placeprep/governance" element={<Governance />} />
+              <Route path="/placeprep/upload" element={<PlacePrepUpload />} />
+              <Route path="/placeprep/community" element={<Community />} />
               <Route path="/voting" element={<VotingList />} />
               <Route path="/voting/:id" element={<ElectionDetail />} />
 

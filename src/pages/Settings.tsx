@@ -55,7 +55,7 @@ export default function Settings() {
             <Smartphone className="w-5 h-5 text-primary" />
             <div>
               <p className="font-medium text-sm">Install App</p>
-              <p className="text-xs text-muted-foreground">Add CampusChain to home screen</p>
+              <p className="text-xs text-muted-foreground">Add Scholaris DAO to home screen</p>
             </div>
           </div>
           <button className="btn-secondary-glass text-xs py-1.5 px-3">Install</button>

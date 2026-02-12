@@ -7,6 +7,8 @@ import {
   Trophy, Settings, Bell, Menu, X, LayoutDashboard,
   Wallet, ChevronDown, Shield, User
 } from 'lucide-react';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import NotificationsMenu from '@/components/ui/notifications-menu';
 
 const navModules = [
   { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -14,11 +16,7 @@ const navModules = [
     label: 'PlacePrep', icon: Briefcase, children: [
       { label: 'Companies', path: '/placeprep/companies' },
       { label: 'Upload JD', path: '/placeprep/upload' },
-      { label: 'Roadmap', path: '/placeprep/roadmap' },
-      { label: 'Practice', path: '/placeprep/practice' },
-      { label: 'Mock Interviews', path: '/placeprep/mocks' },
-      { label: 'Governance', path: '/placeprep/governance' },
-      { label: 'Leaderboard', path: '/placeprep/leaderboard' },
+      { label: 'VIT Community', path: '/placeprep/community' },
     ]
   },
   { label: 'Voting', path: '/voting', icon: Vote },
@@ -44,7 +42,7 @@ export default function Layout() {
             {/* Logo */}
             <Link to={isConnected ? '/dashboard' : '/'} className="flex items-center gap-2.5">
               <div className="module-icon w-8 h-8 rounded-lg text-sm font-bold">⛓</div>
-              <span className="font-heading font-bold text-lg gradient-text hidden sm:block">CampusChain</span>
+              <span className="font-heading font-bold text-lg gradient-text hidden sm:block">Scholaris DAO</span>
             </Link>
 
             {/* Desktop Nav */}
@@ -95,12 +93,22 @@ export default function Layout() {
               {isConnected ? (
                 <>
                   <div className="stat-badge hidden sm:flex">
-                    <span className="text-primary">◆</span> {prepTokens} PREP
+                    <span className="text-primary">◆</span> {prepTokens} Tokens
                   </div>
-                  <button className="relative p-2 text-muted-foreground hover:text-foreground transition-colors">
-                    <Bell className="w-5 h-5" />
-                    <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
-                  </button>
+                  {/* Notifications */}
+                  <div className="relative">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button className="relative p-2 text-muted-foreground hover:text-foreground transition-colors">
+                          <Bell className="w-5 h-5" />
+                          <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent align="end" sideOffset={8} className="w-[440px] p-0">
+                        <NotificationsMenu />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
                   <Link to="/profile" className="nav-link flex items-center gap-1.5">
                     <User className="w-4 h-4" />
                     <span className="hidden sm:inline text-xs font-mono">{shortAddr}</span>
