@@ -62,14 +62,14 @@ export default function Profile() {
 
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <StatCard icon={Coins} label="Tokens" value={totalTokens} />
+          <StatCard icon={Coins} label="vElixir" value={totalTokens} />
           <StatCard
             icon={QrCode}
             label="Attendance"
             value={
               <div className="flex flex-col items-start">
                 <span>18/20</span>
-                <span className="text-xs text-muted-foreground mt-1">{attendanceTokenTotal} Tokens</span>
+                <span className="text-xs text-muted-foreground mt-1">{attendanceTokenTotal} vElixir</span>
               </div>
             }
           />

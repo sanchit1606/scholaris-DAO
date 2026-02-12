@@ -123,13 +123,13 @@ export default function Community() {
               <div className="glass-card p-6">
                 <h3 className="font-semibold text-lg mb-2">How it works</h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Share your interview experiences and help juniors prepare — you'll earn Tokens for contributions.
+                  Share your interview experiences and help juniors prepare — you'll earn vElixir for contributions.
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
-                  <li><strong>Earn Tokens:</strong> Post interview experiences, upload verified JDs, or verify others' posts to earn Tokens.</li>
-                  <li><strong>Quality bonus:</strong> Popular posts (high upvotes / views) receive bonus Tokens to reward helpful content.</li>
+                  <li><strong>Earn vElixir:</strong> Post interview experiences, upload verified JDs, or verify others' posts to earn vElixir.</li>
+                  <li><strong>Quality bonus:</strong> Popular posts (high upvotes / views) receive bonus vElixir to reward helpful content.</li>
                   <li><strong>Privacy & trust:</strong> Community verification and staking help preserve quality and prevent spam.</li>
-                  <li><strong>Use Tokens:</strong> Tokens can be spent on event registrations, premium resources, or redeemed per the platform's reward marketplace (see Documentation).</li>
+                  <li><strong>Use vElixir:</strong> vElixir can be spent on event registrations, premium resources, or converted to ALGO for external uses (see Documentation).</li>
                 </ul>
                 <div className="mt-4">
                   <button onClick={() => { setShowHowItWorks(false); }} className="btn-secondary-glass">Back to community</button>

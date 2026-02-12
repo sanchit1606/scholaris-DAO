@@ -37,8 +37,8 @@ export default function Dashboard() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard icon={Coins} label="Tokens" value={prepTokens} change="+12%" positive />
-        <StatCard icon={QrCode} label="Attendance Tokens" value={attendanceTokens} change="+3" positive />
+        <StatCard icon={Coins} label="vElixir" value={prepTokens} change="+12%" positive />
+        <StatCard icon={QrCode} label="Attendance vElixir" value={attendanceTokens} change="+3" positive />
         <StatCard icon={Star} label="Reputation" value={`${reputation}/100`} />
         <StatCard icon={Trophy} label="Leaderboard Rank" value="#14" change="↑2" positive />
       </div>
@@ -85,16 +85,16 @@ export default function Dashboard() {
           {/* Step 1: Earn tokens */}
           <GlowCard size="lg" glowColor="blue" className="p-8 w-full min-h-[450px]">
             <div className="h-full flex flex-col justify-center relative z-10 text-white">
-              <h3 className="font-semibold mb-3 text-lg">Step 1 — Earn Tokens</h3>
-              <p className="text-sm mb-3">Complete on-campus activities to earn Tokens (example values, descending).</p>
+              <h3 className="font-semibold mb-3 text-lg">Step 1 — Earn vElixir</h3>
+              <p className="text-sm mb-3">Complete on-campus activities to earn vElixir (example values, descending).</p>
               <ul className="space-y-2 text-sm">
-                <li>Attendance (QR per lecture): <strong>5 Tokens</strong></li>
-                <li>Winning campus competitions: <strong>40–60 Tokens</strong></li>
-                <li>Participating in tech events / hackathons: <strong>15–30 Tokens</strong></li>
-                <li>Posting verified interview experiences / JDs: <strong>20–30 Tokens</strong></li>
-                <li>Verifying / curating content: <strong>3–8 Tokens</strong></li>
-                <li>Submitting feedback / surveys: <strong>2–5 Tokens</strong></li>
-                <li>Quality bonus (popular posts): <strong>10–30 Tokens</strong></li>
+                <li>Attendance (QR per lecture): <strong>5 vElixir</strong></li>
+                <li>Winning campus competitions: <strong>40–60 vElixir</strong></li>
+                <li>Participating in tech events / hackathons: <strong>15–30 vElixir</strong></li>
+                <li>Posting verified interview experiences / JDs: <strong>20–30 vElixir</strong></li>
+                <li>Verifying / curating content: <strong>3–8 vElixir</strong></li>
+                <li>Submitting feedback / surveys: <strong>2–5 vElixir</strong></li>
+                <li>Quality bonus (popular posts): <strong>10–30 vElixir</strong></li>
               </ul>
             </div>
           </GlowCard>
@@ -102,8 +102,8 @@ export default function Dashboard() {
           {/* Step 2: Spend tokens */}
           <GlowCard size="lg" glowColor="purple" className="p-8 w-full min-h-[450px]">
             <div className="h-full flex flex-col justify-center relative z-10 text-white">
-              <h3 className="font-semibold mb-3 text-lg">Step 2 — Spend Tokens</h3>
-              <p className="text-sm mb-3">Tokens are ASAs on Algorand; students opt-in and redeem via atomic transfers.</p>
+              <h3 className="font-semibold mb-3 text-lg">Step 2 — Spend vElixir</h3>
+              <p className="text-sm mb-3">vElixir are implemented as ASAs on Algorand; students opt-in and redeem via atomic transfers. vElixir is our platform currency — users may convert vElixir into ALGO for on-chain spends.</p>
               <ul className="space-y-2 text-sm">
                 <li>Event registrations: hackathons, workshops, club tickets</li>
                 <li>Premium content: paid courses, mock interviews, mentorship</li>

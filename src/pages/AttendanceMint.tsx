@@ -29,14 +29,14 @@ export default function AttendanceMint() {
     <div className="page-container max-w-2xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="section-title text-3xl mb-2">Attendance Mining</h1>
-        <p className="text-muted-foreground mb-6">Earn tokens for attending classes</p>
+        <p className="text-muted-foreground mb-6">Earn vElixir for attending classes</p>
       </motion.div>
 
       <div className="flex gap-2 mb-6">
-        {(['mint', 'collection'] as const).map((t) => (
+          {(['mint', 'collection'] as const).map((t) => (
           <button key={t} onClick={() => setTab(t)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-primary/10 text-primary border border-primary/20' : 'text-muted-foreground'}`}>
-            {t === 'mint' ? 'Mint Token' : 'My Collection'}
+            {t === 'mint' ? 'Mint vElixir' : 'My Collection'}
           </button>
         ))}
       </div>
@@ -49,8 +49,8 @@ export default function AttendanceMint() {
                 className="w-20 h-20 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4">
                 <Sparkles className="w-10 h-10 text-primary" />
               </motion.div>
-              <h3 className="font-heading text-xl font-bold mb-2">Token Minted! 🎉</h3>
-              <p className="text-muted-foreground">+1 AttendanceToken · Total: {totalTokens}</p>
+              <h3 className="font-heading text-xl font-bold mb-2">vElixir Minted! 🎉</h3>
+              <p className="text-muted-foreground">+1 Attendance vElixir · Total: {totalTokens}</p>
             </motion.div>
           ) : (
             <>
@@ -60,7 +60,7 @@ export default function AttendanceMint() {
               <p className="text-sm text-muted-foreground mb-6">Scan the QR code displayed in class or click below to simulate</p>
               <button onClick={handleMint} disabled={minting}
                 className="btn-primary-glow flex items-center justify-center gap-2 mx-auto">
-                {minting ? <><Loader2 className="w-4 h-4 animate-spin" /> Minting...</> : <><QrCode className="w-4 h-4" /> Mint Attendance Token</>}
+                {minting ? <><Loader2 className="w-4 h-4 animate-spin" /> Minting...</> : <><QrCode className="w-4 h-4" /> Mint Attendance vElixir</>}
               </button>
               <p className="text-xs text-muted-foreground mt-3">Fee: ~0.001 ALGO</p>
             </>
@@ -69,9 +69,9 @@ export default function AttendanceMint() {
       ) : (
         <div className="space-y-4">
           <div className="glass-card p-5">
-            <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-sm mb-2">
               <span className="font-medium">Progress</span>
-              <span className="text-primary font-bold">{totalTokens} tokens</span>
+              <span className="text-primary font-bold">{totalTokens} vElixir</span>
             </div>
             <div className="w-full bg-secondary rounded-full h-3 overflow-hidden">
               <motion.div
@@ -92,7 +92,7 @@ export default function AttendanceMint() {
                 </div>
                 <div>
                   <p className="font-medium text-sm">{t.reward}</p>
-                  <p className="text-xs text-muted-foreground">{t.count} tokens required</p>
+                  <p className="text-xs text-muted-foreground">{t.count} vElixir required</p>
                 </div>
               </div>
               {totalTokens >= t.count ? (

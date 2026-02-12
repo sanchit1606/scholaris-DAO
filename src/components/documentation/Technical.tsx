@@ -558,14 +558,14 @@ export default function Technical() {
 
               {/* 3.2 Engagement Rewards */}
               <div className="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
-                <div className="font-semibold flex items-center gap-2 mb-2">
+                  <div className="font-semibold flex items-center gap-2 mb-2">
                   <Gift className="text-brand-teal" />
-                  3.2 Engagement Rewards System (Token-Incentivized Campus
+                  3.2 Engagement Rewards System (vElixir‑Incentivized Campus
                   Participation)
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
                   <strong>Goal:</strong> Increase academic engagement in campus
-                  through token incentives
+                  through vElixir incentives
                 </p>
 
                 <div className="mt-3 space-y-3">
@@ -575,29 +575,29 @@ export default function Technical() {
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-1">
                       <li>
-                        • <strong>Token Acquisition:</strong> Students earn
-                        tokens via attendance (QR scans), quizzes, competitions,
+                        • <strong>vElixir Acquisition:</strong> Students earn
+                        vElixir via attendance (QR scans), quizzes, competitions,
                         submitting feedback, attending club events. Rewards
                         prioritized: semester attendance → feedbacks → quizzes →
                         technical events.
                       </li>
                       <li>
-                        • <strong>Token Spending:</strong> Use ASAs on Algorand
+                        • <strong>vElixir Spending:</strong> Use ASAs on Algorand
                         for transfers. Redemptions trigger atomic transfers
-                        (burn tokens for NFTs or send to event organizers).
+                        (convert vElixir to ALGO, burn vElixir for NFTs, or send to event organizers).
                       </li>
                     </ul>
                   </div>
 
                   <div>
-                    <div className="font-medium text-sm mb-1">
-                      Potential Uses for Tokens
+                      <div className="font-medium text-sm mb-1">
+                      Potential Uses for vElixir
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-1">
                       <li>
                         • <strong>Event Registrations:</strong> Hackathon/workshop
                         entry, club event tickets, campus competition fees — all
-                        payable with tokens instead of UPI/cash
+                        payable with vElixir instead of UPI/cash
                       </li>
                       <li>
                         • <strong>Educational Resources:</strong> Redeem for
@@ -749,7 +749,7 @@ export default function Technical() {
                         AI extracts structured data (skills, requirements, CTC,
                         etc)
                       </li>
-                      <li>Uploader earns ScholTokens (ASA) as reward</li>
+                      <li>Uploader earns vElixir (ASA) as reward</li>
                     </ol>
                     <p className="font-medium mb-1">
                       Smart Contract Global State Structure:
@@ -815,7 +815,7 @@ export default function Technical() {
                         can upvote posts, with the most upvoted appearing at the
                         top. This data is fed into AI models to detect patterns.
                         Users who post their interview experience are rewarded
-                        with ScholTokens.
+                        with vElixir.
                       </p>
                     </div>
                   </div>
@@ -837,14 +837,14 @@ export default function Technical() {
                           <thead>
                             <tr className="text-left text-xs text-muted-foreground">
                               <th className="px-3 py-2">Action</th>
-                              <th className="px-3 py-2">ScholTokens</th>
+                          <th className="px-3 py-2">vElixir</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr className="border-t">
                               <td className="px-3 py-1">Upload JD</td>
                               <td className="px-3 py-1 font-semibold">
-                                +10 tokens
+                                +10 vElixir
                               </td>
                             </tr>
                             <tr className="border-t">
@@ -852,7 +852,7 @@ export default function Technical() {
                                 Upload interview experience
                               </td>
                               <td className="px-3 py-1 font-semibold">
-                                +15 tokens
+                                +15 vElixir
                               </td>
                             </tr>
                             <tr className="border-t">
@@ -860,7 +860,7 @@ export default function Technical() {
                                 Verify others' uploads
                               </td>
                               <td className="px-3 py-1 font-semibold">
-                                +2 tokens
+                                +2 vElixir
                               </td>
                             </tr>
                             <tr className="border-t">
@@ -868,13 +868,13 @@ export default function Technical() {
                                 Popular content (50+ views)
                               </td>
                               <td className="px-3 py-1 font-semibold">
-                                +20 bonus tokens
+                                +20 bonus vElixir
                               </td>
                             </tr>
                             <tr className="border-t">
                               <td className="px-3 py-1">Downvoted as spam</td>
                               <td className="px-3 py-1 font-semibold text-red-600">
-                                −15 tokens
+                                −15 vElixir
                               </td>
                             </tr>
                           </tbody>
@@ -893,7 +893,7 @@ export default function Technical() {
                           • Weighted votes: Placed students = 2x weight
                         </li>
                         <li>
-                          • Stake tokens to propose JD removal
+                          • Stake vElixir to propose JD removal
                         </li>
                         <li>
                           • Automatic archival of JDs older than 2 years (unless
@@ -1025,7 +1025,7 @@ export default function Technical() {
                         Metadata + IPFS hash submitted to Algorand smart contract
                       </li>
                       <li>
-                        Contract stores on-chain state and mints ScholTokens to
+                        Contract stores on-chain state and mints vElixir to
                         uploader
                       </li>
                       <li>Success confirmation returned to frontend</li>
@@ -1092,7 +1092,7 @@ export default function Technical() {
                         <code className="bg-gray-100 px-1 rounded text-xs">
                           tokens_earned
                         </code>
-                        : Total ScholTokens earned
+                        : Total vElixir earned
                       </li>
                       <li>
                         •{" "}
@@ -1119,7 +1119,7 @@ export default function Technical() {
                       <code className="bg-gray-100 px-1 rounded text-xs">
                         upload_jd()
                       </code>
-                      : Store IPFS hash, metadata, mint tokens
+                      : Store IPFS hash, metadata, mint vElixir
                     </div>
                     <div>
                       •{" "}
@@ -1140,7 +1140,7 @@ export default function Technical() {
                       <code className="bg-gray-100 px-1 rounded text-xs">
                         claim_bonus()
                       </code>
-                      : Distribute bonus tokens for popular content
+                      : Distribute bonus vElixir for popular content
                     </div>
                   </div>
                 </div>
@@ -1178,7 +1178,7 @@ export default function Technical() {
                           Algorand, PyTEAL, Beaker, AlgoKit
                         </td>
                         <td className="px-3 py-2 align-top">
-                          Stateful smart contracts, ASAs (ScholTokens), Atomic
+                          Stateful smart contracts, ASAs (vElixir), Atomic
                           Transfers, Local/Global State; LocalNet → TestNet →
                           MainNet
                         </td>
@@ -1244,7 +1244,7 @@ export default function Technical() {
                         </td>
                         <td className="px-3 py-2 align-top">
                           Users, JDs, Verifications, InterviewExperiences,
-                          ScholTokenTransactions tables; Redis caching for
+                          vElixirTransactions tables; Redis caching for
                           insights &amp; roadmaps
                         </td>
                       </tr>
@@ -1314,7 +1314,7 @@ export default function Technical() {
                     </div>
                     <ul className="text-sm text-purple-700 space-y-1">
                       <li>
-                        • Seniors motivated to upload (earn ScholTokens)
+                        • Seniors motivated to upload (earn vElixir)
                       </li>
                       <li>• Community-driven quality control</li>
                       <li>• Self-sustaining knowledge transfer</li>
@@ -1395,7 +1395,7 @@ export default function Technical() {
                     "Student engagement rate (daily active users)",
                     "Placement success rate improvement (before vs. after)",
                     "Time saved per student in preparation",
-                    "ScholToken circulation and economy health",
+                    "vElixir circulation and economy health",
                     "Cross-college adoption rate",
                     "Recruiter partnerships established",
                   ].map((metric, i) => (

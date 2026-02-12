@@ -53,20 +53,20 @@ export default function MockInterviews() {
             <>
               <Users className="w-16 h-16 mx-auto text-muted-foreground/30 mb-4" />
               <h3 className="font-heading font-semibold text-lg mb-2">Find a Practice Partner</h3>
-              <p className="text-sm text-muted-foreground mb-6">Stake tokens to join the matching queue. Tokens are refunded on completion.</p>
+              <p className="text-sm text-muted-foreground mb-6">Stake vElixir to join the matching queue. vElixir are refunded on completion or can be converted to ALGO.</p>
               <div className="flex items-center justify-center gap-4 mb-6">
                 <span className="text-sm text-muted-foreground">Stake:</span>
                 <div className="flex items-center gap-2">
                   {[5, 10, 20].map((a) => (
                     <button key={a} onClick={() => setStakeAmount(a)}
                       className={`px-4 py-2 rounded-lg text-sm border transition-colors ${stakeAmount === a ? 'bg-primary/10 border-primary text-primary' : 'border-border/50 text-muted-foreground'}`}>
-                      {a} Tokens
+                      {a} vElixir
                     </button>
                   ))}
                 </div>
               </div>
               <button onClick={startSearch} className="btn-primary-glow flex items-center gap-2 mx-auto">
-                <Coins className="w-4 h-4" /> Join Queue ({stakeAmount} Tokens)
+                <Coins className="w-4 h-4" /> Join Queue ({stakeAmount} vElixir)
               </button>
             </>
           )}

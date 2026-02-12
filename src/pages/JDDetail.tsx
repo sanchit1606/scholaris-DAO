@@ -64,7 +64,7 @@ export default function JDDetail() {
             {/* Verify */}
               <button onClick={() => setVerified(true)} disabled={verified}
               className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium text-sm transition-all ${verified ? 'bg-success/20 text-success border border-success/30' : 'btn-primary-glow'}`}>
-              {verified ? <><CheckCircle className="w-4 h-4" /> Verified (+5 Tokens)</> : <><Shield className="w-4 h-4" /> Verify (Stake 2 Tokens)</>}
+              {verified ? <><CheckCircle className="w-4 h-4" /> Verified (+5 vElixir)</> : <><Shield className="w-4 h-4" /> Verify (Stake 2 vElixir)</>}
             </button>
 
             {/* Quality Rating */}

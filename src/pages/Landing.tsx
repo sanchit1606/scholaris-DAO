@@ -12,7 +12,7 @@ const modules = [
   { icon: Briefcase, title: 'PlacePrep DAO', desc: 'Decentralized placement intelligence with AI-powered insights, JD curation, and mock interviews.' },
   { icon: Vote, title: 'Campus Voting', desc: 'Secure on-chain elections with commit-reveal schemes and sybil prevention.' },
 
-  { icon: QrCode, title: 'Engagement Rewards', desc: 'Earn tokens via attendance, quizzes, and events — spend them on registrations, courses, and more.' },
+  { icon: QrCode, title: 'Engagement Rewards', desc: 'Earn vElixir via attendance, quizzes, and events — spend them on registrations, courses, and more.' },
   { icon: MessageSquare, title: 'Anonymous Feedback', desc: 'Commit-reveal anonymous course feedback with AI sentiment analysis.' },
 ];
 
@@ -144,7 +144,7 @@ export default function Landing() {
           <div className="absolute inset-0 opacity-20" style={{ background: 'var(--gradient-glow)' }} />
           <div className="relative">
             <h2 className="font-heading text-3xl font-bold mb-4">Ready to join?</h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">Connect your Algorand wallet and start earning Tokens, voting in elections, and more.</p>
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">Connect your Algorand wallet and start earning vElixir, voting in elections, and more. vElixir is our platform currency and can be converted to ALGO for external uses.</p>
             <button onClick={() => setShowConnectModal(true)} className="btn-primary-glow text-base flex items-center gap-2 mx-auto">
               <Wallet className="w-5 h-5" /> Get Started
             </button>

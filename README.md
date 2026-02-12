@@ -104,34 +104,34 @@ We propose multiple blockchain-powered solutions that leverage Algorand's unique
 
 **Why Algorand:** Fast finality (4 seconds), low fees enable multiple voting rounds
 
-### 3.2 Engagement Rewards System (Token-Incentivized Campus Participation)
+### 3.2 Engagement Rewards System (vElixir‑Incentivized Campus Participation)
 
-**Goal:** Increase academic engagement in campus through token incentives
+**Goal:** Increase academic engagement in campus through vElixir incentives
 
 #### Core Token Utility Model
 
-- **Token Acquisition:**Students earn tokens via attendance (QR scans), quizzes, competitions, or other engagement activities (e.g., submitting feedback, attending different club events etc).
+- **vElixir Acquisition:** Students earn vElixir via attendance (QR scans), quizzes, competitions, or other engagement activities (e.g., submitting feedback, attending different club events etc).
 
   The token rewards are prioritized in order:Firstly, most points allocated to semester attendance (lectures), then giving feedbacks (e.g., course or event reviews), then participating & winning quizzes, attending technical events on college campus, and similar engagements.This creates a "mining" loop where consistent involvement builds token balances.
-- **Token Spending Mechanics:**
-  Use ASAs on Algorand for transfers. Students opt-in to the token, and redemptions could trigger atomic transfers (e.g., burn tokens for NFTs or send to event organizers).
+- **vElixir Spending Mechanics:**
+  Use ASAs on Algorand for transfers. Students opt-in to vElixir, and redemptions could trigger atomic transfers (e.g., convert vElixir to ALGO, burn vElixir for NFTs, or send to event organizers).
   *(Will add a dashboard in the React frontend for tracking balances and spending history)*
 
-#### Potential Uses for Tokens
+#### Potential Uses for vElixir
 
 1. **Event and Activity Registrations** (replaces real-money registration fees):
 
-   - Hackathon or workshop entry: Spend tokens instead of paying via UPI/cash.
-   - Club events: Use tokens for tickets to tech talks, seminars, hackathons, cultural fests, etc. Clubs could set dynamic pricing via DAO votes.
+   - Hackathon or workshop entry: Spend vElixir instead of paying via UPI/cash.
+   - Club events: Use vElixir for tickets to tech talks, seminars, hackathons, cultural fests, etc. Clubs could set dynamic pricing via DAO votes.
    - Campus competitions: Entry fees for quizzes, debates, or innovation challenges.
 2. **Educational Resources and Upskilling:**
 
-   - Buying courses / content: Redeem tokens for access to online modules, certifications, or curated study materials.
-   - Tokens can be used to waive off library late overdue penalties on books.
+   - Buying courses / content: Redeem vElixir for access to online modules, certifications, or curated study materials.
+   - vElixir can be used to waive off library late overdue penalties on books.
 
 #### Implementation Considerations
 
-- **Smart Contract Integration:** Add functions in PyTEAL for token redemption (e.g., `redeem_tokens(event_id, amount)` that burns/spends tokens and updates local state for perks).
+- **Smart Contract Integration:** Add functions in PyTEAL for vElixir redemption (e.g., `redeem_tokens(event_id, amount)` that burns/spends vElixir and updates local state for perks). Note: vElixir is the platform currency (ASA) and can be converted to ALGO for broader on-chain use.
 - **Why Algorand Fits:** Low fees (0.001 ALGO) make frequent small spends viable; ASAs enable easy minting/burning without high gas costs.
 - **Risks and Mitigations:** Prevent abuse (e.g., token farming) with anti-Sybil measures like one-wallet-per-student via campus ID linkage. Track metrics like token velocity (circulation rate) in your analytics dashboard.
 - **Expansion Potential:** In future scope, partner with off-campus entities (e.g., local startups accepting tokens for internships) to increase real-world value.
@@ -180,7 +180,7 @@ We propose multiple blockchain-powered solutions that leverage Algorand's unique
 2. File stored on IPFS (InterPlanetary File System)
 3. IPFS hash + metadata stored in Algorand smart contract
 4. AI extracts structured data (skills, requirements, CTC, etc)
-5. Uploader earns ScholTokens (ASA) as reward
+5. Uploader earns vElixir (ASA) as reward
 
 **Smart Contract Global State Structure:**
 
@@ -203,19 +203,19 @@ After a company's campus drive is completed, OA-shortlisted students can post OA
 
 **Feature 1: Contribution Reward System (ASAs)**
 
-**ScholToken Economy:**
+**vElixir Economy:**
 
-- Upload JD: **10 tokens**
-- Upload interview experience: **15 tokens**
-- Verify others' uploads: **2 tokens**
-- Popular content (50+ views): **20 bonus tokens**
-- Downvoted as spam: **-15 tokens** (quality control)
+- Upload JD: **10 vElixir**
+- Upload interview experience: **15 vElixir**
+- Verify others' uploads: **2 vElixir**
+- Popular content (50+ views): **20 bonus vElixir**
+- Downvoted as spam: **-15 vElixir** (quality control)
 
 **Feature 2: Decentralized Curation (DAO Governance)**
 
 - Community voting on JD quality (1-5 stars)
 - Weighted votes: Placed students = 2x weight
-- Stake tokens to propose JD removal
+- Stake vElixir to propose JD removal
 - Automatic archival of JDs older than 2 years (unless community votes to keep)
 
 #### Part 4: Advanced Features
@@ -250,7 +250,7 @@ Students can filter companies by:
 2. Backend receives file and stores in IPFS
 3. AI extracts skills, company info, requirements
 4. Metadata + IPFS hash submitted to Algorand smart contract
-5. Contract stores on-chain state and mints ScholTokens to uploader
+5. Contract stores on-chain state and mints vElixir to uploader
 6. Success confirmation returned to frontend
 
 **Company Query Flow:**
@@ -271,7 +271,7 @@ Students can filter companies by:
 
 **Local State Variables (Per User):**
 
-- `tokens_earned`: Total ScholTokens earned
+- `tokens_earned`: Total vElixir earned
 - `jds_uploaded`: Count of JDs uploaded by user
 - `reputation_score`: Calculated based on contribution quality
 
@@ -377,7 +377,7 @@ Students can filter companies by:
 
 **Incentivized Contribution:**
 
-- Seniors motivated to upload (earn ScholTokens)
+- Seniors motivated to upload (earn vElixir)
 - Community-driven quality control
 - Self-sustaining knowledge transfer
 
@@ -386,7 +386,7 @@ Students can filter companies by:
 **Cross-College Network:**
 
 - Expand to engineering colleges
-- Shared ScholToken economy
+- Shared vElixir economy
 
 **Recruiter Integration:**
 
@@ -412,7 +412,7 @@ Students can filter companies by:
 - Student engagement rate (daily active users)
 - Placement success rate improvement (before vs. after)
 - Time saved per student in preparation
-- ScholToken circulation and economy health
+- vElixir circulation and economy health
 - Cross-college adoption rate
 - Recruiter partnerships established
 

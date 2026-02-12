@@ -94,7 +94,7 @@ export default function Layout() {
                 <>
                   <div className="stat-badge hidden sm:flex items-center gap-3">
                     <span className="text-primary">◆</span>
-                    <span>{prepTokens} Tokens</span>
+                    <span>{prepTokens} vElixir</span>
                     <span className="text-muted-foreground">|</span>
                     <span>{`${(algoBalance || 0).toFixed(3)} ALGO`}</span>
                   </div>

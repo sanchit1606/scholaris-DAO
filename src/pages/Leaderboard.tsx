@@ -22,7 +22,7 @@ export default function Leaderboard() {
 
       <div className="flex gap-2 mb-6">
         {[
-          { key: 'tokens' as const, label: 'Tokens', icon: Coins },
+          { key: 'tokens' as const, label: 'vElixir', icon: Coins },
           { key: 'uploads' as const, label: 'Uploads', icon: Upload },
           { key: 'reputation' as const, label: 'Reputation', icon: Star },
         ].map((t) => (
@@ -46,7 +46,7 @@ export default function Leaderboard() {
             </div>
             <div className="text-right">
               <p className="font-heading font-bold text-primary">
-                {tab === 'tokens' ? `${user.tokens} Tokens` : tab === 'uploads' ? `${user.uploads} JDs` : `${user.reputation}/100`}
+                {tab === 'tokens' ? `${user.tokens} vElixir` : tab === 'uploads' ? `${user.uploads} JDs` : `${user.reputation}/100`}
               </p>
             </div>
           </motion.div>
