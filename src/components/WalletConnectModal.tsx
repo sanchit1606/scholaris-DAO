@@ -2,32 +2,56 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import { Wallet, CheckCircle, Loader2, X, Shield } from 'lucide-react';
-
 const steps = ['Connect', 'Sign', 'Ready'];
 
 export default function WalletConnectModal() {
   const { showConnectModal, setShowConnectModal, connect } = useWalletStore();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleConnect = async () => {
     setLoading(true);
-    // Simulate wallet connection
-    await new Promise((r) => setTimeout(r, 1500));
-    setStep(1);
-    setLoading(false);
+    setError(null);
+    try {
+      // ensure browser global shim exists for libs that expect `global`
+      if (typeof window !== 'undefined' && !(window as any).global) {
+        (window as any).global = window;
+      }
+      // dynamically import Pera wallet to avoid import-time errors in some environments
+      const mod = await import('@perawallet/connect');
+      // detect exported class across bundling shapes
+      const PeraCls =
+        (mod && (mod.PeraWalletConnect || mod.default?.PeraWalletConnect)) ||
+        mod.default ||
+        mod;
+
+      if (typeof PeraCls !== 'function') {
+        throw new Error('Pera SDK: exported module is not a constructor');
+      }
+
+      // instantiate (optionally pass options later)
+      const peraWallet = new PeraCls();
+      // call connect (some builds expose .connect directly)
+      const accounts = typeof peraWallet.connect === 'function' ? await peraWallet.connect() : null;
+      if (accounts && accounts.length > 0) {
+        connect(accounts[0]);
+        setStep(2);
+      }
+    } catch (err) {
+      console.error('Pera connect error', err);
+      setError(err?.message ? String(err.message) : 'Connection failed. Please check your wallet.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSign = async () => {
+    // keep simulated sign flow for now; actual signing implemented later
     setLoading(true);
     await new Promise((r) => setTimeout(r, 1200));
     setStep(2);
     setLoading(false);
-    // Auto-proceed
-    setTimeout(() => {
-      connect('ALGO' + Math.random().toString(36).substring(2, 10).toUpperCase());
-      setStep(0);
-    }, 1000);
   };
 
   if (!showConnectModal) return null;
@@ -84,6 +108,7 @@ export default function WalletConnectModal() {
                   </div>
                   {loading && <Loader2 className="w-5 h-5 animate-spin text-primary" />}
                 </button>
+                {error && <p className="text-sm text-destructive mt-3 text-center">{error}</p>}
               </motion.div>
             )}
             {step === 1 && (
