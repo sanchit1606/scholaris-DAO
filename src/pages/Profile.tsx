@@ -50,10 +50,18 @@ export default function Profile() {
         <div className="glass-card p-8 mb-8">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center">
-              <img src="/PHOTO_SANCHIT.jpeg" alt="Sanchit" className="w-full h-full object-cover" />
+              {address ? (
+                <img
+                  src={`https://api.dicebear.com/7.x/notionists/svg?seed=${address}`}
+                  alt={address}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img src="/assets/placeholder.svg" alt="placeholder" className="w-full h-full object-cover" />
+              )}
             </div>
             <div>
-              <h1 className="font-heading text-2xl font-bold">Sanchit</h1>
+              <h1 className="font-heading text-2xl font-bold">{address ? `${address.slice(0,6)}...${address.slice(-4)}` : 'Not connected'}</h1>
               <div>
                 <button onClick={copyAddr} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-mono">
                   {address || 'Not connected'}
