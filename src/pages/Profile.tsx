@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useWalletStore } from '@/stores/walletStore';
 import StatCard from '@/components/StatCard';
-import { Coins, Upload, Star, QrCode, Vote, BookOpen, MessageSquare, Copy, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { Coins, Upload, Star, QrCode, Vote, BookOpen, MessageSquare, Copy, CheckCircle, Edit2, Check, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 // Example transaction history (updated)
 const transactions = [
@@ -20,6 +20,9 @@ export default function Profile() {
   const [copied, setCopied] = useState(false);
   const [convertAmount, setConvertAmount] = useState<number | ''>('');
   const [converting, setConverting] = useState(false);
+  const [displayName, setDisplayName] = useState<string | null>(null);
+  const [editingName, setEditingName] = useState(false);
+  const [nameInput, setNameInput] = useState('');
 
   const availableVElixir = prepTokens + attendanceTokens; // rough available balance
   const CONVERSION_RATE = 0.001; // 1 vElixir = 0.001 ALGO (mock rate)
@@ -28,6 +31,48 @@ export default function Profile() {
     if (address) navigator.clipboard.writeText(address);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  useEffect(() => {
+    if (!address) {
+      setDisplayName(null);
+      setNameInput('');
+      setEditingName(false);
+      return;
+    }
+    try {
+      const key = `displayName:${address}`;
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        setDisplayName(saved);
+        setNameInput(saved);
+      } else {
+        setDisplayName(null);
+        setNameInput('');
+      }
+    } catch {
+      setDisplayName(null);
+      setNameInput('');
+    }
+  }, [address]);
+
+  const saveDisplayName = () => {
+    if (!address) return;
+    const key = `displayName:${address}`;
+    const val = nameInput.trim();
+    try {
+      if (val) {
+        localStorage.setItem(key, val);
+        setDisplayName(val);
+      } else {
+        localStorage.removeItem(key);
+        setDisplayName(null);
+      }
+      setEditingName(false);
+      addNotification?.({ title: 'Saved', message: 'Display name updated', type: 'success' });
+    } catch {
+      addNotification?.({ title: 'Error', message: 'Could not save display name', type: 'error' });
+    }
   };
 
   // Derived stats from transactions
@@ -61,7 +106,23 @@ export default function Profile() {
               )}
             </div>
             <div>
-              <h1 className="font-heading text-2xl font-bold">{address ? `${address.slice(0,6)}...${address.slice(-4)}` : 'Not connected'}</h1>
+              <div className="flex items-center gap-2">
+                <h1 className="font-heading text-2xl font-bold">
+                  {displayName || (address ? `${address.slice(0,6)}...${address.slice(-4)}` : 'Not connected')}
+                </h1>
+                {address && !editingName && (
+                  <button onClick={() => setEditingName(true)} className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1">
+                    <Edit2 className="w-4 h-4" /> Edit
+                  </button>
+                )}
+              </div>
+              {editingName && (
+                <div className="mt-2 flex items-center gap-2">
+                  <input value={nameInput} onChange={(e) => setNameInput(e.target.value)} placeholder="Display name" className="bg-secondary/50 border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                  <button onClick={saveDisplayName} className="btn-primary-glow text-sm flex items-center gap-1"><Check className="w-4 h-4" /> Save</button>
+                  <button onClick={() => { setEditingName(false); setNameInput(displayName || ''); }} className="btn-secondary-glass text-sm flex items-center gap-1"><X className="w-4 h-4" /> Cancel</button>
+                </div>
+              )}
               <div>
                 <button onClick={copyAddr} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-mono">
                   {address || 'Not connected'}
